@@ -3,11 +3,6 @@ package pavos.jmkb;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.eclipse.paho.client.mqttv3.MqttClient;
-import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
-import org.eclipse.paho.client.mqttv3.MqttException;
-import org.eclipse.paho.client.mqttv3.MqttMessage;
-
 /**
  * This class is a bridge between a FROST-Server and Apache Kafka.
  * It serves as a MQTT consumer and an Apache Kafka Producer.<br><br>
@@ -67,22 +62,16 @@ public class Main {
 		
 		System.out.println(frostServerURI + "\n" + kafkaServerURI);
 		
-		// Initialize new MQTT Client
-		try {
-			MqttClient client = new MqttClient(frostServerURI, "mqttbridge1");
-			MqttConnectOptions options = new MqttConnectOptions();
-			options.setCleanSession(false);
-			client.connect(options);
-			client.subscribe("v1.0/Things");
-			client.subscribe("v1.0/Datastreams");
-			client.subscribe("v1.0/Locations");
-			client.subscribe("v1.0/HistoricalLocations");
-			client.subscribe("v1.0/Sensors");
-			client.subscribe("v1.0/ObservedProperties");
-			client.subscribe("v1.0/FeaturesOfInterest");
-			client.subscribe("v1.0/Observations");
-		} catch (MqttException e) {
-			e.printStackTrace();
+		MqttConsumer mqtt = new MqttConsumer(frostServerURI, "mqttconsumer1");
+		while (true) {
+			mqtt.testPublish("v1.0/Things", "TESTING");
+			System.out.println("A");
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
