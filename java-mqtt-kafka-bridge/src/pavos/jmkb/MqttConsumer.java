@@ -89,4 +89,13 @@ public class MqttConsumer implements MqttCallback {
 		System.out.println("Delivery successful");
 	}
 	
+	public void disconnect() {
+		try {
+			client.disconnect();
+			client.close();
+		} catch (MqttException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

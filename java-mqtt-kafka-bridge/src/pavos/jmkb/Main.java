@@ -63,16 +63,11 @@ public class Main {
 		System.out.println(frostServerURI + "\n" + kafkaServerURI);
 		
 		MqttConsumer mqtt = new MqttConsumer(frostServerURI, "mqttconsumer1");
-		while (true) {
+		for (int i = 0; i <= 100; i++) {
 			mqtt.testPublish("v1.0/Things", "TESTING");
 			System.out.println("A");
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
+		mqtt.disconnect();
 	}
 	
 }
