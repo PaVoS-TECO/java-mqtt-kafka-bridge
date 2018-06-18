@@ -1,9 +1,11 @@
 package main.java.pw.oliver.jmkb;
 
+import java.io.IOException;
 import java.util.Properties;
 
 import org.apache.avro.Schema;
 import org.apache.kafka.clients.producer.KafkaProducer;
+
 
 public class JmkbKafkaProducer {
 	
@@ -17,6 +19,8 @@ public class JmkbKafkaProducer {
 		properties.put("schema.registry.url", schemaRegistryURI);
 		
 		Schema.Parser parser = new Schema.Parser();
+		SchemaRegistryConnector connector = new SchemaRegistryConnector(schemaRegistryURI);
+		parser.parse(connector.getSchemaById(9));
 		KafkaProducer<String,String> producer = new KafkaProducer<>(properties);
 		System.out.println(producer.toString());
 		producer.close();

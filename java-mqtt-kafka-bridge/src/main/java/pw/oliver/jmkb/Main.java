@@ -5,11 +5,7 @@ import java.net.URISyntaxException;
 
 /**
  * This class is a bridge between a FROST-Server and Apache Kafka.
- * It serves as a MQTT consumer and an Apache Kafka Producer.<br><br>
- * 
- * Run this program with arguments: <code>Bridge &lt;frostServerURI&gt; &lt;kafkaServerURI&gt;</code><br>
- * If this program is run without arguments, it will default to: <code>Bridge localhost:1883 localhost:9092</code><br>
- * A valid URI should have the format <code>&lt;address&gt;:&lt;port&gt;</code>.
+ * It serves as a MQTT consumer and an Apache Kafka Producer.
  * 
  * @author Oliver
  * 
@@ -28,7 +24,7 @@ public class Main {
 			System.out.println("No arguments specified, using default ports 1883, 9092, 8081 on localhost");
 			frostServerURI = "tcp://127.0.0.1:1883";
 			kafkaServerURI = "127.0.0.1:9092";
-			schemaRegistryURI = "127.0.0.1:8081";
+			schemaRegistryURI = "http://127.0.0.1:8081";
 		} else if (args.length == 3) {
 			frostServerURI = args[0];
 			kafkaServerURI = args[1];
@@ -37,6 +33,11 @@ public class Main {
 			// prepend tcp:// to frostServerURI if no protocol is defined (required for MQTT)
 			if (!frostServerURI.contains("://")) {
 				frostServerURI = "tcp://" + frostServerURI;
+			}
+			
+			// prepend http:// to schemaRegistryURI if no protocol is defined
+			if (!schemaRegistryURI.contains("://")) {
+				schemaRegistryURI = "http://" + schemaRegistryURI;
 			}
 			
 			// check validity of URIs
@@ -82,7 +83,7 @@ public class Main {
 				+ "\nSchema: " + schemaRegistryURI);
 		
 		MqttConsumer mqtt = new MqttConsumer(frostServerURI, "mqttconsumer1", kafkaServerURI, schemaRegistryURI);
-		for (int i = 0; i <= 1000; i++) {
+		for (int i = 0; i <= 10; i++) {
 			mqtt.testPublish("v1.0/HistoricalLocations", java.security.SecureRandom.getSeed(2048).toString());
 		}
 		mqtt.disconnect();
