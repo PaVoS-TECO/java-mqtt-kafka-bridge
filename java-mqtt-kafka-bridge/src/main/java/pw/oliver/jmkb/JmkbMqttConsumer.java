@@ -9,12 +9,11 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.MqttTopic;
 
-public class MqttConsumer implements MqttCallback {
+public class JmkbMqttConsumer implements MqttCallback {
 	
-	MqttClient client;
-	JmkbKafkaProducer producer;
+	private MqttClient client;
 	
-	public MqttConsumer(String frostServerURI, String clientId, String kafkaServerURI, String schemaRegistryURI) {
+	public JmkbMqttConsumer(String frostServerURI, String clientId, JmkbKafkaProducer producer) {
 		// Initialize new MQTT Client
 		try {
 			MqttConnectOptions options = new MqttConnectOptions();
@@ -35,9 +34,6 @@ public class MqttConsumer implements MqttCallback {
 		} catch (MqttException e) {
 			e.printStackTrace();
 		}
-		
-		// Initialize new Kafka Producer
-		producer = new JmkbKafkaProducer(kafkaServerURI, schemaRegistryURI);
 	}
 	
 	public void testPublish(String topic, String message) {
@@ -52,29 +48,13 @@ public class MqttConsumer implements MqttCallback {
 
 	@Override
 	public void connectionLost(Throwable cause) {
-		System.out.println("Connection to MQTT lost! Trying to reconnect...");
-		for (int i = 1; i <= 5; i++) {
-			try {
-				client.connect();
-				System.out.println("Successfully reconnected!");
-				break;
-			} catch (MqttException e) {
-				try {
-					System.out.println("Reconnect failed.");
-					Thread.sleep(i * 1000);
-					continue;
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
-			}
-		}
-		System.err.println("Could not reestablish connection! Exiting...");
+		System.err.println("Connection to MQTT lost! Details: " + cause.getCause() + " - " + cause.getMessage() + "\n" + cause.getStackTrace());
 		try {
 			client.close();
+			System.exit(-1);
 		} catch (MqttException e) {
 			e.printStackTrace();
 		}
-		System.exit(-1);
 	}
 
 	@Override

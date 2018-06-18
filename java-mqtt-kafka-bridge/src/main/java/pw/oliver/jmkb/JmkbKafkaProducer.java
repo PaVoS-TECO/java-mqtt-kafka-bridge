@@ -9,6 +9,8 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 
 public class JmkbKafkaProducer {
 	
+	private KafkaProducer<String, byte[]> producer;
+	
 	public JmkbKafkaProducer(String kafkaServerURI, String schemaRegistryURI) {
 		Properties properties = new Properties();
 		properties.put("bootstrap.servers", kafkaServerURI.toString());
@@ -21,9 +23,9 @@ public class JmkbKafkaProducer {
 		Schema.Parser parser = new Schema.Parser();
 		SchemaRegistryConnector connector = new SchemaRegistryConnector(schemaRegistryURI);
 		parser.parse(connector.getSchemaById(9));
-		KafkaProducer<String,String> producer = new KafkaProducer<>(properties);
+		
+		producer = new KafkaProducer<>(properties);
 		System.out.println(producer.toString());
-		producer.close();
 	}
 	
 }
