@@ -5,42 +5,105 @@
   <version>0.0.1-SNAPSHOT</version>
   <repositories>
     <repository>
-        <id>Eclipse Paho Repo</id>
-        <url>https://repo.eclipse.org/content/repositories/paho-releases/</url>
+      <id>Eclipse Paho Repo</id>
+      <url>https://repo.eclipse.org/content/repositories/paho-releases/</url>
     </repository>
   </repositories>
   <dependencies>
     <dependency>
-        <groupId>org.eclipse.paho</groupId>
-        <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
-        <version>1.0.2</version>
+      <groupId>org.eclipse.paho</groupId>
+      <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+      <version>1.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.avro</groupId>
+      <artifactId>avro</artifactId>
+  	  <version>1.8.2</version>
+	</dependency>
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-streams</artifactId>
+      <version>1.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.confluent</groupId>
+      <artifactId>kafka</artifactId>
     </dependency>
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.7.0</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
         </configuration>
-        <groupId>org.apache.maven.plugins</groupId>
       </plugin>
       <plugin>
       <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>2.4</version>
         <configuration>
-        	<archive>
-            	<index>true</index>
-                <manifest>
-                	<mainClass>pavos.jmkb.Main</mainClass>
-                </manifest>
-            </archive>
+          <archive>
+            <index>true</index>
+            <manifest>
+              <mainClass>pavos.jmkb.Main</mainClass>
+            </manifest>
+          </archive>
         </configuration>
       </plugin>
     </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+    	  <groupId>org.eclipse.m2e</groupId>
+    	  <artifactId>lifecycle-mapping</artifactId>
+    	  <version>1.0.0</version>
+    	  <configuration>
+    		<lifecycleMappingMetadata>
+    		  <pluginExecutions>
+    			<pluginExecution>
+    			  <pluginExecutionFilter>
+    			    <groupId>org.apache.avro</groupId>
+    			    <artifactId>
+    				  avro-maven-plugin
+    			    </artifactId>
+    			    <versionRange>
+    				  [1.8.2,)
+    			    </versionRange>
+    			    <goals>
+    				  <goal>schema</goal>
+    			    </goals>
+    			  </pluginExecutionFilter>
+    			  <action>
+    				<ignore></ignore>
+    			  </action>
+    			</pluginExecution>
+    		  </pluginExecutions>
+    		</lifecycleMappingMetadata>
+    	  </configuration>
+    	</plugin>
+        <plugin>
+          <groupId>org.apache.avro</groupId>
+          <artifactId>avro-maven-plugin</artifactId>
+          <version>1.8.2</version>
+          <executions>
+            <execution>
+              <phase>generate-sources</phase>
+              <goals>
+                <goal>schema</goal>
+              </goals>
+              <configuration>
+                <sourceDirectory>${project.basedir}/src/main/avro/pw/oliver/jmkb/</sourceDirectory>
+                <outputDirectory>${project.basedir}/src/main/java/pw/oliver/jmkb/</outputDirectory>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
 </project>
