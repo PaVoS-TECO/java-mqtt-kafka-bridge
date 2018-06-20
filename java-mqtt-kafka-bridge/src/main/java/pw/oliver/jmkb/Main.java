@@ -82,8 +82,9 @@ public class Main {
 				+ "\nKafka: " + kafkaServerURI
 				+ "\nSchema: " + schemaRegistryURI);
 		
+		MqttMessageConverter converter = new MqttMessageConverter(schemaRegistryURI);
 		JmkbKafkaProducer producer = new JmkbKafkaProducer(kafkaServerURI, schemaRegistryURI);
-		JmkbMqttConsumer mqtt = new JmkbMqttConsumer(frostServerURI, "mqttconsumer1", producer);
+		JmkbMqttConsumer mqtt = new JmkbMqttConsumer(frostServerURI, "mqttconsumer1", producer, converter);
 		for (int i = 0; i <= 10; i++) {
 			mqtt.testPublish("v1.0/HistoricalLocations", java.security.SecureRandom.getSeed(2048).toString());
 		}

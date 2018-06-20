@@ -16,7 +16,6 @@ public class SchemaRegistryConnector {
 	public SchemaRegistryConnector(String schemaRegistryURI) {
 		this.schemaRegistryURI = schemaRegistryURI;
 		try {
-			System.out.println(schemaRegistryURI + "/subjects");
 			HttpURLConnection conn = (HttpURLConnection) new URL(schemaRegistryURI + "/subjects").openConnection();
 			conn.setRequestMethod("GET");
 			if (conn.getResponseCode() != 200) {

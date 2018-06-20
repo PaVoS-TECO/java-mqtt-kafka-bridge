@@ -12,10 +12,15 @@ import org.eclipse.paho.client.mqttv3.MqttTopic;
 public class JmkbMqttConsumer implements MqttCallback {
 	
 	private MqttClient client;
+	private JmkbKafkaProducer producer;
+	private MqttMessageConverter converter;
 	
-	public JmkbMqttConsumer(String frostServerURI, String clientId, JmkbKafkaProducer producer) {
+	public JmkbMqttConsumer(String frostServerURI, String clientId, JmkbKafkaProducer producer, MqttMessageConverter converter) {
 		// Initialize new MQTT Client
 		try {
+			this.producer = producer;
+			this.converter = converter;
+			
 			MqttConnectOptions options = new MqttConnectOptions();
 			options.setCleanSession(true);
 			this.client = new MqttClient(frostServerURI, clientId);
@@ -60,6 +65,8 @@ public class JmkbMqttConsumer implements MqttCallback {
 	@Override
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
 		System.out.println(topic + ": " + message);
+		byte[] avroMessage = converter.mqttMessageToAvro(message);
+		producer.send(topic, avroMessage);
 	}
 
 	@Override
