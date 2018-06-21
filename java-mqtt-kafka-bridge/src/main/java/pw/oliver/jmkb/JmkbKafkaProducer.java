@@ -13,16 +13,19 @@ public class JmkbKafkaProducer {
 		Properties properties = new Properties();
 		properties.put("bootstrap.servers", kafkaServerURI);
 		properties.put("acks", "all");
+		properties.put("linger.ms", 10);
 		properties.put("retries", 0);
 		properties.put("key.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
 		properties.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
 		properties.put("schema.registry.url", schemaRegistryURI);
+		properties.put("max.block.ms", 1000);
 		producer = new KafkaProducer<>(properties);
-		//producer.send(new ProducerRecord<String, byte[]>("v1.0/Locations", "0".getBytes()));
+		producer.send(new ProducerRecord<String, byte[]>("v1.0/Locations", "0".getBytes()));
 		System.out.println(producer.toString());
 	}
 	
 	public void send(String topic, byte[] avroMessage) {
 		producer.send(new ProducerRecord<String, byte[]>(topic, avroMessage));
+		producer.flush();
 	}
 }

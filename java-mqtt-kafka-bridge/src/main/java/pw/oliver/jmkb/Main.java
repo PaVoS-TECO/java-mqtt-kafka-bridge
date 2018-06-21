@@ -3,6 +3,8 @@ package main.java.pw.oliver.jmkb;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import org.apache.log4j.BasicConfigurator;
+
 /**
  * This class is a bridge between a FROST-Server and Apache Kafka.
  * It serves as a MQTT consumer and an Apache Kafka Producer.
@@ -16,6 +18,8 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+		BasicConfigurator.configure();
+		
 		String frostServerURI = "";
 		String kafkaServerURI = "";
 		String schemaRegistryURI = "";
@@ -23,7 +27,7 @@ public class Main {
 		if (args.length == 0) {
 			System.out.println("No arguments specified, using default ports 1883, 9092, 8081 on localhost");
 			frostServerURI = "tcp://127.0.0.1:1883";
-			kafkaServerURI = "127.0.0.1:9092";
+			kafkaServerURI = "http://127.0.0.1:9092";
 			schemaRegistryURI = "http://127.0.0.1:8081";
 		} else if (args.length == 3) {
 			frostServerURI = args[0];
@@ -33,6 +37,11 @@ public class Main {
 			// prepend tcp:// to frostServerURI if no protocol is defined (required for MQTT)
 			if (!frostServerURI.contains("://")) {
 				frostServerURI = "tcp://" + frostServerURI;
+			}
+			
+			// prepend http:// to kafkaServerURI if no protocol is defined
+			if (!kafkaServerURI.contains("://")) {
+				kafkaServerURI = "http://" + kafkaServerURI;
 			}
 			
 			// prepend http:// to schemaRegistryURI if no protocol is defined
