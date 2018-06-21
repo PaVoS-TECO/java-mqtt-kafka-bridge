@@ -60,7 +60,7 @@
           <archive>
             <index>true</index>
             <manifest>
-              <mainClass>pavos.jmkb.Main</mainClass>
+              <mainClass>main.java.pw.oliver.jmkb.Main</mainClass>
             </manifest>
           </archive>
         </configuration>

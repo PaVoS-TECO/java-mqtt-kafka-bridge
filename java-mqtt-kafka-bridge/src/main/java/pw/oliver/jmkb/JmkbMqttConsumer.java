@@ -64,6 +64,7 @@ public class JmkbMqttConsumer implements MqttCallback {
 
 	@Override
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
+		topic = topic.split("/")[1];
 		System.out.println(topic + ": " + message);
 		byte[] avroMessage = converter.mqttMessageToAvro(message);
 		producer.send(topic, avroMessage);
@@ -71,7 +72,11 @@ public class JmkbMqttConsumer implements MqttCallback {
 
 	@Override
 	public void deliveryComplete(IMqttDeliveryToken token) {
-		System.out.println("Delivery successful");
+		try {
+			System.out.println("Delivery errors: " + token.getException() + " - " + token.getMessage());
+		} catch (MqttException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void disconnect() {
