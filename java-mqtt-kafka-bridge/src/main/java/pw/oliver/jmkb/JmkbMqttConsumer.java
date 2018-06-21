@@ -43,6 +43,7 @@ public class JmkbMqttConsumer implements MqttCallback {
 	
 	public void testPublish(String topic, String message) {
 		try {
+			topic = topic.split("/")[1];
 			MqttTopic mqttTopic = client.getTopic(topic);
 			MqttDeliveryToken token = mqttTopic.publish(new MqttMessage(message.getBytes()));
 			token.waitForCompletion(1000);
