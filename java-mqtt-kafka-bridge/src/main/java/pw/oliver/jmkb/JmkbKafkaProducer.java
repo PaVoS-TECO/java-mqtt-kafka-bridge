@@ -14,9 +14,9 @@ public class JmkbKafkaProducer {
 	
 	private KafkaProducer<String, byte[]> producer;
 	
-	public JmkbKafkaProducer(String kafkaServerURI, String schemaRegistryURI) {
+	public JmkbKafkaProducer(String kafkaBrokerURI, String schemaRegistryURI) {
 		Properties properties = new Properties();
-		properties.put("bootstrap.servers", kafkaServerURI);
+		properties.put("bootstrap.servers", kafkaBrokerURI);
 		properties.put("acks", "all");
 		properties.put("linger.ms", 10);
 		properties.put("retries", 0);
@@ -28,7 +28,6 @@ public class JmkbKafkaProducer {
 	}
 	
 	public void send(String topic, String key, byte[] avroMessage) {
-		new ProducerRecord<>(topic, "a", "a");
 		Future<RecordMetadata> status = producer.send(new ProducerRecord<String, byte[]>(topic, key, avroMessage));
 		try {
 			RecordMetadata statusMetadata = status.get();
@@ -41,10 +40,8 @@ public class JmkbKafkaProducer {
 			System.out.println("[SEND]\tSerializedValueSize: " + statusMetadata.serializedValueSize());
 			System.out.println("----------------------------------");
 		} catch (InterruptedException | ExecutionException e) {
-			System.err.println(e.getClass().toGenericString());
 			e.printStackTrace();
 		}
-		producer.flush();
 	}
 	
 	public void disconnect() {

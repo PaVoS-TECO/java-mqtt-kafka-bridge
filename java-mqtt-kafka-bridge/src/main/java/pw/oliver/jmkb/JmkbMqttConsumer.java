@@ -78,11 +78,7 @@ public class JmkbMqttConsumer implements MqttCallback {
 
 	@Override
 	public void deliveryComplete(IMqttDeliveryToken token) {
-		try {
-			System.out.println("Delivery errors: " + token.getException() + " - " + token.getMessage());
-		} catch (MqttException e) {
-			e.printStackTrace();
-		}
+		
 	}
 	
 	public void disconnect() {

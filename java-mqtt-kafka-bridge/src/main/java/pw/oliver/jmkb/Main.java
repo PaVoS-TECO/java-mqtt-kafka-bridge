@@ -17,8 +17,10 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+		// for reading from jmkb.properties
 		ConfigurationFileReader conf = new ConfigurationFileReader();
 		
+		// for logging
 		BasicConfigurator.configure();
 		
 		String frostServerURI = conf.getProperty("frostServerURI");
@@ -71,13 +73,10 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		System.out.println("FROST: " + frostServerURI
-				+ "\nKafka: " + kafkaBrokerURI
-				+ "\nSchema: " + schemaRegistryURI);
-		
 		JmkbKafkaProducer producer = new JmkbKafkaProducer(kafkaBrokerURI, schemaRegistryURI);
 		JmkbMqttConsumer consumer = new JmkbMqttConsumer(frostServerURI, "mqttconsumer1", producer);
 		
+		// set shutdown hook so that program can terminate gracefully when user presses Ctrl+C
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			@Override
 			public void run() {
