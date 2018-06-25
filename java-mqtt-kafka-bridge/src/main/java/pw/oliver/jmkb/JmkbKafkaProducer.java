@@ -1,6 +1,7 @@
 package main.java.pw.oliver.jmkb;
 
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
@@ -29,8 +30,11 @@ public class JmkbKafkaProducer {
 	public void send(String topic, byte[] avroMessage) {
 		new ProducerRecord<>(topic, "a", "a");
 		Future<RecordMetadata> status = producer.send(new ProducerRecord<String, byte[]>(topic, avroMessage));
-		while(!status.isDone()) {
-			System.out.println("Not done");
+		try {
+			status.get();
+		} catch (InterruptedException | ExecutionException e) {
+			System.err.println(e.getClass().toGenericString());
+			e.printStackTrace();
 		}
 		producer.flush();
 	}
