@@ -93,11 +93,24 @@ public class Main {
 		
 		JmkbKafkaProducer producer = new JmkbKafkaProducer(kafkaServerURI, schemaRegistryURI);
 		JmkbMqttConsumer consumer = new JmkbMqttConsumer(frostServerURI, "mqttconsumer1", producer);
+		
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			@Override
+			public void run() {
+				System.out.println("Performing shutdown.");
+				consumer.disconnect();
+				System.out.println("MQTT consumer shutdown.");
+				producer.disconnect();
+				System.out.println("Kafka producer shutdown.");
+				System.out.println();
+			}
+		});
+		
 		for (int i = 0; i <= 10; i++) {
 			consumer.testPublish("v1.0/HistoricalLocations", "TESTESTEST");
 		}
-		consumer.disconnect();
-		producer.disconnect();
+		
+		while(true);
 	}
 	
 }
