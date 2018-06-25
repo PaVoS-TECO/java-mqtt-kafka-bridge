@@ -7,13 +7,13 @@ import org.json.simple.parser.ParseException;
 
 public class MqttMessageConverter {
 	
-	public static byte[] mqttMessageToAvro(MqttMessage message) {
+	public static byte[] mqttMessageToAvro(MqttMessage message, String schema) {
 		return message.getPayload();
 	}
 	
 	public static String getSensorIdFromMessage(MqttMessage message) {
 		try {
-			JSONObject jo = (JSONObject) new JSONParser().parse(message.toString());
+			JSONObject jo = (JSONObject) new JSONParser().parse(message.getPayload().toString());
 			if (jo.containsKey("iot.id")) {
 				return jo.get("iot.id").toString();
 			} else {

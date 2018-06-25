@@ -33,6 +33,7 @@ public class JmkbKafkaProducer {
 		try {
 			RecordMetadata statusMetadata = status.get();
 			System.out.println("----------------------------------");
+			System.out.println("[SEND]\tKey: " + key);
 			System.out.println("[SEND]\tTopic: " + statusMetadata.topic());
 			System.out.println("[SEND]\tPartition: " + statusMetadata.partition());
 			System.out.println("[SEND]\tTimestamp: " + statusMetadata.timestamp());
