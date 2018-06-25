@@ -65,7 +65,8 @@ public class JmkbMqttConsumer implements MqttCallback {
 		topic = topic.split("/")[1];
 		System.out.println(topic + ": " + message);
 		byte[] avroMessage = MqttMessageConverter.mqttMessageToAvro(message);
-		producer.send(topic, avroMessage);
+		String key = MqttMessageConverter.getSensorIdFromMessage(message);
+		producer.send(topic, key, avroMessage);
 	}
 
 	@Override

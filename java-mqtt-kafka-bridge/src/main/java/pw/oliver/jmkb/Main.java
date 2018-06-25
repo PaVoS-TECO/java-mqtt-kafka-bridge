@@ -102,7 +102,7 @@ public class Main {
 				System.out.println("MQTT consumer shutdown.");
 				producer.disconnect();
 				System.out.println("Kafka producer shutdown.");
-				System.out.println();
+				System.out.println("Shutdown complete.");
 			}
 		});
 		
