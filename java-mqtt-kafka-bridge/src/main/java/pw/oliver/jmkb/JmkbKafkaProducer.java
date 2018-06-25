@@ -29,7 +29,7 @@ public class JmkbKafkaProducer {
 	
 	public void send(String topic, byte[] avroMessage) {
 		new ProducerRecord<>(topic, "a", "a");
-		Future<RecordMetadata> status = producer.send(new ProducerRecord<String, byte[]>(topic, avroMessage));
+		Future<RecordMetadata> status = producer.send(new ProducerRecord<String, byte[]>(topic, MqttMessageConverter.getSensorIdFromMessage(avroMessage), avroMessage));
 		try {
 			RecordMetadata statusMetadata = status.get();
 			System.out.println("----------------------------------");

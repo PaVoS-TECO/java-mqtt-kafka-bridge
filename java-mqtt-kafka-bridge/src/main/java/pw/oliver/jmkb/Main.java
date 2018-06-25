@@ -106,6 +106,8 @@ public class Main {
 			}
 		});
 		
+		System.out.println("The bridge is now running, terminate with Ctrl+C.");
+		
 		for (int i = 0; i <= 10; i++) {
 			consumer.testPublish("v1.0/HistoricalLocations", "TESTESTEST");
 		}
