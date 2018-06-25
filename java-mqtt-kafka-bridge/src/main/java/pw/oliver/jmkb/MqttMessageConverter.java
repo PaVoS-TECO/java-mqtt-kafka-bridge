@@ -1,19 +1,27 @@
 package main.java.pw.oliver.jmkb;
 
-import org.apache.avro.Schema;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class MqttMessageConverter {
-
-	private Schema.Parser parser;
 	
-	public MqttMessageConverter(String schemaRegistryURI) {
-		parser = new Schema.Parser();
-		SchemaRegistryConnector connector = new SchemaRegistryConnector(schemaRegistryURI);
-		parser.parse(connector.getSchemaById(9));
+	public static byte[] mqttMessageToAvro(MqttMessage message) {
+		return message.getPayload();
 	}
 	
-	public byte[] mqttMessageToAvro(MqttMessage message) {
-		return message.getPayload();
+	public static String getSensorIdFromMessage(byte[] message) {
+		try {
+			JSONObject jo = (JSONObject) new JSONParser().parse(message.toString());
+			if (jo.containsKey("iot.id")) {
+				return jo.get("iot.id").toString();
+			} else {
+				return null;
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

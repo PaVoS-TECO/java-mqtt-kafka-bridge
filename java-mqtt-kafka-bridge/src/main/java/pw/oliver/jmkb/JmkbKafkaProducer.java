@@ -1,8 +1,12 @@
 package main.java.pw.oliver.jmkb;
 
 import java.util.Properties;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
 
 
 public class JmkbKafkaProducer {
@@ -23,7 +27,15 @@ public class JmkbKafkaProducer {
 	}
 	
 	public void send(String topic, byte[] avroMessage) {
-		producer.send(new ProducerRecord<String, byte[]>(topic, avroMessage));
+		new ProducerRecord<>(topic, "a", "a");
+		Future<RecordMetadata> status = producer.send(new ProducerRecord<String, byte[]>(topic, avroMessage));
+		while(!status.isDone()) {
+			System.out.println("Not done");
+		}
 		producer.flush();
+	}
+	
+	public void disconnect() {
+		producer.close(2, TimeUnit.SECONDS);
 	}
 }

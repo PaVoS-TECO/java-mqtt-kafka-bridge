@@ -13,13 +13,11 @@ public class JmkbMqttConsumer implements MqttCallback {
 	
 	private MqttClient client;
 	private JmkbKafkaProducer producer;
-	private MqttMessageConverter converter;
 	
-	public JmkbMqttConsumer(String frostServerURI, String clientId, JmkbKafkaProducer producer, MqttMessageConverter converter) {
+	public JmkbMqttConsumer(String frostServerURI, String clientId, JmkbKafkaProducer producer) {
 		// Initialize new MQTT Client
 		try {
 			this.producer = producer;
-			this.converter = converter;
 			
 			MqttConnectOptions options = new MqttConnectOptions();
 			options.setCleanSession(true);
@@ -67,7 +65,7 @@ public class JmkbMqttConsumer implements MqttCallback {
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
 		topic = topic.split("/")[1];
 		System.out.println(topic + ": " + message);
-		byte[] avroMessage = converter.mqttMessageToAvro(message);
+		byte[] avroMessage = MqttMessageConverter.mqttMessageToAvro(message);
 		producer.send(topic, avroMessage);
 	}
 
