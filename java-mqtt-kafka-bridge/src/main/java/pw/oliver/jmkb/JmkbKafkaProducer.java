@@ -31,7 +31,14 @@ public class JmkbKafkaProducer {
 		new ProducerRecord<>(topic, "a", "a");
 		Future<RecordMetadata> status = producer.send(new ProducerRecord<String, byte[]>(topic, avroMessage));
 		try {
-			status.get();
+			RecordMetadata statusMetadata = status.get();
+			System.out.println("----------------------------------");
+			System.out.println("[SEND]\tTopic: " + statusMetadata.topic());
+			System.out.println("[SEND]\tPartition: " + statusMetadata.partition());
+			System.out.println("[SEND]\tTimestamp: " + statusMetadata.timestamp());
+			System.out.println("[SEND]\tSerializedKeySize: " + statusMetadata.serializedKeySize());
+			System.out.println("[SEND]\tSerializedValueSize: " + statusMetadata.serializedValueSize());
+			System.out.println("----------------------------------");
 		} catch (InterruptedException | ExecutionException e) {
 			System.err.println(e.getClass().toGenericString());
 			e.printStackTrace();
