@@ -5,20 +5,20 @@ import java.io.IOException;
 import java.security.InvalidParameterException;
 import java.util.Properties;
 
-public class ConfigurationFileReader {
+public class PropertiesFileReader {
+
+	private Properties properties;
 	
-	private Properties config;
-	
-	public ConfigurationFileReader() {
-		config = new Properties();
+	public PropertiesFileReader() {
+		properties = new Properties();
 		try {
 			FileInputStream fis = new FileInputStream("./jmkb.properties");
-			config.load(fis);
+			properties.load(fis);
 			fis.close();
-			if (!config.containsKey("frostServerURI")
-					|| !config.containsKey("kafkaBrokerURI")
-					|| !config.containsKey("schemaRegistryURI")
-					|| !config.containsKey("schemaId")) {
+			if (!properties.containsKey("frostServerURI")
+					|| !properties.containsKey("kafkaBrokerURI")
+					|| !properties.containsKey("schemaRegistryURI")
+					|| !properties.containsKey("schemaId")) {
 				throw new InvalidParameterException();
 			}
 		} catch (InvalidParameterException e) {
@@ -38,6 +38,6 @@ public class ConfigurationFileReader {
 	}
 	
 	public String getProperty(String key) {
-		return config.getProperty(key);
+		return properties.getProperty(key);
 	}
 }

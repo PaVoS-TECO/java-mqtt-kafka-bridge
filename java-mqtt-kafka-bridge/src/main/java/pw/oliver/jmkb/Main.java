@@ -18,7 +18,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		// for reading from jmkb.properties
-		ConfigurationFileReader conf = new ConfigurationFileReader();
+		PropertiesFileReader conf = new PropertiesFileReader();
 		
 		// for logging
 		BasicConfigurator.configure();

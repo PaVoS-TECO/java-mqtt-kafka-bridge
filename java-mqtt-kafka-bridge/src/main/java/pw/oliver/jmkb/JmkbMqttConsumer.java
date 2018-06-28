@@ -13,11 +13,11 @@ public class JmkbMqttConsumer implements MqttCallback {
 	
 	private MqttClient client;
 	private JmkbKafkaProducer producer;
-	private ConfigurationFileReader conf;
+	private PropertiesFileReader conf;
 	
 	public JmkbMqttConsumer(String frostServerURI, String clientId, JmkbKafkaProducer producer) {
 		
-		conf = new ConfigurationFileReader();
+		conf = new PropertiesFileReader();
 		
 		// Initialize new MQTT Client
 		try {
@@ -78,7 +78,7 @@ public class JmkbMqttConsumer implements MqttCallback {
 
 	@Override
 	public void deliveryComplete(IMqttDeliveryToken token) {
-		
+		// will not use, since we only consume
 	}
 	
 	public void disconnect() {
