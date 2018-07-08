@@ -13,15 +13,13 @@ public class JmkbMqttConsumer implements MqttCallback {
 	
 	private MqttClient client;
 	private JmkbKafkaProducer producer;
-	private PropertiesFileReader conf;
 	
-	public JmkbMqttConsumer(String frostServerURI, String clientId, JmkbKafkaProducer producer) {
-		
-		conf = new PropertiesFileReader();
-		
+	public JmkbMqttConsumer(String clientId, JmkbKafkaProducer producer) {
+				
 		// Initialize new MQTT Client
 		try {
 			this.producer = producer;
+			String frostServerURI = PropertiesFileReader.getProperty("frostServerURI");
 			
 			MqttConnectOptions options = new MqttConnectOptions();
 			options.setCleanSession(true);
@@ -69,8 +67,8 @@ public class JmkbMqttConsumer implements MqttCallback {
 		// remove "v1.0/" from topic
 		topic = topic.split("/")[1];
 		System.out.println(topic + ": " + message);
-		SchemaRegistryConnector connector = new SchemaRegistryConnector(conf.getProperty("schemaRegistryURI"));
-		String schema = connector.getSchemaById(Integer.parseInt(conf.getProperty("schemaId")));
+		SchemaRegistryConnector connector = new SchemaRegistryConnector();
+		String schema = connector.getSchemaById(Integer.parseInt(PropertiesFileReader.getProperty("schemaId")));
 		byte[] avroMessage = MqttMessageConverter.mqttMessageToAvro(message, schema);
 		String key = MqttMessageConverter.getSensorIdFromMessage(message);
 		producer.send(topic, key, avroMessage);

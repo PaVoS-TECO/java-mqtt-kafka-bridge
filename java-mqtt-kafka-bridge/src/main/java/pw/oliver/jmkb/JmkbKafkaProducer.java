@@ -14,7 +14,9 @@ public class JmkbKafkaProducer {
 	
 	private KafkaProducer<String, byte[]> producer;
 	
-	public JmkbKafkaProducer(String kafkaBrokerURI, String schemaRegistryURI) {
+	public JmkbKafkaProducer() {
+		String kafkaBrokerURI = PropertiesFileReader.getProperty("kafkaBrokerURI");
+		String schemaRegistryURI = PropertiesFileReader.getProperty("schemaRegistryURI");
 		Properties properties = new Properties();
 		properties.put("bootstrap.servers", kafkaBrokerURI);
 		properties.put("acks", "all");

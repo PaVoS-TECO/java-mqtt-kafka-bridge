@@ -10,11 +10,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
 public class SchemaRegistryConnector {
-
+	
 	private final String schemaRegistryURI;
 	
-	public SchemaRegistryConnector(String schemaRegistryURI) {
-		this.schemaRegistryURI = schemaRegistryURI;
+	public SchemaRegistryConnector() {
+		schemaRegistryURI = PropertiesFileReader.getProperty("schemaRegistryURI");
 		try {
 			HttpURLConnection conn = (HttpURLConnection) new URL(schemaRegistryURI + "/subjects").openConnection();
 			conn.setRequestMethod("GET");
