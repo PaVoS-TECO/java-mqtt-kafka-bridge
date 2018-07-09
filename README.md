@@ -26,7 +26,7 @@ Currently, configurables are:
 - Use `Ctrl+C` to terminate the program. This ensures that the MQTT Client and Kafka Producer disconnect properly.
 
 ## Test data
-Test data are provided in the password-protected archive TestData.7z. You will need Python 3 to run the scripts and p7zip-full to extract the test data.
+Test data are provided in the password-protected archive TestData.7z. With this, the functionality of the program can be tested. Please make sure the bridge is running before you start step 4. You will need Python 3 to run the scripts and p7zip-full to extract the test data.
 
 1. Run `sudo apt install p7zip-full python3 python3-pip` to install Python 3, pip and 7z.
 2. Run `python3 -m pip install pandas requests` to install required modules.
