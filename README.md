@@ -24,3 +24,12 @@ Currently, configurables are:
 
 ## Further information
 - Use `Ctrl+C` to terminate the program. This ensures that the MQTT Client and Kafka Producer disconnect properly.
+
+## Test data
+Test data are provided in the password-protected archive TestData.7z. You will need Python 3 to run the scripts and p7zip-full to extract the test data.
+
+1. Run `sudo apt install p7zip-full python3 python3-pip` to install Python 3, pip and 7z.
+2. Run `python3 -m pip install pandas requests` to install required modules.
+3. Run `7z x TestData.7z` in the directory of `TestData.7z` to extract the scripts and test data. Enter the password when prompted.
+4. Run `python3 CreateThing.py`, then `python3 CreateDatastream.py`, then `python3 AddObservationsToDatastream.py`.
+5. Test data should have been successfully published to FROST.
