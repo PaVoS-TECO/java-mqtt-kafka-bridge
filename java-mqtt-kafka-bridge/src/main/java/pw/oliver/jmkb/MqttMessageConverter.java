@@ -13,7 +13,8 @@ public class MqttMessageConverter {
 	
 	public static String getSensorIdFromMessage(MqttMessage message) {
 		try {
-			JSONObject jo = (JSONObject) new JSONParser().parse(message.getPayload().toString());
+			System.out.println(message.toString());
+			JSONObject jo = (JSONObject) new JSONParser().parse(message.toString());
 			if (jo.containsKey("iot.id")) {
 				return jo.get("iot.id").toString();
 			} else {
