@@ -39,6 +39,9 @@ public class Main {
 		
 		System.out.println("The bridge is now running, terminate with Ctrl+C.");
 		
+		/*
+		 * Uncomment for testing
+		 * 
 		for (int i = 0; i <= 10; i++) {
 			consumer.testPublish("v1.0/HistoricalLocations", "{\r\n" + 
 					"    \"glossary\": {\r\n" + 
@@ -51,6 +54,7 @@ public class Main {
 					"					\"SortAs\": \"SGML\",\r\n" + 
 					"					\"GlossTerm\": \"Standard Generalized Markup Language\",\r\n" + 
 					"					\"Acronym\": \"SGML\",\r\n" + 
+					"					\"@iot.id\": \"d463saf8a43asd41f8\",\r\n" + 
 					"					\"Abbrev\": \"ISO 8879:1986\",\r\n" + 
 					"					\"GlossDef\": {\r\n" + 
 					"                        \"para\": \"A meta-markup language, used to create markup languages such as DocBook.\",\r\n" + 
@@ -62,7 +66,7 @@ public class Main {
 					"        }\r\n" + 
 					"    }\r\n" + 
 					"}");
-		}
+		}*/
 		
 		while(true);
 	}

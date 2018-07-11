@@ -1,13 +1,10 @@
 package main.java.pw.oliver.jmkb;
 
 import java.util.Properties;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
 
 
 public class JmkbKafkaProducer {
@@ -30,6 +27,10 @@ public class JmkbKafkaProducer {
 	}
 	
 	public void send(String topic, String key, byte[] avroMessage) {
+		producer.send(new ProducerRecord<String, byte[]>(topic, key, avroMessage));
+		
+		/* Comment above line and uncomment below lines for debug
+		 * 
 		Future<RecordMetadata> status = producer.send(new ProducerRecord<String, byte[]>(topic, key, avroMessage));
 		try {
 			RecordMetadata statusMetadata = status.get();
@@ -43,7 +44,7 @@ public class JmkbKafkaProducer {
 			System.out.println("----------------------------------");
 		} catch (InterruptedException | ExecutionException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	public void disconnect() {

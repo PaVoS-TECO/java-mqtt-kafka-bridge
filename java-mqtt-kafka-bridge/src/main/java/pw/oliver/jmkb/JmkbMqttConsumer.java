@@ -4,10 +4,8 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
-import org.eclipse.paho.client.mqttv3.MqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.eclipse.paho.client.mqttv3.MqttTopic;
 
 public class JmkbMqttConsumer implements MqttCallback {
 	
@@ -41,6 +39,7 @@ public class JmkbMqttConsumer implements MqttCallback {
 		}
 	}
 	
+	/* Uncomment this method for testing
 	public void testPublish(String topic, String message) {
 		try {
 			MqttTopic mqttTopic = client.getTopic(topic);
@@ -49,12 +48,13 @@ public class JmkbMqttConsumer implements MqttCallback {
 		} catch (MqttException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	@Override
 	public void connectionLost(Throwable cause) {
 		System.err.println("Connection to MQTT lost! Details: " + cause.getCause() + " - " + cause.getMessage() + "\n" + cause.getStackTrace());
 		try {
+			// close client and quit bridge on connection loss
 			client.close();
 			System.exit(-1);
 		} catch (MqttException e) {
@@ -66,11 +66,13 @@ public class JmkbMqttConsumer implements MqttCallback {
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
 		// remove "v1.0/" from topic
 		topic = topic.split("/")[1];
-		System.out.println(topic + ": " + message);
+		// get schema
 		SchemaRegistryConnector connector = new SchemaRegistryConnector();
 		String schema = connector.getSchemaById(Integer.parseInt(PropertiesFileReader.getProperty("schemaId")));
+		// convert message and get key
 		byte[] avroMessage = MqttMessageConverter.mqttMessageToAvro(message, schema);
 		String key = MqttMessageConverter.getSensorIdFromMessage(message);
+		
 		producer.send(topic, key, avroMessage);
 	}
 
