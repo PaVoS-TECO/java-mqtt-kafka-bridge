@@ -5,6 +5,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.serialization.StringSerializer;
+
+import io.confluent.kafka.serializers.KafkaAvroSerializer;
 
 
 public class JmkbKafkaProducer {
@@ -19,8 +22,8 @@ public class JmkbKafkaProducer {
 		properties.put("acks", "all");
 		properties.put("linger.ms", 10);
 		properties.put("retries", 0);
-		properties.put("key.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
-		properties.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
+		properties.put("key.serializer", StringSerializer.class.getName());
+		properties.put("value.serializer", KafkaAvroSerializer.class.getName());
 		properties.put("schema.registry.url", schemaRegistryURI);
 		properties.put("max.block.ms", 10000);
 		producer = new KafkaProducer<>(properties);
