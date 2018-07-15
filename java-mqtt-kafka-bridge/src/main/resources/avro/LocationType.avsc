@@ -1,0 +1,9 @@
+{
+	"type": "record",
+	"name": "LocationType",
+	"doc": "The type of the location, for example Point",
+	"fields": [
+		{"name": "type", "type": "string", "doc": "Name of the LocationType"},
+		{"name": "coordinates", "type": "array", "doc": "Coordinates for the LocationType"}
+	]
+}

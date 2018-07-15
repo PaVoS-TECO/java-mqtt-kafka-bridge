@@ -1,0 +1,10 @@
+{
+	"type": "record",
+	"name": "ObservedProperty",
+	"doc": "An ObservedProperty specifies the phenomenon of an Observation.",
+	"fields": [
+		{"name": "name", "type": "string", "doc": "Name of the ObservedProperty"},
+		{"name": "description", "type": "string", "doc": "Description of the ObservedProperty"},
+		{"name": "definition", "type": "string", "doc": "URI of the definition of the ObservedProperty"}
+	]
+}

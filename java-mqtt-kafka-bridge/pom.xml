@@ -3,6 +3,14 @@
   <groupId>java-mqtt-kafka-bridge</groupId>
   <artifactId>java-mqtt-kafka-bridge</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+  	<avro.version>1.8.2</avro.version>
+  	<kafka.version>1.1.0</kafka.version>
+  	<confluent.version>4.1.1</confluent.version>
+  	<mqtt.version>1.0.2</mqtt.version>
+  </properties>
+  
   <repositories>
     <repository>
       <id>Eclipse Paho Repo</id>
@@ -13,21 +21,22 @@
       <url>https://packages.confluent.io/maven/</url>
     </repository>
   </repositories>
+  
   <dependencies>
     <dependency>
       <groupId>org.eclipse.paho</groupId>
       <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
-      <version>1.0.2</version>
+      <version>${mqtt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.avro</groupId>
       <artifactId>avro</artifactId>
-  	  <version>1.8.2</version>
+  	  <version>${avro.version}</version>
 	</dependency>
     <dependency>
       <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka-streams</artifactId>
-      <version>1.1.0</version>
+      <artifactId>kafka_2.12</artifactId>
+      <version>${kafka.version}</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.json-simple</groupId>
@@ -37,9 +46,10 @@
     <dependency>
       <groupId>io.confluent</groupId>
       <artifactId>kafka-avro-serializer</artifactId>
-      <version>4.1.1</version>
-  </dependency>
+      <version>${confluent.version}</version>
+    </dependency>
   </dependencies>
+  
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -52,6 +62,27 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+      
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>target/generated-sources/avro</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      
       <plugin>
       <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -66,54 +97,31 @@
         </configuration>
       </plugin>
     </plugins>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-    	  <groupId>org.eclipse.m2e</groupId>
-    	  <artifactId>lifecycle-mapping</artifactId>
-    	  <version>1.0.0</version>
-    	  <configuration>
-    		<lifecycleMappingMetadata>
-    		  <pluginExecutions>
-    			<pluginExecution>
-    			  <pluginExecutionFilter>
-    			    <groupId>org.apache.avro</groupId>
-    			    <artifactId>
-    				  avro-maven-plugin
-    			    </artifactId>
-    			    <versionRange>
-    				  [1.8.2,)
-    			    </versionRange>
-    			    <goals>
-    				  <goal>schema</goal>
-    			    </goals>
-    			  </pluginExecutionFilter>
-    			  <action>
-    				<ignore></ignore>
-    			  </action>
-    			</pluginExecution>
-    		  </pluginExecutions>
-    		</lifecycleMappingMetadata>
-    	  </configuration>
-    	</plugin>
-        <plugin>
-          <groupId>org.apache.avro</groupId>
-          <artifactId>avro-maven-plugin</artifactId>
-          <version>1.8.2</version>
-          <executions>
-            <execution>
-              <phase>generate-sources</phase>
-              <goals>
-                <goal>schema</goal>
-              </goals>
-              <configuration>
-                <sourceDirectory>${project.basedir}/src/main/avro/pw/oliver/jmkb/</sourceDirectory>
-                <outputDirectory>${project.basedir}/src/main/java/pw/oliver/jmkb/</outputDirectory>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+    
+	<pluginManagement>
+	  <plugins>
+	    <plugin>
+      	<groupId>org.apache.avro</groupId>
+      	<artifactId>avro-maven-plugin</artifactId>
+      	<executions>
+      	  <execution>
+      	    <phase>generate-sources</phase>
+      	    <goals>
+      	      <goal>schema</goal>
+      	      <goal>protocol</goal>
+      	      <goal>idl-protocol</goal>
+      	    </goals>
+      	    <configuration>
+      	      <sourceDirectory>${project.basedir}/src/main/resources/avro</sourceDirectory>
+      	      <stringType>String</stringType>
+      	      <createSetters>false</createSetters>
+      	      <enableDecimalLogicalType>true</enableDecimalLogicalType>
+      	      <fieldVisibility>private</fieldVisibility>
+      	    </configuration>
+      	  </execution>
+      	</executions>
+      </plugin>
+	  </plugins>
+	</pluginManagement>
   </build>
 </project>

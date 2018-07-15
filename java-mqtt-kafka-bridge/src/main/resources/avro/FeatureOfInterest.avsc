@@ -1,0 +1,11 @@
+{
+	"type": "record",
+	"name": "FeatureOfInterest",
+	"doc": "In the case of remote sensing, the FeatureOfInterest can be the geographical area or volume that is being sensed.",
+	"fields": [
+		{"name": "name", "type": "string", "doc": "Name of the FeatureOfInterest"},
+		{"name": "description", "type": "string", "doc": "Description of the FeatureOfInterest"},
+		{"name": "encodingType", "type": "string", "doc": "Representation/encoding type of the FeatureOfInterest"},
+		{"name": "feature", "type": "LocationType", "doc": "LocationType object containing the feature of the Thing"},
+	]
+}

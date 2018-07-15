@@ -1,7 +1,5 @@
 package main.java.pw.oliver.jmkb;
 
-import org.apache.log4j.BasicConfigurator;
-
 /**
  * This class is a bridge between a FROST-Server and Apache Kafka.
  * It serves as a MQTT consumer and an Apache Kafka Producer.
@@ -16,7 +14,6 @@ public class Main {
 	public static void main(String[] args) {
 		
 		// for logging
-		BasicConfigurator.configure();
 		
 		// initialize PropertiesFileReader
 		PropertiesFileReader.init();
