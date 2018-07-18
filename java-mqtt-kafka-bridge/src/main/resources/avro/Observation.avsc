@@ -1,4 +1,5 @@
 {
+	"namespace": "main.java.pw.oliver.jmkb.avroclasses",
 	"type": "record",
 	"name": "Observation",
 	"doc": "An Observation represents a single Sensor reading of an ObservedProperty. A Sensor sends Observations to a specified Datastream.",

@@ -1,4 +1,5 @@
 {
+	"namespace": "main.java.pw.oliver.jmkb.avroclasses",
 	"type": "record",
 	"name": "Thing",
 	"doc": "A Thing has Locations and one or more Datastreams to collect Observations.",
@@ -8,6 +9,6 @@
 		{"name": "properties", "type": "null", "doc": "Properties of the Thing (currently unused)"},
 		{"name": "Locations", "type": ["null", {"type": "array", "items": "Location"}], "doc": "Optional Location(s) of the Thing"},
 		{"name": "HistoricalLocations", "type": ["null", {"type": "array", "items": "Location"}], "doc": "Optional HistoricalLocation(s) of the Thing"},
-		{"name": "Datastreams", "type": ["null", {"type": "array", "items": "Datastream"}], "doc": "Optional Datastream(s) of the Thing"},
+		{"name": "Datastreams", "type": "null", "doc": "Unused optional Datastream(s) of the Thing"}
 	]
 }

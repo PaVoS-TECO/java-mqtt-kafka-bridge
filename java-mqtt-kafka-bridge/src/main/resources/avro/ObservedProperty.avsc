@@ -1,4 +1,5 @@
 {
+	"namespace": "main.java.pw.oliver.jmkb.avroclasses",
 	"type": "record",
 	"name": "ObservedProperty",
 	"doc": "An ObservedProperty specifies the phenomenon of an Observation.",

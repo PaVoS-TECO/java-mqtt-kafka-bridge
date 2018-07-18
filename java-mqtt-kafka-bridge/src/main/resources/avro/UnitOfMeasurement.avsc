@@ -1,4 +1,5 @@
 {
+	"namespace": "main.java.pw.oliver.jmkb.avroclasses",
 	"type": "record",
 	"name": "UnitOfMeasurement",
 	"doc": "The Unit of Measurement of an Observation",

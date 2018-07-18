@@ -1,4 +1,5 @@
 {
+	"namespace": "main.java.pw.oliver.jmkb.avroclasses",
 	"type": "record",
 	"name": "Sensor",
 	"doc": "A Sensor is an instrument that observes a property or phenomenon with the goal of producing an estimate of the value of the property.",
@@ -6,6 +7,6 @@
 		{"name": "name", "type": "string", "doc": "Name of the Sensor"},
 		{"name": "description", "type": "string", "doc": "Description of the Sensor"},
 		{"name": "encodingType", "type": "string", "doc": "Encoding type of the Sensor"},
-		{"name": "metadata", "type": "string", "doc": "Metadata of the Sensor"},
+		{"name": "metadata", "type": "string", "doc": "Metadata of the Sensor"}
 	]
 }
