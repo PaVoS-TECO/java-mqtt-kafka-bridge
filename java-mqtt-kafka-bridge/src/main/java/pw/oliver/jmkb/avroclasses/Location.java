@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 /** A Things Location entity is defined as the last known location of the Thing. A Thing can have multiple Locations if all Locations are different representations of same Location with different encodingType. */
 @org.apache.avro.specific.AvroGenerated
 public class Location extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 7067326889096078679L;
+  private static final long serialVersionUID = -7524121210812998900L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Location\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"A Things Location entity is defined as the last known location of the Thing. A Thing can have multiple Locations if all Locations are different representations of same Location with different encodingType.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Location\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Location\"},{\"name\":\"encodingType\",\"type\":\"string\",\"doc\":\"Representation/encoding type of the Location\"},{\"name\":\"location\",\"type\":{\"type\":\"record\",\"name\":\"LocationType\",\"doc\":\"The type of the location, for example Point\",\"fields\":[{\"name\":\"type\",\"type\":\"string\",\"doc\":\"Name of the LocationType\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Coordinates for the LocationType\"}]},\"doc\":\"LocationType containing the actual location of the Thing\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 

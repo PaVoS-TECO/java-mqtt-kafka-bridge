@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 /** In the case of remote sensing, the FeatureOfInterest can be the geographical area or volume that is being sensed. */
 @org.apache.avro.specific.AvroGenerated
 public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -1946619323316476751L;
+  private static final long serialVersionUID = -7325206318914051695L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"FeatureOfInterest\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"In the case of remote sensing, the FeatureOfInterest can be the geographical area or volume that is being sensed.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the FeatureOfInterest\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the FeatureOfInterest\"},{\"name\":\"encodingType\",\"type\":\"string\",\"doc\":\"Representation/encoding type of the FeatureOfInterest\"},{\"name\":\"feature\",\"type\":{\"type\":\"record\",\"name\":\"LocationType\",\"doc\":\"The type of the location, for example Point\",\"fields\":[{\"name\":\"type\",\"type\":\"string\",\"doc\":\"Name of the LocationType\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Coordinates for the LocationType\"}]},\"doc\":\"LocationType object containing the feature of the Thing\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 

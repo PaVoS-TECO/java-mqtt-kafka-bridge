@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 /** The type of the location, for example Point */
 @org.apache.avro.specific.AvroGenerated
 public class LocationType extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 4536060648798883393L;
+  private static final long serialVersionUID = 4137756298874171138L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"LocationType\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"The type of the location, for example Point\",\"fields\":[{\"name\":\"type\",\"type\":\"string\",\"doc\":\"Name of the LocationType\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Coordinates for the LocationType\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 

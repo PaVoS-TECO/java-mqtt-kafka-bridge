@@ -94,7 +94,7 @@
       	    </goals>
       	    <configuration>
       	      <sourceDirectory>${project.basedir}/src/main/resources/avro/</sourceDirectory>
-      	      <!-- <outputDirectory>${project.basedir}/src/main/resources/java/</outputDirectory> -->
+      	      <outputDirectory>${project.basedir}/src/</outputDirectory>
       	      <includes>
          		<include>${project.basedir}/src/main/resources/avro/*.avsc</include>
      		  </includes>
