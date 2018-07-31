@@ -3,6 +3,7 @@ package main.java.pw.oliver.jmkb;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.avro.specific.SpecificRecordBase;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -12,7 +13,7 @@ import io.confluent.kafka.serializers.KafkaAvroSerializer;
 
 public class JmkbKafkaProducer {
 	
-	private KafkaProducer<String, byte[]> producer;
+	private KafkaProducer<String, SpecificRecordBase> producer;
 	
 	public JmkbKafkaProducer() {
 		String kafkaBrokerURI = PropertiesFileReader.getProperty("kafkaBrokerURI");
@@ -29,8 +30,9 @@ public class JmkbKafkaProducer {
 		producer = new KafkaProducer<>(properties);
 	}
 	
-	public void send(String topic, String key, byte[] avroMessage) {
-		producer.send(new ProducerRecord<String, byte[]>(topic, key, avroMessage));
+	public void send(String topic, String key, SpecificRecordBase avroMessage) {
+		producer.send(new ProducerRecord<String, SpecificRecordBase>(topic, key, avroMessage));
+		producer.flush();
 		
 		/* Comment above line and uncomment below lines for debug
 		 * 

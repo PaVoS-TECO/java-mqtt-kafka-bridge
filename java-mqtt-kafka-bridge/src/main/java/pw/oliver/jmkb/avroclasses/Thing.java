@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** A Thing has Locations and one or more Datastreams to collect Observations. */
 @org.apache.avro.specific.AvroGenerated
 public class Thing extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 8092798934685183514L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Thing\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"A Thing has Locations and one or more Datastreams to collect Observations.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Thing\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Thing\"},{\"name\":\"properties\",\"type\":\"null\",\"doc\":\"Properties of the Thing (currently unused)\"},{\"name\":\"Locations\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Location\",\"doc\":\"A Things Location entity is defined as the last known location of the Thing. A Thing can have multiple Locations if all Locations are different representations of same Location with different encodingType.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Location\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Location\"},{\"name\":\"encodingType\",\"type\":\"string\",\"doc\":\"Representation/encoding type of the Location\"},{\"name\":\"location\",\"type\":{\"type\":\"record\",\"name\":\"LocationType\",\"doc\":\"The type of the location, for example Point\",\"fields\":[{\"name\":\"type\",\"type\":\"string\",\"doc\":\"Name of the LocationType\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Coordinates for the LocationType\"}]},\"doc\":\"LocationType containing the actual location of the Thing\"}]}}],\"doc\":\"Optional Location(s) of the Thing\"},{\"name\":\"HistoricalLocations\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"Location\"}],\"doc\":\"Optional HistoricalLocation(s) of the Thing\"},{\"name\":\"Datastreams\",\"type\":\"null\",\"doc\":\"Unused optional Datastream(s) of the Thing\"}]}");
+  private static final long serialVersionUID = 5501814971717974044L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Thing\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"A Thing has Locations and one or more Datastreams to collect Observations.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Thing\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Thing\"},{\"name\":\"properties\",\"type\":\"string\",\"doc\":\"Properties of the Thing (currently unused)\"},{\"name\":\"Locations\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"Optional Location(s) of the Thing\"},{\"name\":\"HistoricalLocations\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"Optional HistoricalLocation(s) of the Thing\"},{\"name\":\"Datastreams\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional Datastream(s) of the Thing\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -57,13 +57,13 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
   /** Description of the Thing */
   @Deprecated public java.lang.CharSequence description;
   /** Properties of the Thing (currently unused) */
-  @Deprecated public java.lang.Void properties;
+  @Deprecated public java.lang.CharSequence properties;
   /** Optional Location(s) of the Thing */
-  @Deprecated public java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location> Locations;
+  @Deprecated public java.util.List<java.lang.CharSequence> Locations;
   /** Optional HistoricalLocation(s) of the Thing */
-  @Deprecated public java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location> HistoricalLocations;
-  /** Unused optional Datastream(s) of the Thing */
-  @Deprecated public java.lang.Void Datastreams;
+  @Deprecated public java.util.List<java.lang.CharSequence> HistoricalLocations;
+  /** Optional Datastream(s) of the Thing */
+  @Deprecated public java.lang.CharSequence Datastreams;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -79,9 +79,9 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
    * @param properties Properties of the Thing (currently unused)
    * @param Locations Optional Location(s) of the Thing
    * @param HistoricalLocations Optional HistoricalLocation(s) of the Thing
-   * @param Datastreams Unused optional Datastream(s) of the Thing
+   * @param Datastreams Optional Datastream(s) of the Thing
    */
-  public Thing(java.lang.CharSequence name, java.lang.CharSequence description, java.lang.Void properties, java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location> Locations, java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location> HistoricalLocations, java.lang.Void Datastreams) {
+  public Thing(java.lang.CharSequence name, java.lang.CharSequence description, java.lang.CharSequence properties, java.util.List<java.lang.CharSequence> Locations, java.util.List<java.lang.CharSequence> HistoricalLocations, java.lang.CharSequence Datastreams) {
     this.name = name;
     this.description = description;
     this.properties = properties;
@@ -110,10 +110,10 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
     switch (field$) {
     case 0: name = (java.lang.CharSequence)value$; break;
     case 1: description = (java.lang.CharSequence)value$; break;
-    case 2: properties = (java.lang.Void)value$; break;
-    case 3: Locations = (java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location>)value$; break;
-    case 4: HistoricalLocations = (java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location>)value$; break;
-    case 5: Datastreams = (java.lang.Void)value$; break;
+    case 2: properties = (java.lang.CharSequence)value$; break;
+    case 3: Locations = (java.util.List<java.lang.CharSequence>)value$; break;
+    case 4: HistoricalLocations = (java.util.List<java.lang.CharSequence>)value$; break;
+    case 5: Datastreams = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -156,7 +156,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
    * Gets the value of the 'properties' field.
    * @return Properties of the Thing (currently unused)
    */
-  public java.lang.Void getProperties() {
+  public java.lang.CharSequence getProperties() {
     return properties;
   }
 
@@ -165,7 +165,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
    * Properties of the Thing (currently unused)
    * @param value the value to set.
    */
-  public void setProperties(java.lang.Void value) {
+  public void setProperties(java.lang.CharSequence value) {
     this.properties = value;
   }
 
@@ -173,7 +173,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
    * Gets the value of the 'Locations' field.
    * @return Optional Location(s) of the Thing
    */
-  public java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location> getLocations() {
+  public java.util.List<java.lang.CharSequence> getLocations() {
     return Locations;
   }
 
@@ -182,7 +182,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
    * Optional Location(s) of the Thing
    * @param value the value to set.
    */
-  public void setLocations(java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location> value) {
+  public void setLocations(java.util.List<java.lang.CharSequence> value) {
     this.Locations = value;
   }
 
@@ -190,7 +190,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
    * Gets the value of the 'HistoricalLocations' field.
    * @return Optional HistoricalLocation(s) of the Thing
    */
-  public java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location> getHistoricalLocations() {
+  public java.util.List<java.lang.CharSequence> getHistoricalLocations() {
     return HistoricalLocations;
   }
 
@@ -199,24 +199,24 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
    * Optional HistoricalLocation(s) of the Thing
    * @param value the value to set.
    */
-  public void setHistoricalLocations(java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location> value) {
+  public void setHistoricalLocations(java.util.List<java.lang.CharSequence> value) {
     this.HistoricalLocations = value;
   }
 
   /**
    * Gets the value of the 'Datastreams' field.
-   * @return Unused optional Datastream(s) of the Thing
+   * @return Optional Datastream(s) of the Thing
    */
-  public java.lang.Void getDatastreams() {
+  public java.lang.CharSequence getDatastreams() {
     return Datastreams;
   }
 
   /**
    * Sets the value of the 'Datastreams' field.
-   * Unused optional Datastream(s) of the Thing
+   * Optional Datastream(s) of the Thing
    * @param value the value to set.
    */
-  public void setDatastreams(java.lang.Void value) {
+  public void setDatastreams(java.lang.CharSequence value) {
     this.Datastreams = value;
   }
 
@@ -257,13 +257,13 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
     /** Description of the Thing */
     private java.lang.CharSequence description;
     /** Properties of the Thing (currently unused) */
-    private java.lang.Void properties;
+    private java.lang.CharSequence properties;
     /** Optional Location(s) of the Thing */
-    private java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location> Locations;
+    private java.util.List<java.lang.CharSequence> Locations;
     /** Optional HistoricalLocation(s) of the Thing */
-    private java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location> HistoricalLocations;
-    /** Unused optional Datastream(s) of the Thing */
-    private java.lang.Void Datastreams;
+    private java.util.List<java.lang.CharSequence> HistoricalLocations;
+    /** Optional Datastream(s) of the Thing */
+    private java.lang.CharSequence Datastreams;
 
     /** Creates a new Builder */
     private Builder() {
@@ -425,7 +425,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * Properties of the Thing (currently unused)
       * @return The value.
       */
-    public java.lang.Void getProperties() {
+    public java.lang.CharSequence getProperties() {
       return properties;
     }
 
@@ -435,7 +435,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'properties'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setProperties(java.lang.Void value) {
+    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setProperties(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.properties = value;
       fieldSetFlags()[2] = true;
@@ -468,7 +468,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * Optional Location(s) of the Thing
       * @return The value.
       */
-    public java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location> getLocations() {
+    public java.util.List<java.lang.CharSequence> getLocations() {
       return Locations;
     }
 
@@ -478,7 +478,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'Locations'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setLocations(java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location> value) {
+    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setLocations(java.util.List<java.lang.CharSequence> value) {
       validate(fields()[3], value);
       this.Locations = value;
       fieldSetFlags()[3] = true;
@@ -511,7 +511,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * Optional HistoricalLocation(s) of the Thing
       * @return The value.
       */
-    public java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location> getHistoricalLocations() {
+    public java.util.List<java.lang.CharSequence> getHistoricalLocations() {
       return HistoricalLocations;
     }
 
@@ -521,7 +521,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'HistoricalLocations'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setHistoricalLocations(java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location> value) {
+    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setHistoricalLocations(java.util.List<java.lang.CharSequence> value) {
       validate(fields()[4], value);
       this.HistoricalLocations = value;
       fieldSetFlags()[4] = true;
@@ -551,20 +551,20 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
 
     /**
       * Gets the value of the 'Datastreams' field.
-      * Unused optional Datastream(s) of the Thing
+      * Optional Datastream(s) of the Thing
       * @return The value.
       */
-    public java.lang.Void getDatastreams() {
+    public java.lang.CharSequence getDatastreams() {
       return Datastreams;
     }
 
     /**
       * Sets the value of the 'Datastreams' field.
-      * Unused optional Datastream(s) of the Thing
+      * Optional Datastream(s) of the Thing
       * @param value The value of 'Datastreams'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setDatastreams(java.lang.Void value) {
+    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setDatastreams(java.lang.CharSequence value) {
       validate(fields()[5], value);
       this.Datastreams = value;
       fieldSetFlags()[5] = true;
@@ -573,7 +573,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
 
     /**
       * Checks whether the 'Datastreams' field has been set.
-      * Unused optional Datastream(s) of the Thing
+      * Optional Datastream(s) of the Thing
       * @return True if the 'Datastreams' field has been set, false otherwise.
       */
     public boolean hasDatastreams() {
@@ -583,7 +583,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
 
     /**
       * Clears the value of the 'Datastreams' field.
-      * Unused optional Datastream(s) of the Thing
+      * Optional Datastream(s) of the Thing
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder clearDatastreams() {
@@ -599,10 +599,10 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
         Thing record = new Thing();
         record.name = fieldSetFlags()[0] ? this.name : (java.lang.CharSequence) defaultValue(fields()[0]);
         record.description = fieldSetFlags()[1] ? this.description : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.properties = fieldSetFlags()[2] ? this.properties : (java.lang.Void) defaultValue(fields()[2]);
-        record.Locations = fieldSetFlags()[3] ? this.Locations : (java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location>) defaultValue(fields()[3]);
-        record.HistoricalLocations = fieldSetFlags()[4] ? this.HistoricalLocations : (java.util.List<main.java.pw.oliver.jmkb.avroclasses.Location>) defaultValue(fields()[4]);
-        record.Datastreams = fieldSetFlags()[5] ? this.Datastreams : (java.lang.Void) defaultValue(fields()[5]);
+        record.properties = fieldSetFlags()[2] ? this.properties : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.Locations = fieldSetFlags()[3] ? this.Locations : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[3]);
+        record.HistoricalLocations = fieldSetFlags()[4] ? this.HistoricalLocations : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[4]);
+        record.Datastreams = fieldSetFlags()[5] ? this.Datastreams : (java.lang.CharSequence) defaultValue(fields()[5]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

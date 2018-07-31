@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** A Datastream groups a collection of Observations measuring the same ObservedProperty and produced by the same Sensor. */
 @org.apache.avro.specific.AvroGenerated
 public class Datastream extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 5543200467197409572L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Datastream\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"A Datastream groups a collection of Observations measuring the same ObservedProperty and produced by the same Sensor.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Datastream\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Datastream\"},{\"name\":\"observationType\",\"type\":\"string\",\"doc\":\"Type of the Observation\"},{\"name\":\"unitOfMeasurement\",\"type\":{\"type\":\"record\",\"name\":\"UnitOfMeasurement\",\"doc\":\"The Unit of Measurement of an Observation\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"String representation of the Unit of Measurement\"},{\"name\":\"symbol\",\"type\":\"string\",\"doc\":\"Symbol of the Unit of Measurement\"},{\"name\":\"definition\",\"type\":\"string\",\"doc\":\"Definition of the Unit of Measurement\"}]},\"doc\":\"Unit of Measurement for the Observation\"},{\"name\":\"observedArea\",\"type\":[\"null\",\"string\"],\"doc\":\"An optional GeoJSON Polygon Object. Replace string with name of a new avsc schema of the Polygon Object if required.\"},{\"name\":\"phenomenonTime\",\"type\":[\"null\",\"string\"],\"doc\":\"An optional time interval (ISO 8601) of the phenomenon\"},{\"name\":\"resultTime\",\"type\":[\"null\",\"string\"],\"doc\":\"An optional time interval (ISO 8601) of the result\"},{\"name\":\"Thing\",\"type\":{\"type\":\"record\",\"name\":\"Thing\",\"doc\":\"A Thing has Locations and one or more Datastreams to collect Observations.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Thing\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Thing\"},{\"name\":\"properties\",\"type\":\"null\",\"doc\":\"Properties of the Thing (currently unused)\"},{\"name\":\"Locations\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Location\",\"doc\":\"A Things Location entity is defined as the last known location of the Thing. A Thing can have multiple Locations if all Locations are different representations of same Location with different encodingType.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Location\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Location\"},{\"name\":\"encodingType\",\"type\":\"string\",\"doc\":\"Representation/encoding type of the Location\"},{\"name\":\"location\",\"type\":{\"type\":\"record\",\"name\":\"LocationType\",\"doc\":\"The type of the location, for example Point\",\"fields\":[{\"name\":\"type\",\"type\":\"string\",\"doc\":\"Name of the LocationType\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Coordinates for the LocationType\"}]},\"doc\":\"LocationType containing the actual location of the Thing\"}]}}],\"doc\":\"Optional Location(s) of the Thing\"},{\"name\":\"HistoricalLocations\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"Location\"}],\"doc\":\"Optional HistoricalLocation(s) of the Thing\"},{\"name\":\"Datastreams\",\"type\":\"null\",\"doc\":\"Unused optional Datastream(s) of the Thing\"}]},\"doc\":\"Thing associated to this Datastream\"},{\"name\":\"ObservedProperty\",\"type\":{\"type\":\"record\",\"name\":\"ObservedProperty\",\"doc\":\"An ObservedProperty specifies the phenomenon of an Observation.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the ObservedProperty\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the ObservedProperty\"},{\"name\":\"definition\",\"type\":\"string\",\"doc\":\"URI of the definition of the ObservedProperty\"}]},\"doc\":\"ObservedProperty associated to this Datastream\"},{\"name\":\"Sensor\",\"type\":{\"type\":\"record\",\"name\":\"Sensor\",\"doc\":\"A Sensor is an instrument that observes a property or phenomenon with the goal of producing an estimate of the value of the property.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Sensor\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Sensor\"},{\"name\":\"encodingType\",\"type\":\"string\",\"doc\":\"Encoding type of the Sensor\"},{\"name\":\"metadata\",\"type\":\"string\",\"doc\":\"Metadata of the Sensor\"}]},\"doc\":\"Sensor associated to this Datastream\"},{\"name\":\"Observations\",\"type\":\"null\",\"doc\":\"Unused optional Observation(s) associated to this Datastream\"}]}");
+  private static final long serialVersionUID = -4964050927073846998L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Datastream\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"A Datastream groups a collection of Observations measuring the same ObservedProperty and produced by the same Sensor.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Datastream\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Datastream\"},{\"name\":\"observationType\",\"type\":\"string\",\"doc\":\"Type of the Observation\"},{\"name\":\"unitOfMeasurement\",\"type\":\"string\",\"doc\":\"Unit of Measurement for the Observation\"},{\"name\":\"observedArea\",\"type\":[\"null\",\"string\"],\"doc\":\"An optional GeoJSON Polygon Object. Replace string with name of a new avsc schema of the Polygon Object if required.\"},{\"name\":\"phenomenonTime\",\"type\":[\"null\",\"string\"],\"doc\":\"An optional time interval (ISO 8601) of the phenomenon\"},{\"name\":\"resultTime\",\"type\":[\"null\",\"string\"],\"doc\":\"An optional time interval (ISO 8601) of the result\"},{\"name\":\"Thing\",\"type\":\"string\",\"doc\":\"Thing associated to this Datastream\"},{\"name\":\"ObservedProperty\",\"type\":\"string\",\"doc\":\"ObservedProperty associated to this Datastream\"},{\"name\":\"Sensor\",\"type\":\"string\",\"doc\":\"Sensor associated to this Datastream\"},{\"name\":\"Observations\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional Observation(s) associated to this Datastream\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -59,7 +59,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
   /** Type of the Observation */
   @Deprecated public java.lang.CharSequence observationType;
   /** Unit of Measurement for the Observation */
-  @Deprecated public main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement unitOfMeasurement;
+  @Deprecated public java.lang.CharSequence unitOfMeasurement;
   /** An optional GeoJSON Polygon Object. Replace string with name of a new avsc schema of the Polygon Object if required. */
   @Deprecated public java.lang.CharSequence observedArea;
   /** An optional time interval (ISO 8601) of the phenomenon */
@@ -67,13 +67,13 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
   /** An optional time interval (ISO 8601) of the result */
   @Deprecated public java.lang.CharSequence resultTime;
   /** Thing associated to this Datastream */
-  @Deprecated public main.java.pw.oliver.jmkb.avroclasses.Thing Thing;
+  @Deprecated public java.lang.CharSequence Thing;
   /** ObservedProperty associated to this Datastream */
-  @Deprecated public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty ObservedProperty;
+  @Deprecated public java.lang.CharSequence ObservedProperty;
   /** Sensor associated to this Datastream */
-  @Deprecated public main.java.pw.oliver.jmkb.avroclasses.Sensor Sensor;
-  /** Unused optional Observation(s) associated to this Datastream */
-  @Deprecated public java.lang.Void Observations;
+  @Deprecated public java.lang.CharSequence Sensor;
+  /** Optional Observation(s) associated to this Datastream */
+  @Deprecated public java.lang.CharSequence Observations;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -94,9 +94,9 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
    * @param Thing Thing associated to this Datastream
    * @param ObservedProperty ObservedProperty associated to this Datastream
    * @param Sensor Sensor associated to this Datastream
-   * @param Observations Unused optional Observation(s) associated to this Datastream
+   * @param Observations Optional Observation(s) associated to this Datastream
    */
-  public Datastream(java.lang.CharSequence name, java.lang.CharSequence description, java.lang.CharSequence observationType, main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement unitOfMeasurement, java.lang.CharSequence observedArea, java.lang.CharSequence phenomenonTime, java.lang.CharSequence resultTime, main.java.pw.oliver.jmkb.avroclasses.Thing Thing, main.java.pw.oliver.jmkb.avroclasses.ObservedProperty ObservedProperty, main.java.pw.oliver.jmkb.avroclasses.Sensor Sensor, java.lang.Void Observations) {
+  public Datastream(java.lang.CharSequence name, java.lang.CharSequence description, java.lang.CharSequence observationType, java.lang.CharSequence unitOfMeasurement, java.lang.CharSequence observedArea, java.lang.CharSequence phenomenonTime, java.lang.CharSequence resultTime, java.lang.CharSequence Thing, java.lang.CharSequence ObservedProperty, java.lang.CharSequence Sensor, java.lang.CharSequence Observations) {
     this.name = name;
     this.description = description;
     this.observationType = observationType;
@@ -136,14 +136,14 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
     case 0: name = (java.lang.CharSequence)value$; break;
     case 1: description = (java.lang.CharSequence)value$; break;
     case 2: observationType = (java.lang.CharSequence)value$; break;
-    case 3: unitOfMeasurement = (main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement)value$; break;
+    case 3: unitOfMeasurement = (java.lang.CharSequence)value$; break;
     case 4: observedArea = (java.lang.CharSequence)value$; break;
     case 5: phenomenonTime = (java.lang.CharSequence)value$; break;
     case 6: resultTime = (java.lang.CharSequence)value$; break;
-    case 7: Thing = (main.java.pw.oliver.jmkb.avroclasses.Thing)value$; break;
-    case 8: ObservedProperty = (main.java.pw.oliver.jmkb.avroclasses.ObservedProperty)value$; break;
-    case 9: Sensor = (main.java.pw.oliver.jmkb.avroclasses.Sensor)value$; break;
-    case 10: Observations = (java.lang.Void)value$; break;
+    case 7: Thing = (java.lang.CharSequence)value$; break;
+    case 8: ObservedProperty = (java.lang.CharSequence)value$; break;
+    case 9: Sensor = (java.lang.CharSequence)value$; break;
+    case 10: Observations = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -203,7 +203,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
    * Gets the value of the 'unitOfMeasurement' field.
    * @return Unit of Measurement for the Observation
    */
-  public main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement getUnitOfMeasurement() {
+  public java.lang.CharSequence getUnitOfMeasurement() {
     return unitOfMeasurement;
   }
 
@@ -212,7 +212,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
    * Unit of Measurement for the Observation
    * @param value the value to set.
    */
-  public void setUnitOfMeasurement(main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement value) {
+  public void setUnitOfMeasurement(java.lang.CharSequence value) {
     this.unitOfMeasurement = value;
   }
 
@@ -271,7 +271,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
    * Gets the value of the 'Thing' field.
    * @return Thing associated to this Datastream
    */
-  public main.java.pw.oliver.jmkb.avroclasses.Thing getThing() {
+  public java.lang.CharSequence getThing() {
     return Thing;
   }
 
@@ -280,7 +280,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
    * Thing associated to this Datastream
    * @param value the value to set.
    */
-  public void setThing(main.java.pw.oliver.jmkb.avroclasses.Thing value) {
+  public void setThing(java.lang.CharSequence value) {
     this.Thing = value;
   }
 
@@ -288,7 +288,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
    * Gets the value of the 'ObservedProperty' field.
    * @return ObservedProperty associated to this Datastream
    */
-  public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty getObservedProperty() {
+  public java.lang.CharSequence getObservedProperty() {
     return ObservedProperty;
   }
 
@@ -297,7 +297,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
    * ObservedProperty associated to this Datastream
    * @param value the value to set.
    */
-  public void setObservedProperty(main.java.pw.oliver.jmkb.avroclasses.ObservedProperty value) {
+  public void setObservedProperty(java.lang.CharSequence value) {
     this.ObservedProperty = value;
   }
 
@@ -305,7 +305,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
    * Gets the value of the 'Sensor' field.
    * @return Sensor associated to this Datastream
    */
-  public main.java.pw.oliver.jmkb.avroclasses.Sensor getSensor() {
+  public java.lang.CharSequence getSensor() {
     return Sensor;
   }
 
@@ -314,24 +314,24 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
    * Sensor associated to this Datastream
    * @param value the value to set.
    */
-  public void setSensor(main.java.pw.oliver.jmkb.avroclasses.Sensor value) {
+  public void setSensor(java.lang.CharSequence value) {
     this.Sensor = value;
   }
 
   /**
    * Gets the value of the 'Observations' field.
-   * @return Unused optional Observation(s) associated to this Datastream
+   * @return Optional Observation(s) associated to this Datastream
    */
-  public java.lang.Void getObservations() {
+  public java.lang.CharSequence getObservations() {
     return Observations;
   }
 
   /**
    * Sets the value of the 'Observations' field.
-   * Unused optional Observation(s) associated to this Datastream
+   * Optional Observation(s) associated to this Datastream
    * @param value the value to set.
    */
-  public void setObservations(java.lang.Void value) {
+  public void setObservations(java.lang.CharSequence value) {
     this.Observations = value;
   }
 
@@ -374,8 +374,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
     /** Type of the Observation */
     private java.lang.CharSequence observationType;
     /** Unit of Measurement for the Observation */
-    private main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement unitOfMeasurement;
-    private main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder unitOfMeasurementBuilder;
+    private java.lang.CharSequence unitOfMeasurement;
     /** An optional GeoJSON Polygon Object. Replace string with name of a new avsc schema of the Polygon Object if required. */
     private java.lang.CharSequence observedArea;
     /** An optional time interval (ISO 8601) of the phenomenon */
@@ -383,16 +382,13 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
     /** An optional time interval (ISO 8601) of the result */
     private java.lang.CharSequence resultTime;
     /** Thing associated to this Datastream */
-    private main.java.pw.oliver.jmkb.avroclasses.Thing Thing;
-    private main.java.pw.oliver.jmkb.avroclasses.Thing.Builder ThingBuilder;
+    private java.lang.CharSequence Thing;
     /** ObservedProperty associated to this Datastream */
-    private main.java.pw.oliver.jmkb.avroclasses.ObservedProperty ObservedProperty;
-    private main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder ObservedPropertyBuilder;
+    private java.lang.CharSequence ObservedProperty;
     /** Sensor associated to this Datastream */
-    private main.java.pw.oliver.jmkb.avroclasses.Sensor Sensor;
-    private main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder SensorBuilder;
-    /** Unused optional Observation(s) associated to this Datastream */
-    private java.lang.Void Observations;
+    private java.lang.CharSequence Sensor;
+    /** Optional Observation(s) associated to this Datastream */
+    private java.lang.CharSequence Observations;
 
     /** Creates a new Builder */
     private Builder() {
@@ -421,9 +417,6 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
         this.unitOfMeasurement = data().deepCopy(fields()[3].schema(), other.unitOfMeasurement);
         fieldSetFlags()[3] = true;
       }
-      if (other.hasUnitOfMeasurementBuilder()) {
-        this.unitOfMeasurementBuilder = main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.newBuilder(other.getUnitOfMeasurementBuilder());
-      }
       if (isValidValue(fields()[4], other.observedArea)) {
         this.observedArea = data().deepCopy(fields()[4].schema(), other.observedArea);
         fieldSetFlags()[4] = true;
@@ -440,22 +433,13 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
         this.Thing = data().deepCopy(fields()[7].schema(), other.Thing);
         fieldSetFlags()[7] = true;
       }
-      if (other.hasThingBuilder()) {
-        this.ThingBuilder = main.java.pw.oliver.jmkb.avroclasses.Thing.newBuilder(other.getThingBuilder());
-      }
       if (isValidValue(fields()[8], other.ObservedProperty)) {
         this.ObservedProperty = data().deepCopy(fields()[8].schema(), other.ObservedProperty);
         fieldSetFlags()[8] = true;
       }
-      if (other.hasObservedPropertyBuilder()) {
-        this.ObservedPropertyBuilder = main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.newBuilder(other.getObservedPropertyBuilder());
-      }
       if (isValidValue(fields()[9], other.Sensor)) {
         this.Sensor = data().deepCopy(fields()[9].schema(), other.Sensor);
         fieldSetFlags()[9] = true;
-      }
-      if (other.hasSensorBuilder()) {
-        this.SensorBuilder = main.java.pw.oliver.jmkb.avroclasses.Sensor.newBuilder(other.getSensorBuilder());
       }
       if (isValidValue(fields()[10], other.Observations)) {
         this.Observations = data().deepCopy(fields()[10].schema(), other.Observations);
@@ -485,7 +469,6 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
         this.unitOfMeasurement = data().deepCopy(fields()[3].schema(), other.unitOfMeasurement);
         fieldSetFlags()[3] = true;
       }
-      this.unitOfMeasurementBuilder = null;
       if (isValidValue(fields()[4], other.observedArea)) {
         this.observedArea = data().deepCopy(fields()[4].schema(), other.observedArea);
         fieldSetFlags()[4] = true;
@@ -502,17 +485,14 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
         this.Thing = data().deepCopy(fields()[7].schema(), other.Thing);
         fieldSetFlags()[7] = true;
       }
-      this.ThingBuilder = null;
       if (isValidValue(fields()[8], other.ObservedProperty)) {
         this.ObservedProperty = data().deepCopy(fields()[8].schema(), other.ObservedProperty);
         fieldSetFlags()[8] = true;
       }
-      this.ObservedPropertyBuilder = null;
       if (isValidValue(fields()[9], other.Sensor)) {
         this.Sensor = data().deepCopy(fields()[9].schema(), other.Sensor);
         fieldSetFlags()[9] = true;
       }
-      this.SensorBuilder = null;
       if (isValidValue(fields()[10], other.Observations)) {
         this.Observations = data().deepCopy(fields()[10].schema(), other.Observations);
         fieldSetFlags()[10] = true;
@@ -653,7 +633,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       * Unit of Measurement for the Observation
       * @return The value.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement getUnitOfMeasurement() {
+    public java.lang.CharSequence getUnitOfMeasurement() {
       return unitOfMeasurement;
     }
 
@@ -663,9 +643,8 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'unitOfMeasurement'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder setUnitOfMeasurement(main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement value) {
+    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder setUnitOfMeasurement(java.lang.CharSequence value) {
       validate(fields()[3], value);
-      this.unitOfMeasurementBuilder = null;
       this.unitOfMeasurement = value;
       fieldSetFlags()[3] = true;
       return this;
@@ -680,42 +659,6 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       return fieldSetFlags()[3];
     }
 
-    /**
-     * Gets the Builder instance for the 'unitOfMeasurement' field and creates one if it doesn't exist yet.
-     * Unit of Measurement for the Observation
-     * @return This builder.
-     */
-    public main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder getUnitOfMeasurementBuilder() {
-      if (unitOfMeasurementBuilder == null) {
-        if (hasUnitOfMeasurement()) {
-          setUnitOfMeasurementBuilder(main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.newBuilder(unitOfMeasurement));
-        } else {
-          setUnitOfMeasurementBuilder(main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.newBuilder());
-        }
-      }
-      return unitOfMeasurementBuilder;
-    }
-
-    /**
-     * Sets the Builder instance for the 'unitOfMeasurement' field
-     * Unit of Measurement for the Observation
-     * @param value The builder instance that must be set.
-     * @return This builder.
-     */
-    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder setUnitOfMeasurementBuilder(main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder value) {
-      clearUnitOfMeasurement();
-      unitOfMeasurementBuilder = value;
-      return this;
-    }
-
-    /**
-     * Checks whether the 'unitOfMeasurement' field has an active Builder instance
-     * Unit of Measurement for the Observation
-     * @return True if the 'unitOfMeasurement' field has an active Builder instance
-     */
-    public boolean hasUnitOfMeasurementBuilder() {
-      return unitOfMeasurementBuilder != null;
-    }
 
     /**
       * Clears the value of the 'unitOfMeasurement' field.
@@ -724,7 +667,6 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       */
     public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder clearUnitOfMeasurement() {
       unitOfMeasurement = null;
-      unitOfMeasurementBuilder = null;
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -863,7 +805,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       * Thing associated to this Datastream
       * @return The value.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing getThing() {
+    public java.lang.CharSequence getThing() {
       return Thing;
     }
 
@@ -873,9 +815,8 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'Thing'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder setThing(main.java.pw.oliver.jmkb.avroclasses.Thing value) {
+    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder setThing(java.lang.CharSequence value) {
       validate(fields()[7], value);
-      this.ThingBuilder = null;
       this.Thing = value;
       fieldSetFlags()[7] = true;
       return this;
@@ -890,42 +831,6 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       return fieldSetFlags()[7];
     }
 
-    /**
-     * Gets the Builder instance for the 'Thing' field and creates one if it doesn't exist yet.
-     * Thing associated to this Datastream
-     * @return This builder.
-     */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder getThingBuilder() {
-      if (ThingBuilder == null) {
-        if (hasThing()) {
-          setThingBuilder(main.java.pw.oliver.jmkb.avroclasses.Thing.newBuilder(Thing));
-        } else {
-          setThingBuilder(main.java.pw.oliver.jmkb.avroclasses.Thing.newBuilder());
-        }
-      }
-      return ThingBuilder;
-    }
-
-    /**
-     * Sets the Builder instance for the 'Thing' field
-     * Thing associated to this Datastream
-     * @param value The builder instance that must be set.
-     * @return This builder.
-     */
-    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder setThingBuilder(main.java.pw.oliver.jmkb.avroclasses.Thing.Builder value) {
-      clearThing();
-      ThingBuilder = value;
-      return this;
-    }
-
-    /**
-     * Checks whether the 'Thing' field has an active Builder instance
-     * Thing associated to this Datastream
-     * @return True if the 'Thing' field has an active Builder instance
-     */
-    public boolean hasThingBuilder() {
-      return ThingBuilder != null;
-    }
 
     /**
       * Clears the value of the 'Thing' field.
@@ -934,7 +839,6 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       */
     public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder clearThing() {
       Thing = null;
-      ThingBuilder = null;
       fieldSetFlags()[7] = false;
       return this;
     }
@@ -944,7 +848,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       * ObservedProperty associated to this Datastream
       * @return The value.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty getObservedProperty() {
+    public java.lang.CharSequence getObservedProperty() {
       return ObservedProperty;
     }
 
@@ -954,9 +858,8 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'ObservedProperty'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder setObservedProperty(main.java.pw.oliver.jmkb.avroclasses.ObservedProperty value) {
+    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder setObservedProperty(java.lang.CharSequence value) {
       validate(fields()[8], value);
-      this.ObservedPropertyBuilder = null;
       this.ObservedProperty = value;
       fieldSetFlags()[8] = true;
       return this;
@@ -971,42 +874,6 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       return fieldSetFlags()[8];
     }
 
-    /**
-     * Gets the Builder instance for the 'ObservedProperty' field and creates one if it doesn't exist yet.
-     * ObservedProperty associated to this Datastream
-     * @return This builder.
-     */
-    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder getObservedPropertyBuilder() {
-      if (ObservedPropertyBuilder == null) {
-        if (hasObservedProperty()) {
-          setObservedPropertyBuilder(main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.newBuilder(ObservedProperty));
-        } else {
-          setObservedPropertyBuilder(main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.newBuilder());
-        }
-      }
-      return ObservedPropertyBuilder;
-    }
-
-    /**
-     * Sets the Builder instance for the 'ObservedProperty' field
-     * ObservedProperty associated to this Datastream
-     * @param value The builder instance that must be set.
-     * @return This builder.
-     */
-    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder setObservedPropertyBuilder(main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder value) {
-      clearObservedProperty();
-      ObservedPropertyBuilder = value;
-      return this;
-    }
-
-    /**
-     * Checks whether the 'ObservedProperty' field has an active Builder instance
-     * ObservedProperty associated to this Datastream
-     * @return True if the 'ObservedProperty' field has an active Builder instance
-     */
-    public boolean hasObservedPropertyBuilder() {
-      return ObservedPropertyBuilder != null;
-    }
 
     /**
       * Clears the value of the 'ObservedProperty' field.
@@ -1015,7 +882,6 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       */
     public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder clearObservedProperty() {
       ObservedProperty = null;
-      ObservedPropertyBuilder = null;
       fieldSetFlags()[8] = false;
       return this;
     }
@@ -1025,7 +891,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       * Sensor associated to this Datastream
       * @return The value.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Sensor getSensor() {
+    public java.lang.CharSequence getSensor() {
       return Sensor;
     }
 
@@ -1035,9 +901,8 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'Sensor'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder setSensor(main.java.pw.oliver.jmkb.avroclasses.Sensor value) {
+    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder setSensor(java.lang.CharSequence value) {
       validate(fields()[9], value);
-      this.SensorBuilder = null;
       this.Sensor = value;
       fieldSetFlags()[9] = true;
       return this;
@@ -1052,42 +917,6 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       return fieldSetFlags()[9];
     }
 
-    /**
-     * Gets the Builder instance for the 'Sensor' field and creates one if it doesn't exist yet.
-     * Sensor associated to this Datastream
-     * @return This builder.
-     */
-    public main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder getSensorBuilder() {
-      if (SensorBuilder == null) {
-        if (hasSensor()) {
-          setSensorBuilder(main.java.pw.oliver.jmkb.avroclasses.Sensor.newBuilder(Sensor));
-        } else {
-          setSensorBuilder(main.java.pw.oliver.jmkb.avroclasses.Sensor.newBuilder());
-        }
-      }
-      return SensorBuilder;
-    }
-
-    /**
-     * Sets the Builder instance for the 'Sensor' field
-     * Sensor associated to this Datastream
-     * @param value The builder instance that must be set.
-     * @return This builder.
-     */
-    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder setSensorBuilder(main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder value) {
-      clearSensor();
-      SensorBuilder = value;
-      return this;
-    }
-
-    /**
-     * Checks whether the 'Sensor' field has an active Builder instance
-     * Sensor associated to this Datastream
-     * @return True if the 'Sensor' field has an active Builder instance
-     */
-    public boolean hasSensorBuilder() {
-      return SensorBuilder != null;
-    }
 
     /**
       * Clears the value of the 'Sensor' field.
@@ -1096,27 +925,26 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
       */
     public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder clearSensor() {
       Sensor = null;
-      SensorBuilder = null;
       fieldSetFlags()[9] = false;
       return this;
     }
 
     /**
       * Gets the value of the 'Observations' field.
-      * Unused optional Observation(s) associated to this Datastream
+      * Optional Observation(s) associated to this Datastream
       * @return The value.
       */
-    public java.lang.Void getObservations() {
+    public java.lang.CharSequence getObservations() {
       return Observations;
     }
 
     /**
       * Sets the value of the 'Observations' field.
-      * Unused optional Observation(s) associated to this Datastream
+      * Optional Observation(s) associated to this Datastream
       * @param value The value of 'Observations'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder setObservations(java.lang.Void value) {
+    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder setObservations(java.lang.CharSequence value) {
       validate(fields()[10], value);
       this.Observations = value;
       fieldSetFlags()[10] = true;
@@ -1125,7 +953,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
 
     /**
       * Checks whether the 'Observations' field has been set.
-      * Unused optional Observation(s) associated to this Datastream
+      * Optional Observation(s) associated to this Datastream
       * @return True if the 'Observations' field has been set, false otherwise.
       */
     public boolean hasObservations() {
@@ -1135,7 +963,7 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
 
     /**
       * Clears the value of the 'Observations' field.
-      * Unused optional Observation(s) associated to this Datastream
+      * Optional Observation(s) associated to this Datastream
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder clearObservations() {
@@ -1152,30 +980,14 @@ public class Datastream extends org.apache.avro.specific.SpecificRecordBase impl
         record.name = fieldSetFlags()[0] ? this.name : (java.lang.CharSequence) defaultValue(fields()[0]);
         record.description = fieldSetFlags()[1] ? this.description : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.observationType = fieldSetFlags()[2] ? this.observationType : (java.lang.CharSequence) defaultValue(fields()[2]);
-        if (unitOfMeasurementBuilder != null) {
-          record.unitOfMeasurement = this.unitOfMeasurementBuilder.build();
-        } else {
-          record.unitOfMeasurement = fieldSetFlags()[3] ? this.unitOfMeasurement : (main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement) defaultValue(fields()[3]);
-        }
+        record.unitOfMeasurement = fieldSetFlags()[3] ? this.unitOfMeasurement : (java.lang.CharSequence) defaultValue(fields()[3]);
         record.observedArea = fieldSetFlags()[4] ? this.observedArea : (java.lang.CharSequence) defaultValue(fields()[4]);
         record.phenomenonTime = fieldSetFlags()[5] ? this.phenomenonTime : (java.lang.CharSequence) defaultValue(fields()[5]);
         record.resultTime = fieldSetFlags()[6] ? this.resultTime : (java.lang.CharSequence) defaultValue(fields()[6]);
-        if (ThingBuilder != null) {
-          record.Thing = this.ThingBuilder.build();
-        } else {
-          record.Thing = fieldSetFlags()[7] ? this.Thing : (main.java.pw.oliver.jmkb.avroclasses.Thing) defaultValue(fields()[7]);
-        }
-        if (ObservedPropertyBuilder != null) {
-          record.ObservedProperty = this.ObservedPropertyBuilder.build();
-        } else {
-          record.ObservedProperty = fieldSetFlags()[8] ? this.ObservedProperty : (main.java.pw.oliver.jmkb.avroclasses.ObservedProperty) defaultValue(fields()[8]);
-        }
-        if (SensorBuilder != null) {
-          record.Sensor = this.SensorBuilder.build();
-        } else {
-          record.Sensor = fieldSetFlags()[9] ? this.Sensor : (main.java.pw.oliver.jmkb.avroclasses.Sensor) defaultValue(fields()[9]);
-        }
-        record.Observations = fieldSetFlags()[10] ? this.Observations : (java.lang.Void) defaultValue(fields()[10]);
+        record.Thing = fieldSetFlags()[7] ? this.Thing : (java.lang.CharSequence) defaultValue(fields()[7]);
+        record.ObservedProperty = fieldSetFlags()[8] ? this.ObservedProperty : (java.lang.CharSequence) defaultValue(fields()[8]);
+        record.Sensor = fieldSetFlags()[9] ? this.Sensor : (java.lang.CharSequence) defaultValue(fields()[9]);
+        record.Observations = fieldSetFlags()[10] ? this.Observations : (java.lang.CharSequence) defaultValue(fields()[10]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

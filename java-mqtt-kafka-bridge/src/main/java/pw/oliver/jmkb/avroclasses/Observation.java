@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** An Observation represents a single Sensor reading of an ObservedProperty. A Sensor sends Observations to a specified Datastream. */
 @org.apache.avro.specific.AvroGenerated
 public class Observation extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 181026455167766097L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Observation\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"An Observation represents a single Sensor reading of an ObservedProperty. A Sensor sends Observations to a specified Datastream.\",\"fields\":[{\"name\":\"phenomenonTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the phenomenon\"},{\"name\":\"resultTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the result\"},{\"name\":\"result\",\"type\":\"string\",\"doc\":\"Any result value represented as a string\"},{\"name\":\"resultQuality\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional string describing the quality of the result\"},{\"name\":\"validTime\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional time (ISO 8601) of validity\"},{\"name\":\"parameters\",\"type\":\"null\",\"doc\":\"Parameters of the Observation (currently unused)\"},{\"name\":\"Datastream\",\"type\":{\"type\":\"record\",\"name\":\"Datastream\",\"doc\":\"A Datastream groups a collection of Observations measuring the same ObservedProperty and produced by the same Sensor.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Datastream\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Datastream\"},{\"name\":\"observationType\",\"type\":\"string\",\"doc\":\"Type of the Observation\"},{\"name\":\"unitOfMeasurement\",\"type\":{\"type\":\"record\",\"name\":\"UnitOfMeasurement\",\"doc\":\"The Unit of Measurement of an Observation\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"String representation of the Unit of Measurement\"},{\"name\":\"symbol\",\"type\":\"string\",\"doc\":\"Symbol of the Unit of Measurement\"},{\"name\":\"definition\",\"type\":\"string\",\"doc\":\"Definition of the Unit of Measurement\"}]},\"doc\":\"Unit of Measurement for the Observation\"},{\"name\":\"observedArea\",\"type\":[\"null\",\"string\"],\"doc\":\"An optional GeoJSON Polygon Object. Replace string with name of a new avsc schema of the Polygon Object if required.\"},{\"name\":\"phenomenonTime\",\"type\":[\"null\",\"string\"],\"doc\":\"An optional time interval (ISO 8601) of the phenomenon\"},{\"name\":\"resultTime\",\"type\":[\"null\",\"string\"],\"doc\":\"An optional time interval (ISO 8601) of the result\"},{\"name\":\"Thing\",\"type\":{\"type\":\"record\",\"name\":\"Thing\",\"doc\":\"A Thing has Locations and one or more Datastreams to collect Observations.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Thing\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Thing\"},{\"name\":\"properties\",\"type\":\"null\",\"doc\":\"Properties of the Thing (currently unused)\"},{\"name\":\"Locations\",\"type\":[\"null\",{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Location\",\"doc\":\"A Things Location entity is defined as the last known location of the Thing. A Thing can have multiple Locations if all Locations are different representations of same Location with different encodingType.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Location\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Location\"},{\"name\":\"encodingType\",\"type\":\"string\",\"doc\":\"Representation/encoding type of the Location\"},{\"name\":\"location\",\"type\":{\"type\":\"record\",\"name\":\"LocationType\",\"doc\":\"The type of the location, for example Point\",\"fields\":[{\"name\":\"type\",\"type\":\"string\",\"doc\":\"Name of the LocationType\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Coordinates for the LocationType\"}]},\"doc\":\"LocationType containing the actual location of the Thing\"}]}}],\"doc\":\"Optional Location(s) of the Thing\"},{\"name\":\"HistoricalLocations\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"Location\"}],\"doc\":\"Optional HistoricalLocation(s) of the Thing\"},{\"name\":\"Datastreams\",\"type\":\"null\",\"doc\":\"Unused optional Datastream(s) of the Thing\"}]},\"doc\":\"Thing associated to this Datastream\"},{\"name\":\"ObservedProperty\",\"type\":{\"type\":\"record\",\"name\":\"ObservedProperty\",\"doc\":\"An ObservedProperty specifies the phenomenon of an Observation.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the ObservedProperty\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the ObservedProperty\"},{\"name\":\"definition\",\"type\":\"string\",\"doc\":\"URI of the definition of the ObservedProperty\"}]},\"doc\":\"ObservedProperty associated to this Datastream\"},{\"name\":\"Sensor\",\"type\":{\"type\":\"record\",\"name\":\"Sensor\",\"doc\":\"A Sensor is an instrument that observes a property or phenomenon with the goal of producing an estimate of the value of the property.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Sensor\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Sensor\"},{\"name\":\"encodingType\",\"type\":\"string\",\"doc\":\"Encoding type of the Sensor\"},{\"name\":\"metadata\",\"type\":\"string\",\"doc\":\"Metadata of the Sensor\"}]},\"doc\":\"Sensor associated to this Datastream\"},{\"name\":\"Observations\",\"type\":\"null\",\"doc\":\"Unused optional Observation(s) associated to this Datastream\"}]},\"doc\":\"Datastream associated with the Observation\"},{\"name\":\"FeatureOfInterest\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"FeatureOfInterest\",\"doc\":\"In the case of remote sensing, the FeatureOfInterest can be the geographical area or volume that is being sensed.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the FeatureOfInterest\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the FeatureOfInterest\"},{\"name\":\"encodingType\",\"type\":\"string\",\"doc\":\"Representation/encoding type of the FeatureOfInterest\"},{\"name\":\"feature\",\"type\":\"LocationType\",\"doc\":\"LocationType object containing the feature of the Thing\"}]}],\"doc\":\"Optional FeatureOfInterest associated with the Observation\"}]}");
+  private static final long serialVersionUID = 1169145886565930482L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Observation\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"An Observation represents a single Sensor reading of an ObservedProperty. A Sensor sends Observations to a specified Datastream.\",\"fields\":[{\"name\":\"phenomenonTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the phenomenon\"},{\"name\":\"resultTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the result\"},{\"name\":\"result\",\"type\":\"string\",\"doc\":\"Any result value represented as a string\"},{\"name\":\"resultQuality\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional string describing the quality of the result\"},{\"name\":\"validTime\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional time (ISO 8601) of validity\"},{\"name\":\"parameters\",\"type\":\"string\",\"doc\":\"Parameters of the Observation\"},{\"name\":\"Datastream\",\"type\":\"string\",\"doc\":\"Datastream associated with the Observation\"},{\"name\":\"FeatureOfInterest\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional FeatureOfInterest associated with the Observation\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -62,12 +62,12 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
   @Deprecated public java.lang.CharSequence resultQuality;
   /** Optional time (ISO 8601) of validity */
   @Deprecated public java.lang.CharSequence validTime;
-  /** Parameters of the Observation (currently unused) */
-  @Deprecated public java.lang.Void parameters;
+  /** Parameters of the Observation */
+  @Deprecated public java.lang.CharSequence parameters;
   /** Datastream associated with the Observation */
-  @Deprecated public main.java.pw.oliver.jmkb.avroclasses.Datastream Datastream;
+  @Deprecated public java.lang.CharSequence Datastream;
   /** Optional FeatureOfInterest associated with the Observation */
-  @Deprecated public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest FeatureOfInterest;
+  @Deprecated public java.lang.CharSequence FeatureOfInterest;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -83,11 +83,11 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
    * @param result Any result value represented as a string
    * @param resultQuality Optional string describing the quality of the result
    * @param validTime Optional time (ISO 8601) of validity
-   * @param parameters Parameters of the Observation (currently unused)
+   * @param parameters Parameters of the Observation
    * @param Datastream Datastream associated with the Observation
    * @param FeatureOfInterest Optional FeatureOfInterest associated with the Observation
    */
-  public Observation(java.lang.CharSequence phenomenonTime, java.lang.CharSequence resultTime, java.lang.CharSequence result, java.lang.CharSequence resultQuality, java.lang.CharSequence validTime, java.lang.Void parameters, main.java.pw.oliver.jmkb.avroclasses.Datastream Datastream, main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest FeatureOfInterest) {
+  public Observation(java.lang.CharSequence phenomenonTime, java.lang.CharSequence resultTime, java.lang.CharSequence result, java.lang.CharSequence resultQuality, java.lang.CharSequence validTime, java.lang.CharSequence parameters, java.lang.CharSequence Datastream, java.lang.CharSequence FeatureOfInterest) {
     this.phenomenonTime = phenomenonTime;
     this.resultTime = resultTime;
     this.result = result;
@@ -123,9 +123,9 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
     case 2: result = (java.lang.CharSequence)value$; break;
     case 3: resultQuality = (java.lang.CharSequence)value$; break;
     case 4: validTime = (java.lang.CharSequence)value$; break;
-    case 5: parameters = (java.lang.Void)value$; break;
-    case 6: Datastream = (main.java.pw.oliver.jmkb.avroclasses.Datastream)value$; break;
-    case 7: FeatureOfInterest = (main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest)value$; break;
+    case 5: parameters = (java.lang.CharSequence)value$; break;
+    case 6: Datastream = (java.lang.CharSequence)value$; break;
+    case 7: FeatureOfInterest = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -217,18 +217,18 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
 
   /**
    * Gets the value of the 'parameters' field.
-   * @return Parameters of the Observation (currently unused)
+   * @return Parameters of the Observation
    */
-  public java.lang.Void getParameters() {
+  public java.lang.CharSequence getParameters() {
     return parameters;
   }
 
   /**
    * Sets the value of the 'parameters' field.
-   * Parameters of the Observation (currently unused)
+   * Parameters of the Observation
    * @param value the value to set.
    */
-  public void setParameters(java.lang.Void value) {
+  public void setParameters(java.lang.CharSequence value) {
     this.parameters = value;
   }
 
@@ -236,7 +236,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'Datastream' field.
    * @return Datastream associated with the Observation
    */
-  public main.java.pw.oliver.jmkb.avroclasses.Datastream getDatastream() {
+  public java.lang.CharSequence getDatastream() {
     return Datastream;
   }
 
@@ -245,7 +245,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
    * Datastream associated with the Observation
    * @param value the value to set.
    */
-  public void setDatastream(main.java.pw.oliver.jmkb.avroclasses.Datastream value) {
+  public void setDatastream(java.lang.CharSequence value) {
     this.Datastream = value;
   }
 
@@ -253,7 +253,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'FeatureOfInterest' field.
    * @return Optional FeatureOfInterest associated with the Observation
    */
-  public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest getFeatureOfInterest() {
+  public java.lang.CharSequence getFeatureOfInterest() {
     return FeatureOfInterest;
   }
 
@@ -262,7 +262,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
    * Optional FeatureOfInterest associated with the Observation
    * @param value the value to set.
    */
-  public void setFeatureOfInterest(main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest value) {
+  public void setFeatureOfInterest(java.lang.CharSequence value) {
     this.FeatureOfInterest = value;
   }
 
@@ -308,14 +308,12 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
     private java.lang.CharSequence resultQuality;
     /** Optional time (ISO 8601) of validity */
     private java.lang.CharSequence validTime;
-    /** Parameters of the Observation (currently unused) */
-    private java.lang.Void parameters;
+    /** Parameters of the Observation */
+    private java.lang.CharSequence parameters;
     /** Datastream associated with the Observation */
-    private main.java.pw.oliver.jmkb.avroclasses.Datastream Datastream;
-    private main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder DatastreamBuilder;
+    private java.lang.CharSequence Datastream;
     /** Optional FeatureOfInterest associated with the Observation */
-    private main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest FeatureOfInterest;
-    private main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder FeatureOfInterestBuilder;
+    private java.lang.CharSequence FeatureOfInterest;
 
     /** Creates a new Builder */
     private Builder() {
@@ -356,15 +354,9 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
         this.Datastream = data().deepCopy(fields()[6].schema(), other.Datastream);
         fieldSetFlags()[6] = true;
       }
-      if (other.hasDatastreamBuilder()) {
-        this.DatastreamBuilder = main.java.pw.oliver.jmkb.avroclasses.Datastream.newBuilder(other.getDatastreamBuilder());
-      }
       if (isValidValue(fields()[7], other.FeatureOfInterest)) {
         this.FeatureOfInterest = data().deepCopy(fields()[7].schema(), other.FeatureOfInterest);
         fieldSetFlags()[7] = true;
-      }
-      if (other.hasFeatureOfInterestBuilder()) {
-        this.FeatureOfInterestBuilder = main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.newBuilder(other.getFeatureOfInterestBuilder());
       }
     }
 
@@ -402,12 +394,10 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
         this.Datastream = data().deepCopy(fields()[6].schema(), other.Datastream);
         fieldSetFlags()[6] = true;
       }
-      this.DatastreamBuilder = null;
       if (isValidValue(fields()[7], other.FeatureOfInterest)) {
         this.FeatureOfInterest = data().deepCopy(fields()[7].schema(), other.FeatureOfInterest);
         fieldSetFlags()[7] = true;
       }
-      this.FeatureOfInterestBuilder = null;
     }
 
     /**
@@ -627,20 +617,20 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
 
     /**
       * Gets the value of the 'parameters' field.
-      * Parameters of the Observation (currently unused)
+      * Parameters of the Observation
       * @return The value.
       */
-    public java.lang.Void getParameters() {
+    public java.lang.CharSequence getParameters() {
       return parameters;
     }
 
     /**
       * Sets the value of the 'parameters' field.
-      * Parameters of the Observation (currently unused)
+      * Parameters of the Observation
       * @param value The value of 'parameters'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setParameters(java.lang.Void value) {
+    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setParameters(java.lang.CharSequence value) {
       validate(fields()[5], value);
       this.parameters = value;
       fieldSetFlags()[5] = true;
@@ -649,7 +639,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
 
     /**
       * Checks whether the 'parameters' field has been set.
-      * Parameters of the Observation (currently unused)
+      * Parameters of the Observation
       * @return True if the 'parameters' field has been set, false otherwise.
       */
     public boolean hasParameters() {
@@ -659,7 +649,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
 
     /**
       * Clears the value of the 'parameters' field.
-      * Parameters of the Observation (currently unused)
+      * Parameters of the Observation
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearParameters() {
@@ -673,7 +663,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * Datastream associated with the Observation
       * @return The value.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Datastream getDatastream() {
+    public java.lang.CharSequence getDatastream() {
       return Datastream;
     }
 
@@ -683,9 +673,8 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'Datastream'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setDatastream(main.java.pw.oliver.jmkb.avroclasses.Datastream value) {
+    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setDatastream(java.lang.CharSequence value) {
       validate(fields()[6], value);
-      this.DatastreamBuilder = null;
       this.Datastream = value;
       fieldSetFlags()[6] = true;
       return this;
@@ -700,42 +689,6 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       return fieldSetFlags()[6];
     }
 
-    /**
-     * Gets the Builder instance for the 'Datastream' field and creates one if it doesn't exist yet.
-     * Datastream associated with the Observation
-     * @return This builder.
-     */
-    public main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder getDatastreamBuilder() {
-      if (DatastreamBuilder == null) {
-        if (hasDatastream()) {
-          setDatastreamBuilder(main.java.pw.oliver.jmkb.avroclasses.Datastream.newBuilder(Datastream));
-        } else {
-          setDatastreamBuilder(main.java.pw.oliver.jmkb.avroclasses.Datastream.newBuilder());
-        }
-      }
-      return DatastreamBuilder;
-    }
-
-    /**
-     * Sets the Builder instance for the 'Datastream' field
-     * Datastream associated with the Observation
-     * @param value The builder instance that must be set.
-     * @return This builder.
-     */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setDatastreamBuilder(main.java.pw.oliver.jmkb.avroclasses.Datastream.Builder value) {
-      clearDatastream();
-      DatastreamBuilder = value;
-      return this;
-    }
-
-    /**
-     * Checks whether the 'Datastream' field has an active Builder instance
-     * Datastream associated with the Observation
-     * @return True if the 'Datastream' field has an active Builder instance
-     */
-    public boolean hasDatastreamBuilder() {
-      return DatastreamBuilder != null;
-    }
 
     /**
       * Clears the value of the 'Datastream' field.
@@ -744,7 +697,6 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearDatastream() {
       Datastream = null;
-      DatastreamBuilder = null;
       fieldSetFlags()[6] = false;
       return this;
     }
@@ -754,7 +706,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * Optional FeatureOfInterest associated with the Observation
       * @return The value.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest getFeatureOfInterest() {
+    public java.lang.CharSequence getFeatureOfInterest() {
       return FeatureOfInterest;
     }
 
@@ -764,9 +716,8 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'FeatureOfInterest'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setFeatureOfInterest(main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest value) {
+    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setFeatureOfInterest(java.lang.CharSequence value) {
       validate(fields()[7], value);
-      this.FeatureOfInterestBuilder = null;
       this.FeatureOfInterest = value;
       fieldSetFlags()[7] = true;
       return this;
@@ -781,42 +732,6 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       return fieldSetFlags()[7];
     }
 
-    /**
-     * Gets the Builder instance for the 'FeatureOfInterest' field and creates one if it doesn't exist yet.
-     * Optional FeatureOfInterest associated with the Observation
-     * @return This builder.
-     */
-    public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder getFeatureOfInterestBuilder() {
-      if (FeatureOfInterestBuilder == null) {
-        if (hasFeatureOfInterest()) {
-          setFeatureOfInterestBuilder(main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.newBuilder(FeatureOfInterest));
-        } else {
-          setFeatureOfInterestBuilder(main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.newBuilder());
-        }
-      }
-      return FeatureOfInterestBuilder;
-    }
-
-    /**
-     * Sets the Builder instance for the 'FeatureOfInterest' field
-     * Optional FeatureOfInterest associated with the Observation
-     * @param value The builder instance that must be set.
-     * @return This builder.
-     */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setFeatureOfInterestBuilder(main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder value) {
-      clearFeatureOfInterest();
-      FeatureOfInterestBuilder = value;
-      return this;
-    }
-
-    /**
-     * Checks whether the 'FeatureOfInterest' field has an active Builder instance
-     * Optional FeatureOfInterest associated with the Observation
-     * @return True if the 'FeatureOfInterest' field has an active Builder instance
-     */
-    public boolean hasFeatureOfInterestBuilder() {
-      return FeatureOfInterestBuilder != null;
-    }
 
     /**
       * Clears the value of the 'FeatureOfInterest' field.
@@ -825,7 +740,6 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearFeatureOfInterest() {
       FeatureOfInterest = null;
-      FeatureOfInterestBuilder = null;
       fieldSetFlags()[7] = false;
       return this;
     }
@@ -840,17 +754,9 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
         record.result = fieldSetFlags()[2] ? this.result : (java.lang.CharSequence) defaultValue(fields()[2]);
         record.resultQuality = fieldSetFlags()[3] ? this.resultQuality : (java.lang.CharSequence) defaultValue(fields()[3]);
         record.validTime = fieldSetFlags()[4] ? this.validTime : (java.lang.CharSequence) defaultValue(fields()[4]);
-        record.parameters = fieldSetFlags()[5] ? this.parameters : (java.lang.Void) defaultValue(fields()[5]);
-        if (DatastreamBuilder != null) {
-          record.Datastream = this.DatastreamBuilder.build();
-        } else {
-          record.Datastream = fieldSetFlags()[6] ? this.Datastream : (main.java.pw.oliver.jmkb.avroclasses.Datastream) defaultValue(fields()[6]);
-        }
-        if (FeatureOfInterestBuilder != null) {
-          record.FeatureOfInterest = this.FeatureOfInterestBuilder.build();
-        } else {
-          record.FeatureOfInterest = fieldSetFlags()[7] ? this.FeatureOfInterest : (main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest) defaultValue(fields()[7]);
-        }
+        record.parameters = fieldSetFlags()[5] ? this.parameters : (java.lang.CharSequence) defaultValue(fields()[5]);
+        record.Datastream = fieldSetFlags()[6] ? this.Datastream : (java.lang.CharSequence) defaultValue(fields()[6]);
+        record.FeatureOfInterest = fieldSetFlags()[7] ? this.FeatureOfInterest : (java.lang.CharSequence) defaultValue(fields()[7]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

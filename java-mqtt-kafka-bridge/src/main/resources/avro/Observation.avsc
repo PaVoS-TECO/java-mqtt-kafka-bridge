@@ -9,8 +9,8 @@
 		{"name": "result", "type": "string", "doc": "Any result value represented as a string"},
 		{"name": "resultQuality", "type": ["null", "string"], "doc": "Optional string describing the quality of the result"},
 		{"name": "validTime", "type": ["null", "string"], "doc": "Optional time (ISO 8601) of validity"},
-		{"name": "parameters", "type": "null", "doc": "Parameters of the Observation (currently unused)"},
-		{"name": "Datastream", "type": "Datastream", "doc": "Datastream associated with the Observation"},
-		{"name": "FeatureOfInterest", "type": ["null", "FeatureOfInterest"], "doc": "Optional FeatureOfInterest associated with the Observation"}
+		{"name": "parameters", "type": "string", "doc": "Parameters of the Observation"},
+		{"name": "Datastream", "type": "string", "doc": "Datastream associated with the Observation"},
+		{"name": "FeatureOfInterest", "type": ["null", "string"], "doc": "Optional FeatureOfInterest associated with the Observation"}
 	]
 }

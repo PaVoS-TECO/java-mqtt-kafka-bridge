@@ -1,5 +1,6 @@
 package main.java.pw.oliver.jmkb;
 
+import org.apache.avro.specific.SpecificRecordBase;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -65,14 +66,18 @@ public class JmkbMqttConsumer implements MqttCallback {
 	@Override
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
 		// remove "v1.0/" from topic
-		topic = topic.split("/")[1];
+		if (topic.contains("/")) {
+			topic = topic.split("/")[1];
+		} else {
+			topic = "ErrorTopicNoSlashFound";
+		}
 		// get schema
 		SchemaRegistryConnector connector = new SchemaRegistryConnector();
 		String schema = connector.getSchemaById(Integer.parseInt(PropertiesFileReader.getProperty("schemaId")));
 		// convert message and get key
-		byte[] avroMessage = MqttMessageConverter.mqttMessageToAvro(message, schema);
+		SpecificRecordBase avroMessage = MqttMessageConverter.mqttMessageToAvro(message, schema);
 		String key = MqttMessageConverter.getSensorIdFromMessage(message);
-		
+
 		producer.send(topic, key, avroMessage);
 	}
 

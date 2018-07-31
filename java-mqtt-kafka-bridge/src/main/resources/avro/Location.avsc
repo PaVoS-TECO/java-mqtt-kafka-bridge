@@ -7,6 +7,6 @@
 		{"name": "name", "type": "string", "doc": "Name of the Location"},
 		{"name": "description", "type": "string", "doc": "Description of the Location"},
 		{"name": "encodingType", "type": "string", "doc": "Representation/encoding type of the Location"},
-		{"name": "location", "type": "LocationType", "doc": "LocationType containing the actual location of the Thing"}
+		{"name": "location", "type": "string", "doc": "LocationType containing the actual location of the Thing"}
 	]
 }

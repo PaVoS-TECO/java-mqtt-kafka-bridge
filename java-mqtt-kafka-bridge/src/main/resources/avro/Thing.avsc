@@ -6,9 +6,9 @@
 	"fields": [
 		{"name": "name", "type": "string", "doc": "Name of the Thing"},
 		{"name": "description", "type": "string", "doc": "Description of the Thing"},
-		{"name": "properties", "type": "null", "doc": "Properties of the Thing (currently unused)"},
-		{"name": "Locations", "type": ["null", {"type": "array", "items": "Location"}], "doc": "Optional Location(s) of the Thing"},
-		{"name": "HistoricalLocations", "type": ["null", {"type": "array", "items": "Location"}], "doc": "Optional HistoricalLocation(s) of the Thing"},
-		{"name": "Datastreams", "type": "null", "doc": "Unused optional Datastream(s) of the Thing"}
+		{"name": "properties", "type": "string", "doc": "Properties of the Thing (currently unused)"},
+		{"name": "Locations", "type": ["null", {"type": "array", "items": "string"}], "doc": "Optional Location(s) of the Thing"},
+		{"name": "HistoricalLocations", "type": ["null", {"type": "array", "items": "string"}], "doc": "Optional HistoricalLocation(s) of the Thing"},
+		{"name": "Datastreams", "type": ["null", "string"], "doc": "Optional Datastream(s) of the Thing"}
 	]
 }
