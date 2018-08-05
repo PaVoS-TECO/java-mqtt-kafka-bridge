@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** A Thing has Locations and one or more Datastreams to collect Observations. */
 @org.apache.avro.specific.AvroGenerated
 public class Thing extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 5501814971717974044L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Thing\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"A Thing has Locations and one or more Datastreams to collect Observations.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Thing\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Thing\"},{\"name\":\"properties\",\"type\":\"string\",\"doc\":\"Properties of the Thing (currently unused)\"},{\"name\":\"Locations\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"Optional Location(s) of the Thing\"},{\"name\":\"HistoricalLocations\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"string\"}],\"doc\":\"Optional HistoricalLocation(s) of the Thing\"},{\"name\":\"Datastreams\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional Datastream(s) of the Thing\"}]}");
+  private static final long serialVersionUID = -1297431914753081422L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Thing\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"A Thing has Locations and one or more Datastreams to collect Observations.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this Thing\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Thing\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Thing\"},{\"name\":\"Locations\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional Location(s) of the Thing\"},{\"name\":\"HistoricalLocations\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional HistoricalLocation(s) of the Thing\"},{\"name\":\"Datastreams\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional Datastream(s) of the Thing\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,16 +52,16 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
     return DECODER.decode(b);
   }
 
+  /** iotId of this Thing */
+  @Deprecated public java.lang.CharSequence iotId;
   /** Name of the Thing */
   @Deprecated public java.lang.CharSequence name;
   /** Description of the Thing */
   @Deprecated public java.lang.CharSequence description;
-  /** Properties of the Thing (currently unused) */
-  @Deprecated public java.lang.CharSequence properties;
   /** Optional Location(s) of the Thing */
-  @Deprecated public java.util.List<java.lang.CharSequence> Locations;
+  @Deprecated public java.lang.CharSequence Locations;
   /** Optional HistoricalLocation(s) of the Thing */
-  @Deprecated public java.util.List<java.lang.CharSequence> HistoricalLocations;
+  @Deprecated public java.lang.CharSequence HistoricalLocations;
   /** Optional Datastream(s) of the Thing */
   @Deprecated public java.lang.CharSequence Datastreams;
 
@@ -74,17 +74,17 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
 
   /**
    * All-args constructor.
+   * @param iotId iotId of this Thing
    * @param name Name of the Thing
    * @param description Description of the Thing
-   * @param properties Properties of the Thing (currently unused)
    * @param Locations Optional Location(s) of the Thing
    * @param HistoricalLocations Optional HistoricalLocation(s) of the Thing
    * @param Datastreams Optional Datastream(s) of the Thing
    */
-  public Thing(java.lang.CharSequence name, java.lang.CharSequence description, java.lang.CharSequence properties, java.util.List<java.lang.CharSequence> Locations, java.util.List<java.lang.CharSequence> HistoricalLocations, java.lang.CharSequence Datastreams) {
+  public Thing(java.lang.CharSequence iotId, java.lang.CharSequence name, java.lang.CharSequence description, java.lang.CharSequence Locations, java.lang.CharSequence HistoricalLocations, java.lang.CharSequence Datastreams) {
+    this.iotId = iotId;
     this.name = name;
     this.description = description;
-    this.properties = properties;
     this.Locations = Locations;
     this.HistoricalLocations = HistoricalLocations;
     this.Datastreams = Datastreams;
@@ -94,9 +94,9 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return name;
-    case 1: return description;
-    case 2: return properties;
+    case 0: return iotId;
+    case 1: return name;
+    case 2: return description;
     case 3: return Locations;
     case 4: return HistoricalLocations;
     case 5: return Datastreams;
@@ -108,14 +108,31 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: name = (java.lang.CharSequence)value$; break;
-    case 1: description = (java.lang.CharSequence)value$; break;
-    case 2: properties = (java.lang.CharSequence)value$; break;
-    case 3: Locations = (java.util.List<java.lang.CharSequence>)value$; break;
-    case 4: HistoricalLocations = (java.util.List<java.lang.CharSequence>)value$; break;
+    case 0: iotId = (java.lang.CharSequence)value$; break;
+    case 1: name = (java.lang.CharSequence)value$; break;
+    case 2: description = (java.lang.CharSequence)value$; break;
+    case 3: Locations = (java.lang.CharSequence)value$; break;
+    case 4: HistoricalLocations = (java.lang.CharSequence)value$; break;
     case 5: Datastreams = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
+  }
+
+  /**
+   * Gets the value of the 'iotId' field.
+   * @return iotId of this Thing
+   */
+  public java.lang.CharSequence getIotId() {
+    return iotId;
+  }
+
+  /**
+   * Sets the value of the 'iotId' field.
+   * iotId of this Thing
+   * @param value the value to set.
+   */
+  public void setIotId(java.lang.CharSequence value) {
+    this.iotId = value;
   }
 
   /**
@@ -153,27 +170,10 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
   }
 
   /**
-   * Gets the value of the 'properties' field.
-   * @return Properties of the Thing (currently unused)
-   */
-  public java.lang.CharSequence getProperties() {
-    return properties;
-  }
-
-  /**
-   * Sets the value of the 'properties' field.
-   * Properties of the Thing (currently unused)
-   * @param value the value to set.
-   */
-  public void setProperties(java.lang.CharSequence value) {
-    this.properties = value;
-  }
-
-  /**
    * Gets the value of the 'Locations' field.
    * @return Optional Location(s) of the Thing
    */
-  public java.util.List<java.lang.CharSequence> getLocations() {
+  public java.lang.CharSequence getLocations() {
     return Locations;
   }
 
@@ -182,7 +182,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
    * Optional Location(s) of the Thing
    * @param value the value to set.
    */
-  public void setLocations(java.util.List<java.lang.CharSequence> value) {
+  public void setLocations(java.lang.CharSequence value) {
     this.Locations = value;
   }
 
@@ -190,7 +190,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
    * Gets the value of the 'HistoricalLocations' field.
    * @return Optional HistoricalLocation(s) of the Thing
    */
-  public java.util.List<java.lang.CharSequence> getHistoricalLocations() {
+  public java.lang.CharSequence getHistoricalLocations() {
     return HistoricalLocations;
   }
 
@@ -199,7 +199,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
    * Optional HistoricalLocation(s) of the Thing
    * @param value the value to set.
    */
-  public void setHistoricalLocations(java.util.List<java.lang.CharSequence> value) {
+  public void setHistoricalLocations(java.lang.CharSequence value) {
     this.HistoricalLocations = value;
   }
 
@@ -252,16 +252,16 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Thing>
     implements org.apache.avro.data.RecordBuilder<Thing> {
 
+    /** iotId of this Thing */
+    private java.lang.CharSequence iotId;
     /** Name of the Thing */
     private java.lang.CharSequence name;
     /** Description of the Thing */
     private java.lang.CharSequence description;
-    /** Properties of the Thing (currently unused) */
-    private java.lang.CharSequence properties;
     /** Optional Location(s) of the Thing */
-    private java.util.List<java.lang.CharSequence> Locations;
+    private java.lang.CharSequence Locations;
     /** Optional HistoricalLocation(s) of the Thing */
-    private java.util.List<java.lang.CharSequence> HistoricalLocations;
+    private java.lang.CharSequence HistoricalLocations;
     /** Optional Datastream(s) of the Thing */
     private java.lang.CharSequence Datastreams;
 
@@ -276,16 +276,16 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
      */
     private Builder(main.java.pw.oliver.jmkb.avroclasses.Thing.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.name)) {
-        this.name = data().deepCopy(fields()[0].schema(), other.name);
+      if (isValidValue(fields()[0], other.iotId)) {
+        this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.description)) {
-        this.description = data().deepCopy(fields()[1].schema(), other.description);
+      if (isValidValue(fields()[1], other.name)) {
+        this.name = data().deepCopy(fields()[1].schema(), other.name);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.properties)) {
-        this.properties = data().deepCopy(fields()[2].schema(), other.properties);
+      if (isValidValue(fields()[2], other.description)) {
+        this.description = data().deepCopy(fields()[2].schema(), other.description);
         fieldSetFlags()[2] = true;
       }
       if (isValidValue(fields()[3], other.Locations)) {
@@ -308,16 +308,16 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
      */
     private Builder(main.java.pw.oliver.jmkb.avroclasses.Thing other) {
             super(SCHEMA$);
-      if (isValidValue(fields()[0], other.name)) {
-        this.name = data().deepCopy(fields()[0].schema(), other.name);
+      if (isValidValue(fields()[0], other.iotId)) {
+        this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.description)) {
-        this.description = data().deepCopy(fields()[1].schema(), other.description);
+      if (isValidValue(fields()[1], other.name)) {
+        this.name = data().deepCopy(fields()[1].schema(), other.name);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.properties)) {
-        this.properties = data().deepCopy(fields()[2].schema(), other.properties);
+      if (isValidValue(fields()[2], other.description)) {
+        this.description = data().deepCopy(fields()[2].schema(), other.description);
         fieldSetFlags()[2] = true;
       }
       if (isValidValue(fields()[3], other.Locations)) {
@@ -332,6 +332,49 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
         this.Datastreams = data().deepCopy(fields()[5].schema(), other.Datastreams);
         fieldSetFlags()[5] = true;
       }
+    }
+
+    /**
+      * Gets the value of the 'iotId' field.
+      * iotId of this Thing
+      * @return The value.
+      */
+    public java.lang.CharSequence getIotId() {
+      return iotId;
+    }
+
+    /**
+      * Sets the value of the 'iotId' field.
+      * iotId of this Thing
+      * @param value The value of 'iotId'.
+      * @return This builder.
+      */
+    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setIotId(java.lang.CharSequence value) {
+      validate(fields()[0], value);
+      this.iotId = value;
+      fieldSetFlags()[0] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'iotId' field has been set.
+      * iotId of this Thing
+      * @return True if the 'iotId' field has been set, false otherwise.
+      */
+    public boolean hasIotId() {
+      return fieldSetFlags()[0];
+    }
+
+
+    /**
+      * Clears the value of the 'iotId' field.
+      * iotId of this Thing
+      * @return This builder.
+      */
+    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder clearIotId() {
+      iotId = null;
+      fieldSetFlags()[0] = false;
+      return this;
     }
 
     /**
@@ -350,9 +393,9 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setName(java.lang.CharSequence value) {
-      validate(fields()[0], value);
+      validate(fields()[1], value);
       this.name = value;
-      fieldSetFlags()[0] = true;
+      fieldSetFlags()[1] = true;
       return this;
     }
 
@@ -362,7 +405,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'name' field has been set, false otherwise.
       */
     public boolean hasName() {
-      return fieldSetFlags()[0];
+      return fieldSetFlags()[1];
     }
 
 
@@ -373,7 +416,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       */
     public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder clearName() {
       name = null;
-      fieldSetFlags()[0] = false;
+      fieldSetFlags()[1] = false;
       return this;
     }
 
@@ -393,9 +436,9 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setDescription(java.lang.CharSequence value) {
-      validate(fields()[1], value);
+      validate(fields()[2], value);
       this.description = value;
-      fieldSetFlags()[1] = true;
+      fieldSetFlags()[2] = true;
       return this;
     }
 
@@ -405,7 +448,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * @return True if the 'description' field has been set, false otherwise.
       */
     public boolean hasDescription() {
-      return fieldSetFlags()[1];
+      return fieldSetFlags()[2];
     }
 
 
@@ -416,49 +459,6 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       */
     public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder clearDescription() {
       description = null;
-      fieldSetFlags()[1] = false;
-      return this;
-    }
-
-    /**
-      * Gets the value of the 'properties' field.
-      * Properties of the Thing (currently unused)
-      * @return The value.
-      */
-    public java.lang.CharSequence getProperties() {
-      return properties;
-    }
-
-    /**
-      * Sets the value of the 'properties' field.
-      * Properties of the Thing (currently unused)
-      * @param value The value of 'properties'.
-      * @return This builder.
-      */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setProperties(java.lang.CharSequence value) {
-      validate(fields()[2], value);
-      this.properties = value;
-      fieldSetFlags()[2] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'properties' field has been set.
-      * Properties of the Thing (currently unused)
-      * @return True if the 'properties' field has been set, false otherwise.
-      */
-    public boolean hasProperties() {
-      return fieldSetFlags()[2];
-    }
-
-
-    /**
-      * Clears the value of the 'properties' field.
-      * Properties of the Thing (currently unused)
-      * @return This builder.
-      */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder clearProperties() {
-      properties = null;
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -468,7 +468,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * Optional Location(s) of the Thing
       * @return The value.
       */
-    public java.util.List<java.lang.CharSequence> getLocations() {
+    public java.lang.CharSequence getLocations() {
       return Locations;
     }
 
@@ -478,7 +478,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'Locations'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setLocations(java.util.List<java.lang.CharSequence> value) {
+    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setLocations(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.Locations = value;
       fieldSetFlags()[3] = true;
@@ -511,7 +511,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * Optional HistoricalLocation(s) of the Thing
       * @return The value.
       */
-    public java.util.List<java.lang.CharSequence> getHistoricalLocations() {
+    public java.lang.CharSequence getHistoricalLocations() {
       return HistoricalLocations;
     }
 
@@ -521,7 +521,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'HistoricalLocations'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setHistoricalLocations(java.util.List<java.lang.CharSequence> value) {
+    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setHistoricalLocations(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.HistoricalLocations = value;
       fieldSetFlags()[4] = true;
@@ -597,11 +597,11 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
     public Thing build() {
       try {
         Thing record = new Thing();
-        record.name = fieldSetFlags()[0] ? this.name : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.description = fieldSetFlags()[1] ? this.description : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.properties = fieldSetFlags()[2] ? this.properties : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.Locations = fieldSetFlags()[3] ? this.Locations : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[3]);
-        record.HistoricalLocations = fieldSetFlags()[4] ? this.HistoricalLocations : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[4]);
+        record.iotId = fieldSetFlags()[0] ? this.iotId : (java.lang.CharSequence) defaultValue(fields()[0]);
+        record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.description = fieldSetFlags()[2] ? this.description : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.Locations = fieldSetFlags()[3] ? this.Locations : (java.lang.CharSequence) defaultValue(fields()[3]);
+        record.HistoricalLocations = fieldSetFlags()[4] ? this.HistoricalLocations : (java.lang.CharSequence) defaultValue(fields()[4]);
         record.Datastreams = fieldSetFlags()[5] ? this.Datastreams : (java.lang.CharSequence) defaultValue(fields()[5]);
         return record;
       } catch (java.lang.Exception e) {

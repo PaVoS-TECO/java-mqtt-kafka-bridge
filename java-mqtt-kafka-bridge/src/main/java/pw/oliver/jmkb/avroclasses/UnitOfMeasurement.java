@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 /** The Unit of Measurement of an Observation */
 @org.apache.avro.specific.AvroGenerated
 public class UnitOfMeasurement extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 432979892646302886L;
+  private static final long serialVersionUID = 2676135402333654124L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UnitOfMeasurement\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"The Unit of Measurement of an Observation\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"String representation of the Unit of Measurement\"},{\"name\":\"symbol\",\"type\":\"string\",\"doc\":\"Symbol of the Unit of Measurement\"},{\"name\":\"definition\",\"type\":\"string\",\"doc\":\"Definition of the Unit of Measurement\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
@@ -365,6 +365,7 @@ public class UnitOfMeasurement extends org.apache.avro.specific.SpecificRecordBa
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public UnitOfMeasurement build() {
       try {
         UnitOfMeasurement record = new UnitOfMeasurement();

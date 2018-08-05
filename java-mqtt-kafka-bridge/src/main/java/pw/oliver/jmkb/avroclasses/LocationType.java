@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** The type of the location, for example Point */
 @org.apache.avro.specific.AvroGenerated
 public class LocationType extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 4137756298874171138L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"LocationType\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"The type of the location, for example Point\",\"fields\":[{\"name\":\"type\",\"type\":\"string\",\"doc\":\"Name of the LocationType\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Coordinates for the LocationType\"}]}");
+  private static final long serialVersionUID = -6717718243024509634L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"LocationType\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"The type of the location, for example Point\",\"fields\":[{\"name\":\"type\",\"type\":\"string\",\"doc\":\"Name of the LocationType\"},{\"name\":\"coordinates\",\"type\":\"string\",\"doc\":\"Coordinates for the LocationType\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -55,7 +55,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
   /** Name of the LocationType */
   @Deprecated public java.lang.CharSequence type;
   /** Coordinates for the LocationType */
-  @Deprecated public java.util.List<java.lang.Double> coordinates;
+  @Deprecated public java.lang.CharSequence coordinates;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -69,7 +69,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
    * @param type Name of the LocationType
    * @param coordinates Coordinates for the LocationType
    */
-  public LocationType(java.lang.CharSequence type, java.util.List<java.lang.Double> coordinates) {
+  public LocationType(java.lang.CharSequence type, java.lang.CharSequence coordinates) {
     this.type = type;
     this.coordinates = coordinates;
   }
@@ -89,7 +89,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: type = (java.lang.CharSequence)value$; break;
-    case 1: coordinates = (java.util.List<java.lang.Double>)value$; break;
+    case 1: coordinates = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -115,7 +115,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'coordinates' field.
    * @return Coordinates for the LocationType
    */
-  public java.util.List<java.lang.Double> getCoordinates() {
+  public java.lang.CharSequence getCoordinates() {
     return coordinates;
   }
 
@@ -124,7 +124,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
    * Coordinates for the LocationType
    * @param value the value to set.
    */
-  public void setCoordinates(java.util.List<java.lang.Double> value) {
+  public void setCoordinates(java.lang.CharSequence value) {
     this.coordinates = value;
   }
 
@@ -163,7 +163,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
     /** Name of the LocationType */
     private java.lang.CharSequence type;
     /** Coordinates for the LocationType */
-    private java.util.List<java.lang.Double> coordinates;
+    private java.lang.CharSequence coordinates;
 
     /** Creates a new Builder */
     private Builder() {
@@ -250,7 +250,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
       * Coordinates for the LocationType
       * @return The value.
       */
-    public java.util.List<java.lang.Double> getCoordinates() {
+    public java.lang.CharSequence getCoordinates() {
       return coordinates;
     }
 
@@ -260,7 +260,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'coordinates'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder setCoordinates(java.util.List<java.lang.Double> value) {
+    public main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder setCoordinates(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.coordinates = value;
       fieldSetFlags()[1] = true;
@@ -294,7 +294,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
       try {
         LocationType record = new LocationType();
         record.type = fieldSetFlags()[0] ? this.type : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.coordinates = fieldSetFlags()[1] ? this.coordinates : (java.util.List<java.lang.Double>) defaultValue(fields()[1]);
+        record.coordinates = fieldSetFlags()[1] ? this.coordinates : (java.lang.CharSequence) defaultValue(fields()[1]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

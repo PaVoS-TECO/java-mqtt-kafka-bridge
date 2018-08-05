@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** In the case of remote sensing, the FeatureOfInterest can be the geographical area or volume that is being sensed. */
 @org.apache.avro.specific.AvroGenerated
 public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 3599547963051487007L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"FeatureOfInterest\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"In the case of remote sensing, the FeatureOfInterest can be the geographical area or volume that is being sensed.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the FeatureOfInterest\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the FeatureOfInterest\"},{\"name\":\"encodingType\",\"type\":\"string\",\"doc\":\"Representation/encoding type of the FeatureOfInterest\"},{\"name\":\"feature\",\"type\":\"string\",\"doc\":\"LocationType object containing the feature of the Thing\"}]}");
+  private static final long serialVersionUID = -2977218714458090838L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"FeatureOfInterest\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"In the case of remote sensing, the FeatureOfInterest can be the geographical area or volume that is being sensed.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this FeatureOfInterest\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the FeatureOfInterest\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the FeatureOfInterest\"},{\"name\":\"encodingType\",\"type\":\"string\",\"doc\":\"Representation/encoding type of the FeatureOfInterest\"},{\"name\":\"feature\",\"type\":{\"type\":\"record\",\"name\":\"LocationType\",\"doc\":\"The type of the location, for example Point\",\"fields\":[{\"name\":\"type\",\"type\":\"string\",\"doc\":\"Name of the LocationType\"},{\"name\":\"coordinates\",\"type\":{\"type\":\"array\",\"items\":\"double\"},\"doc\":\"Coordinates for the LocationType\"}]},\"doc\":\"LocationType object containing the feature of the Thing\"},{\"name\":\"Observations\",\"type\":[\"null\",\"string\"],\"doc\":\"Observations associated with this FeatureOfInterest\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,6 +52,8 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
     return DECODER.decode(b);
   }
 
+  /** iotId of this FeatureOfInterest */
+  @Deprecated public java.lang.CharSequence iotId;
   /** Name of the FeatureOfInterest */
   @Deprecated public java.lang.CharSequence name;
   /** Description of the FeatureOfInterest */
@@ -59,7 +61,9 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
   /** Representation/encoding type of the FeatureOfInterest */
   @Deprecated public java.lang.CharSequence encodingType;
   /** LocationType object containing the feature of the Thing */
-  @Deprecated public java.lang.CharSequence feature;
+  @Deprecated public main.java.pw.oliver.jmkb.avroclasses.LocationType feature;
+  /** Observations associated with this FeatureOfInterest */
+  @Deprecated public java.lang.CharSequence Observations;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -70,26 +74,32 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
 
   /**
    * All-args constructor.
+   * @param iotId iotId of this FeatureOfInterest
    * @param name Name of the FeatureOfInterest
    * @param description Description of the FeatureOfInterest
    * @param encodingType Representation/encoding type of the FeatureOfInterest
    * @param feature LocationType object containing the feature of the Thing
+   * @param Observations Observations associated with this FeatureOfInterest
    */
-  public FeatureOfInterest(java.lang.CharSequence name, java.lang.CharSequence description, java.lang.CharSequence encodingType, java.lang.CharSequence feature) {
+  public FeatureOfInterest(java.lang.CharSequence iotId, java.lang.CharSequence name, java.lang.CharSequence description, java.lang.CharSequence encodingType, main.java.pw.oliver.jmkb.avroclasses.LocationType feature, java.lang.CharSequence Observations) {
+    this.iotId = iotId;
     this.name = name;
     this.description = description;
     this.encodingType = encodingType;
     this.feature = feature;
+    this.Observations = Observations;
   }
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return name;
-    case 1: return description;
-    case 2: return encodingType;
-    case 3: return feature;
+    case 0: return iotId;
+    case 1: return name;
+    case 2: return description;
+    case 3: return encodingType;
+    case 4: return feature;
+    case 5: return Observations;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -98,12 +108,31 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: name = (java.lang.CharSequence)value$; break;
-    case 1: description = (java.lang.CharSequence)value$; break;
-    case 2: encodingType = (java.lang.CharSequence)value$; break;
-    case 3: feature = (java.lang.CharSequence)value$; break;
+    case 0: iotId = (java.lang.CharSequence)value$; break;
+    case 1: name = (java.lang.CharSequence)value$; break;
+    case 2: description = (java.lang.CharSequence)value$; break;
+    case 3: encodingType = (java.lang.CharSequence)value$; break;
+    case 4: feature = (main.java.pw.oliver.jmkb.avroclasses.LocationType)value$; break;
+    case 5: Observations = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
+  }
+
+  /**
+   * Gets the value of the 'iotId' field.
+   * @return iotId of this FeatureOfInterest
+   */
+  public java.lang.CharSequence getIotId() {
+    return iotId;
+  }
+
+  /**
+   * Sets the value of the 'iotId' field.
+   * iotId of this FeatureOfInterest
+   * @param value the value to set.
+   */
+  public void setIotId(java.lang.CharSequence value) {
+    this.iotId = value;
   }
 
   /**
@@ -161,7 +190,7 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
    * Gets the value of the 'feature' field.
    * @return LocationType object containing the feature of the Thing
    */
-  public java.lang.CharSequence getFeature() {
+  public main.java.pw.oliver.jmkb.avroclasses.LocationType getFeature() {
     return feature;
   }
 
@@ -170,8 +199,25 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
    * LocationType object containing the feature of the Thing
    * @param value the value to set.
    */
-  public void setFeature(java.lang.CharSequence value) {
+  public void setFeature(main.java.pw.oliver.jmkb.avroclasses.LocationType value) {
     this.feature = value;
+  }
+
+  /**
+   * Gets the value of the 'Observations' field.
+   * @return Observations associated with this FeatureOfInterest
+   */
+  public java.lang.CharSequence getObservations() {
+    return Observations;
+  }
+
+  /**
+   * Sets the value of the 'Observations' field.
+   * Observations associated with this FeatureOfInterest
+   * @param value the value to set.
+   */
+  public void setObservations(java.lang.CharSequence value) {
+    this.Observations = value;
   }
 
   /**
@@ -206,6 +252,8 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<FeatureOfInterest>
     implements org.apache.avro.data.RecordBuilder<FeatureOfInterest> {
 
+    /** iotId of this FeatureOfInterest */
+    private java.lang.CharSequence iotId;
     /** Name of the FeatureOfInterest */
     private java.lang.CharSequence name;
     /** Description of the FeatureOfInterest */
@@ -213,7 +261,10 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
     /** Representation/encoding type of the FeatureOfInterest */
     private java.lang.CharSequence encodingType;
     /** LocationType object containing the feature of the Thing */
-    private java.lang.CharSequence feature;
+    private main.java.pw.oliver.jmkb.avroclasses.LocationType feature;
+    private main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder featureBuilder;
+    /** Observations associated with this FeatureOfInterest */
+    private java.lang.CharSequence Observations;
 
     /** Creates a new Builder */
     private Builder() {
@@ -226,21 +277,32 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
      */
     private Builder(main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.name)) {
-        this.name = data().deepCopy(fields()[0].schema(), other.name);
+      if (isValidValue(fields()[0], other.iotId)) {
+        this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.description)) {
-        this.description = data().deepCopy(fields()[1].schema(), other.description);
+      if (isValidValue(fields()[1], other.name)) {
+        this.name = data().deepCopy(fields()[1].schema(), other.name);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.encodingType)) {
-        this.encodingType = data().deepCopy(fields()[2].schema(), other.encodingType);
+      if (isValidValue(fields()[2], other.description)) {
+        this.description = data().deepCopy(fields()[2].schema(), other.description);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.feature)) {
-        this.feature = data().deepCopy(fields()[3].schema(), other.feature);
+      if (isValidValue(fields()[3], other.encodingType)) {
+        this.encodingType = data().deepCopy(fields()[3].schema(), other.encodingType);
         fieldSetFlags()[3] = true;
+      }
+      if (isValidValue(fields()[4], other.feature)) {
+        this.feature = data().deepCopy(fields()[4].schema(), other.feature);
+        fieldSetFlags()[4] = true;
+      }
+      if (other.hasFeatureBuilder()) {
+        this.featureBuilder = main.java.pw.oliver.jmkb.avroclasses.LocationType.newBuilder(other.getFeatureBuilder());
+      }
+      if (isValidValue(fields()[5], other.Observations)) {
+        this.Observations = data().deepCopy(fields()[5].schema(), other.Observations);
+        fieldSetFlags()[5] = true;
       }
     }
 
@@ -250,22 +312,74 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
      */
     private Builder(main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest other) {
             super(SCHEMA$);
-      if (isValidValue(fields()[0], other.name)) {
-        this.name = data().deepCopy(fields()[0].schema(), other.name);
+      if (isValidValue(fields()[0], other.iotId)) {
+        this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.description)) {
-        this.description = data().deepCopy(fields()[1].schema(), other.description);
+      if (isValidValue(fields()[1], other.name)) {
+        this.name = data().deepCopy(fields()[1].schema(), other.name);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.encodingType)) {
-        this.encodingType = data().deepCopy(fields()[2].schema(), other.encodingType);
+      if (isValidValue(fields()[2], other.description)) {
+        this.description = data().deepCopy(fields()[2].schema(), other.description);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.feature)) {
-        this.feature = data().deepCopy(fields()[3].schema(), other.feature);
+      if (isValidValue(fields()[3], other.encodingType)) {
+        this.encodingType = data().deepCopy(fields()[3].schema(), other.encodingType);
         fieldSetFlags()[3] = true;
       }
+      if (isValidValue(fields()[4], other.feature)) {
+        this.feature = data().deepCopy(fields()[4].schema(), other.feature);
+        fieldSetFlags()[4] = true;
+      }
+      this.featureBuilder = null;
+      if (isValidValue(fields()[5], other.Observations)) {
+        this.Observations = data().deepCopy(fields()[5].schema(), other.Observations);
+        fieldSetFlags()[5] = true;
+      }
+    }
+
+    /**
+      * Gets the value of the 'iotId' field.
+      * iotId of this FeatureOfInterest
+      * @return The value.
+      */
+    public java.lang.CharSequence getIotId() {
+      return iotId;
+    }
+
+    /**
+      * Sets the value of the 'iotId' field.
+      * iotId of this FeatureOfInterest
+      * @param value The value of 'iotId'.
+      * @return This builder.
+      */
+    public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder setIotId(java.lang.CharSequence value) {
+      validate(fields()[0], value);
+      this.iotId = value;
+      fieldSetFlags()[0] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'iotId' field has been set.
+      * iotId of this FeatureOfInterest
+      * @return True if the 'iotId' field has been set, false otherwise.
+      */
+    public boolean hasIotId() {
+      return fieldSetFlags()[0];
+    }
+
+
+    /**
+      * Clears the value of the 'iotId' field.
+      * iotId of this FeatureOfInterest
+      * @return This builder.
+      */
+    public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder clearIotId() {
+      iotId = null;
+      fieldSetFlags()[0] = false;
+      return this;
     }
 
     /**
@@ -284,9 +398,9 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder setName(java.lang.CharSequence value) {
-      validate(fields()[0], value);
+      validate(fields()[1], value);
       this.name = value;
-      fieldSetFlags()[0] = true;
+      fieldSetFlags()[1] = true;
       return this;
     }
 
@@ -296,7 +410,7 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
       * @return True if the 'name' field has been set, false otherwise.
       */
     public boolean hasName() {
-      return fieldSetFlags()[0];
+      return fieldSetFlags()[1];
     }
 
 
@@ -307,7 +421,7 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
       */
     public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder clearName() {
       name = null;
-      fieldSetFlags()[0] = false;
+      fieldSetFlags()[1] = false;
       return this;
     }
 
@@ -327,9 +441,9 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder setDescription(java.lang.CharSequence value) {
-      validate(fields()[1], value);
+      validate(fields()[2], value);
       this.description = value;
-      fieldSetFlags()[1] = true;
+      fieldSetFlags()[2] = true;
       return this;
     }
 
@@ -339,7 +453,7 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
       * @return True if the 'description' field has been set, false otherwise.
       */
     public boolean hasDescription() {
-      return fieldSetFlags()[1];
+      return fieldSetFlags()[2];
     }
 
 
@@ -350,7 +464,7 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
       */
     public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder clearDescription() {
       description = null;
-      fieldSetFlags()[1] = false;
+      fieldSetFlags()[2] = false;
       return this;
     }
 
@@ -370,9 +484,9 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder setEncodingType(java.lang.CharSequence value) {
-      validate(fields()[2], value);
+      validate(fields()[3], value);
       this.encodingType = value;
-      fieldSetFlags()[2] = true;
+      fieldSetFlags()[3] = true;
       return this;
     }
 
@@ -382,7 +496,7 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
       * @return True if the 'encodingType' field has been set, false otherwise.
       */
     public boolean hasEncodingType() {
-      return fieldSetFlags()[2];
+      return fieldSetFlags()[3];
     }
 
 
@@ -393,7 +507,7 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
       */
     public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder clearEncodingType() {
       encodingType = null;
-      fieldSetFlags()[2] = false;
+      fieldSetFlags()[3] = false;
       return this;
     }
 
@@ -402,7 +516,7 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
       * LocationType object containing the feature of the Thing
       * @return The value.
       */
-    public java.lang.CharSequence getFeature() {
+    public main.java.pw.oliver.jmkb.avroclasses.LocationType getFeature() {
       return feature;
     }
 
@@ -412,10 +526,11 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'feature'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder setFeature(java.lang.CharSequence value) {
-      validate(fields()[3], value);
+    public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder setFeature(main.java.pw.oliver.jmkb.avroclasses.LocationType value) {
+      validate(fields()[4], value);
+      this.featureBuilder = null;
       this.feature = value;
-      fieldSetFlags()[3] = true;
+      fieldSetFlags()[4] = true;
       return this;
     }
 
@@ -425,9 +540,45 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
       * @return True if the 'feature' field has been set, false otherwise.
       */
     public boolean hasFeature() {
-      return fieldSetFlags()[3];
+      return fieldSetFlags()[4];
     }
 
+    /**
+     * Gets the Builder instance for the 'feature' field and creates one if it doesn't exist yet.
+     * LocationType object containing the feature of the Thing
+     * @return This builder.
+     */
+    public main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder getFeatureBuilder() {
+      if (featureBuilder == null) {
+        if (hasFeature()) {
+          setFeatureBuilder(main.java.pw.oliver.jmkb.avroclasses.LocationType.newBuilder(feature));
+        } else {
+          setFeatureBuilder(main.java.pw.oliver.jmkb.avroclasses.LocationType.newBuilder());
+        }
+      }
+      return featureBuilder;
+    }
+
+    /**
+     * Sets the Builder instance for the 'feature' field
+     * LocationType object containing the feature of the Thing
+     * @param value The builder instance that must be set.
+     * @return This builder.
+     */
+    public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder setFeatureBuilder(main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder value) {
+      clearFeature();
+      featureBuilder = value;
+      return this;
+    }
+
+    /**
+     * Checks whether the 'feature' field has an active Builder instance
+     * LocationType object containing the feature of the Thing
+     * @return True if the 'feature' field has an active Builder instance
+     */
+    public boolean hasFeatureBuilder() {
+      return featureBuilder != null;
+    }
 
     /**
       * Clears the value of the 'feature' field.
@@ -436,7 +587,51 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
       */
     public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder clearFeature() {
       feature = null;
-      fieldSetFlags()[3] = false;
+      featureBuilder = null;
+      fieldSetFlags()[4] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'Observations' field.
+      * Observations associated with this FeatureOfInterest
+      * @return The value.
+      */
+    public java.lang.CharSequence getObservations() {
+      return Observations;
+    }
+
+    /**
+      * Sets the value of the 'Observations' field.
+      * Observations associated with this FeatureOfInterest
+      * @param value The value of 'Observations'.
+      * @return This builder.
+      */
+    public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder setObservations(java.lang.CharSequence value) {
+      validate(fields()[5], value);
+      this.Observations = value;
+      fieldSetFlags()[5] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'Observations' field has been set.
+      * Observations associated with this FeatureOfInterest
+      * @return True if the 'Observations' field has been set, false otherwise.
+      */
+    public boolean hasObservations() {
+      return fieldSetFlags()[5];
+    }
+
+
+    /**
+      * Clears the value of the 'Observations' field.
+      * Observations associated with this FeatureOfInterest
+      * @return This builder.
+      */
+    public main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest.Builder clearObservations() {
+      Observations = null;
+      fieldSetFlags()[5] = false;
       return this;
     }
 
@@ -445,10 +640,16 @@ public class FeatureOfInterest extends org.apache.avro.specific.SpecificRecordBa
     public FeatureOfInterest build() {
       try {
         FeatureOfInterest record = new FeatureOfInterest();
-        record.name = fieldSetFlags()[0] ? this.name : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.description = fieldSetFlags()[1] ? this.description : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.encodingType = fieldSetFlags()[2] ? this.encodingType : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.feature = fieldSetFlags()[3] ? this.feature : (java.lang.CharSequence) defaultValue(fields()[3]);
+        record.iotId = fieldSetFlags()[0] ? this.iotId : (java.lang.CharSequence) defaultValue(fields()[0]);
+        record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.description = fieldSetFlags()[2] ? this.description : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.encodingType = fieldSetFlags()[3] ? this.encodingType : (java.lang.CharSequence) defaultValue(fields()[3]);
+        if (featureBuilder != null) {
+          record.feature = this.featureBuilder.build();
+        } else {
+          record.feature = fieldSetFlags()[4] ? this.feature : (main.java.pw.oliver.jmkb.avroclasses.LocationType) defaultValue(fields()[4]);
+        }
+        record.Observations = fieldSetFlags()[5] ? this.Observations : (java.lang.CharSequence) defaultValue(fields()[5]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

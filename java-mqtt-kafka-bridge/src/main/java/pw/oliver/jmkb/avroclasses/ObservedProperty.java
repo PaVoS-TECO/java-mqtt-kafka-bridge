@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** An ObservedProperty specifies the phenomenon of an Observation. */
 @org.apache.avro.specific.AvroGenerated
 public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 3731332310618313331L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ObservedProperty\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"An ObservedProperty specifies the phenomenon of an Observation.\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the ObservedProperty\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the ObservedProperty\"},{\"name\":\"definition\",\"type\":\"string\",\"doc\":\"URI of the definition of the ObservedProperty\"}]}");
+  private static final long serialVersionUID = 3637974084524559410L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ObservedProperty\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"An ObservedProperty specifies the phenomenon of an Observation.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this ObservedProperty\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the ObservedProperty\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the ObservedProperty\"},{\"name\":\"definition\",\"type\":\"string\",\"doc\":\"URI of the definition of the ObservedProperty\"},{\"name\":\"Datastreams\",\"type\":[\"null\",\"string\"],\"doc\":\"Datastreams associated with this ObservedProperty\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,12 +52,16 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
     return DECODER.decode(b);
   }
 
+  /** iotId of this ObservedProperty */
+  @Deprecated public java.lang.CharSequence iotId;
   /** Name of the ObservedProperty */
   @Deprecated public java.lang.CharSequence name;
   /** Description of the ObservedProperty */
   @Deprecated public java.lang.CharSequence description;
   /** URI of the definition of the ObservedProperty */
   @Deprecated public java.lang.CharSequence definition;
+  /** Datastreams associated with this ObservedProperty */
+  @Deprecated public java.lang.CharSequence Datastreams;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -68,23 +72,29 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
 
   /**
    * All-args constructor.
+   * @param iotId iotId of this ObservedProperty
    * @param name Name of the ObservedProperty
    * @param description Description of the ObservedProperty
    * @param definition URI of the definition of the ObservedProperty
+   * @param Datastreams Datastreams associated with this ObservedProperty
    */
-  public ObservedProperty(java.lang.CharSequence name, java.lang.CharSequence description, java.lang.CharSequence definition) {
+  public ObservedProperty(java.lang.CharSequence iotId, java.lang.CharSequence name, java.lang.CharSequence description, java.lang.CharSequence definition, java.lang.CharSequence Datastreams) {
+    this.iotId = iotId;
     this.name = name;
     this.description = description;
     this.definition = definition;
+    this.Datastreams = Datastreams;
   }
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return name;
-    case 1: return description;
-    case 2: return definition;
+    case 0: return iotId;
+    case 1: return name;
+    case 2: return description;
+    case 3: return definition;
+    case 4: return Datastreams;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -93,11 +103,30 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: name = (java.lang.CharSequence)value$; break;
-    case 1: description = (java.lang.CharSequence)value$; break;
-    case 2: definition = (java.lang.CharSequence)value$; break;
+    case 0: iotId = (java.lang.CharSequence)value$; break;
+    case 1: name = (java.lang.CharSequence)value$; break;
+    case 2: description = (java.lang.CharSequence)value$; break;
+    case 3: definition = (java.lang.CharSequence)value$; break;
+    case 4: Datastreams = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
+  }
+
+  /**
+   * Gets the value of the 'iotId' field.
+   * @return iotId of this ObservedProperty
+   */
+  public java.lang.CharSequence getIotId() {
+    return iotId;
+  }
+
+  /**
+   * Sets the value of the 'iotId' field.
+   * iotId of this ObservedProperty
+   * @param value the value to set.
+   */
+  public void setIotId(java.lang.CharSequence value) {
+    this.iotId = value;
   }
 
   /**
@@ -152,6 +181,23 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
   }
 
   /**
+   * Gets the value of the 'Datastreams' field.
+   * @return Datastreams associated with this ObservedProperty
+   */
+  public java.lang.CharSequence getDatastreams() {
+    return Datastreams;
+  }
+
+  /**
+   * Sets the value of the 'Datastreams' field.
+   * Datastreams associated with this ObservedProperty
+   * @param value the value to set.
+   */
+  public void setDatastreams(java.lang.CharSequence value) {
+    this.Datastreams = value;
+  }
+
+  /**
    * Creates a new ObservedProperty RecordBuilder.
    * @return A new ObservedProperty RecordBuilder
    */
@@ -183,12 +229,16 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<ObservedProperty>
     implements org.apache.avro.data.RecordBuilder<ObservedProperty> {
 
+    /** iotId of this ObservedProperty */
+    private java.lang.CharSequence iotId;
     /** Name of the ObservedProperty */
     private java.lang.CharSequence name;
     /** Description of the ObservedProperty */
     private java.lang.CharSequence description;
     /** URI of the definition of the ObservedProperty */
     private java.lang.CharSequence definition;
+    /** Datastreams associated with this ObservedProperty */
+    private java.lang.CharSequence Datastreams;
 
     /** Creates a new Builder */
     private Builder() {
@@ -201,17 +251,25 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
      */
     private Builder(main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.name)) {
-        this.name = data().deepCopy(fields()[0].schema(), other.name);
+      if (isValidValue(fields()[0], other.iotId)) {
+        this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.description)) {
-        this.description = data().deepCopy(fields()[1].schema(), other.description);
+      if (isValidValue(fields()[1], other.name)) {
+        this.name = data().deepCopy(fields()[1].schema(), other.name);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.definition)) {
-        this.definition = data().deepCopy(fields()[2].schema(), other.definition);
+      if (isValidValue(fields()[2], other.description)) {
+        this.description = data().deepCopy(fields()[2].schema(), other.description);
         fieldSetFlags()[2] = true;
+      }
+      if (isValidValue(fields()[3], other.definition)) {
+        this.definition = data().deepCopy(fields()[3].schema(), other.definition);
+        fieldSetFlags()[3] = true;
+      }
+      if (isValidValue(fields()[4], other.Datastreams)) {
+        this.Datastreams = data().deepCopy(fields()[4].schema(), other.Datastreams);
+        fieldSetFlags()[4] = true;
       }
     }
 
@@ -221,18 +279,69 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
      */
     private Builder(main.java.pw.oliver.jmkb.avroclasses.ObservedProperty other) {
             super(SCHEMA$);
-      if (isValidValue(fields()[0], other.name)) {
-        this.name = data().deepCopy(fields()[0].schema(), other.name);
+      if (isValidValue(fields()[0], other.iotId)) {
+        this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.description)) {
-        this.description = data().deepCopy(fields()[1].schema(), other.description);
+      if (isValidValue(fields()[1], other.name)) {
+        this.name = data().deepCopy(fields()[1].schema(), other.name);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.definition)) {
-        this.definition = data().deepCopy(fields()[2].schema(), other.definition);
+      if (isValidValue(fields()[2], other.description)) {
+        this.description = data().deepCopy(fields()[2].schema(), other.description);
         fieldSetFlags()[2] = true;
       }
+      if (isValidValue(fields()[3], other.definition)) {
+        this.definition = data().deepCopy(fields()[3].schema(), other.definition);
+        fieldSetFlags()[3] = true;
+      }
+      if (isValidValue(fields()[4], other.Datastreams)) {
+        this.Datastreams = data().deepCopy(fields()[4].schema(), other.Datastreams);
+        fieldSetFlags()[4] = true;
+      }
+    }
+
+    /**
+      * Gets the value of the 'iotId' field.
+      * iotId of this ObservedProperty
+      * @return The value.
+      */
+    public java.lang.CharSequence getIotId() {
+      return iotId;
+    }
+
+    /**
+      * Sets the value of the 'iotId' field.
+      * iotId of this ObservedProperty
+      * @param value The value of 'iotId'.
+      * @return This builder.
+      */
+    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setIotId(java.lang.CharSequence value) {
+      validate(fields()[0], value);
+      this.iotId = value;
+      fieldSetFlags()[0] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'iotId' field has been set.
+      * iotId of this ObservedProperty
+      * @return True if the 'iotId' field has been set, false otherwise.
+      */
+    public boolean hasIotId() {
+      return fieldSetFlags()[0];
+    }
+
+
+    /**
+      * Clears the value of the 'iotId' field.
+      * iotId of this ObservedProperty
+      * @return This builder.
+      */
+    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearIotId() {
+      iotId = null;
+      fieldSetFlags()[0] = false;
+      return this;
     }
 
     /**
@@ -251,9 +360,9 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setName(java.lang.CharSequence value) {
-      validate(fields()[0], value);
+      validate(fields()[1], value);
       this.name = value;
-      fieldSetFlags()[0] = true;
+      fieldSetFlags()[1] = true;
       return this;
     }
 
@@ -263,7 +372,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * @return True if the 'name' field has been set, false otherwise.
       */
     public boolean hasName() {
-      return fieldSetFlags()[0];
+      return fieldSetFlags()[1];
     }
 
 
@@ -274,7 +383,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       */
     public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearName() {
       name = null;
-      fieldSetFlags()[0] = false;
+      fieldSetFlags()[1] = false;
       return this;
     }
 
@@ -294,9 +403,9 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setDescription(java.lang.CharSequence value) {
-      validate(fields()[1], value);
+      validate(fields()[2], value);
       this.description = value;
-      fieldSetFlags()[1] = true;
+      fieldSetFlags()[2] = true;
       return this;
     }
 
@@ -306,7 +415,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * @return True if the 'description' field has been set, false otherwise.
       */
     public boolean hasDescription() {
-      return fieldSetFlags()[1];
+      return fieldSetFlags()[2];
     }
 
 
@@ -317,7 +426,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       */
     public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearDescription() {
       description = null;
-      fieldSetFlags()[1] = false;
+      fieldSetFlags()[2] = false;
       return this;
     }
 
@@ -337,9 +446,9 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setDefinition(java.lang.CharSequence value) {
-      validate(fields()[2], value);
+      validate(fields()[3], value);
       this.definition = value;
-      fieldSetFlags()[2] = true;
+      fieldSetFlags()[3] = true;
       return this;
     }
 
@@ -349,7 +458,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * @return True if the 'definition' field has been set, false otherwise.
       */
     public boolean hasDefinition() {
-      return fieldSetFlags()[2];
+      return fieldSetFlags()[3];
     }
 
 
@@ -360,17 +469,63 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       */
     public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearDefinition() {
       definition = null;
-      fieldSetFlags()[2] = false;
+      fieldSetFlags()[3] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'Datastreams' field.
+      * Datastreams associated with this ObservedProperty
+      * @return The value.
+      */
+    public java.lang.CharSequence getDatastreams() {
+      return Datastreams;
+    }
+
+    /**
+      * Sets the value of the 'Datastreams' field.
+      * Datastreams associated with this ObservedProperty
+      * @param value The value of 'Datastreams'.
+      * @return This builder.
+      */
+    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setDatastreams(java.lang.CharSequence value) {
+      validate(fields()[4], value);
+      this.Datastreams = value;
+      fieldSetFlags()[4] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'Datastreams' field has been set.
+      * Datastreams associated with this ObservedProperty
+      * @return True if the 'Datastreams' field has been set, false otherwise.
+      */
+    public boolean hasDatastreams() {
+      return fieldSetFlags()[4];
+    }
+
+
+    /**
+      * Clears the value of the 'Datastreams' field.
+      * Datastreams associated with this ObservedProperty
+      * @return This builder.
+      */
+    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearDatastreams() {
+      Datastreams = null;
+      fieldSetFlags()[4] = false;
       return this;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public ObservedProperty build() {
       try {
         ObservedProperty record = new ObservedProperty();
-        record.name = fieldSetFlags()[0] ? this.name : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.description = fieldSetFlags()[1] ? this.description : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.definition = fieldSetFlags()[2] ? this.definition : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.iotId = fieldSetFlags()[0] ? this.iotId : (java.lang.CharSequence) defaultValue(fields()[0]);
+        record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.description = fieldSetFlags()[2] ? this.description : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.definition = fieldSetFlags()[3] ? this.definition : (java.lang.CharSequence) defaultValue(fields()[3]);
+        record.Datastreams = fieldSetFlags()[4] ? this.Datastreams : (java.lang.CharSequence) defaultValue(fields()[4]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

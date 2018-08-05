@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** An Observation represents a single Sensor reading of an ObservedProperty. A Sensor sends Observations to a specified Datastream. */
 @org.apache.avro.specific.AvroGenerated
 public class Observation extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 1169145886565930482L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Observation\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"An Observation represents a single Sensor reading of an ObservedProperty. A Sensor sends Observations to a specified Datastream.\",\"fields\":[{\"name\":\"phenomenonTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the phenomenon\"},{\"name\":\"resultTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the result\"},{\"name\":\"result\",\"type\":\"string\",\"doc\":\"Any result value represented as a string\"},{\"name\":\"resultQuality\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional string describing the quality of the result\"},{\"name\":\"validTime\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional time (ISO 8601) of validity\"},{\"name\":\"parameters\",\"type\":\"string\",\"doc\":\"Parameters of the Observation\"},{\"name\":\"Datastream\",\"type\":\"string\",\"doc\":\"Datastream associated with the Observation\"},{\"name\":\"FeatureOfInterest\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional FeatureOfInterest associated with the Observation\"}]}");
+  private static final long serialVersionUID = 8674339500485672619L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Observation\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"An Observation represents a single Sensor reading of an ObservedProperty. A Sensor sends Observations to a specified Datastream.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this Observation\"},{\"name\":\"phenomenonTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the phenomenon\"},{\"name\":\"resultTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the result\"},{\"name\":\"result\",\"type\":\"string\",\"doc\":\"Any result value represented as a string\"},{\"name\":\"resultQuality\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional string describing the quality of the result\"},{\"name\":\"validTime\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional time (ISO 8601) of validity\"},{\"name\":\"parameters\",\"type\":\"string\",\"doc\":\"Parameters of the Observation\"},{\"name\":\"Datastream\",\"type\":\"string\",\"doc\":\"Datastream associated with the Observation\"},{\"name\":\"FeatureOfInterest\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional FeatureOfInterest associated with the Observation\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,6 +52,8 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
     return DECODER.decode(b);
   }
 
+  /** iotId of this Observation */
+  @Deprecated public java.lang.CharSequence iotId;
   /** Time (ISO 8601) of the phenomenon */
   @Deprecated public java.lang.CharSequence phenomenonTime;
   /** Time (ISO 8601) of the result */
@@ -78,6 +80,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
 
   /**
    * All-args constructor.
+   * @param iotId iotId of this Observation
    * @param phenomenonTime Time (ISO 8601) of the phenomenon
    * @param resultTime Time (ISO 8601) of the result
    * @param result Any result value represented as a string
@@ -87,7 +90,8 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
    * @param Datastream Datastream associated with the Observation
    * @param FeatureOfInterest Optional FeatureOfInterest associated with the Observation
    */
-  public Observation(java.lang.CharSequence phenomenonTime, java.lang.CharSequence resultTime, java.lang.CharSequence result, java.lang.CharSequence resultQuality, java.lang.CharSequence validTime, java.lang.CharSequence parameters, java.lang.CharSequence Datastream, java.lang.CharSequence FeatureOfInterest) {
+  public Observation(java.lang.CharSequence iotId, java.lang.CharSequence phenomenonTime, java.lang.CharSequence resultTime, java.lang.CharSequence result, java.lang.CharSequence resultQuality, java.lang.CharSequence validTime, java.lang.CharSequence parameters, java.lang.CharSequence Datastream, java.lang.CharSequence FeatureOfInterest) {
+    this.iotId = iotId;
     this.phenomenonTime = phenomenonTime;
     this.resultTime = resultTime;
     this.result = result;
@@ -102,14 +106,15 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return phenomenonTime;
-    case 1: return resultTime;
-    case 2: return result;
-    case 3: return resultQuality;
-    case 4: return validTime;
-    case 5: return parameters;
-    case 6: return Datastream;
-    case 7: return FeatureOfInterest;
+    case 0: return iotId;
+    case 1: return phenomenonTime;
+    case 2: return resultTime;
+    case 3: return result;
+    case 4: return resultQuality;
+    case 5: return validTime;
+    case 6: return parameters;
+    case 7: return Datastream;
+    case 8: return FeatureOfInterest;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -118,16 +123,34 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: phenomenonTime = (java.lang.CharSequence)value$; break;
-    case 1: resultTime = (java.lang.CharSequence)value$; break;
-    case 2: result = (java.lang.CharSequence)value$; break;
-    case 3: resultQuality = (java.lang.CharSequence)value$; break;
-    case 4: validTime = (java.lang.CharSequence)value$; break;
-    case 5: parameters = (java.lang.CharSequence)value$; break;
-    case 6: Datastream = (java.lang.CharSequence)value$; break;
-    case 7: FeatureOfInterest = (java.lang.CharSequence)value$; break;
+    case 0: iotId = (java.lang.CharSequence)value$; break;
+    case 1: phenomenonTime = (java.lang.CharSequence)value$; break;
+    case 2: resultTime = (java.lang.CharSequence)value$; break;
+    case 3: result = (java.lang.CharSequence)value$; break;
+    case 4: resultQuality = (java.lang.CharSequence)value$; break;
+    case 5: validTime = (java.lang.CharSequence)value$; break;
+    case 6: parameters = (java.lang.CharSequence)value$; break;
+    case 7: Datastream = (java.lang.CharSequence)value$; break;
+    case 8: FeatureOfInterest = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
+  }
+
+  /**
+   * Gets the value of the 'iotId' field.
+   * @return iotId of this Observation
+   */
+  public java.lang.CharSequence getIotId() {
+    return iotId;
+  }
+
+  /**
+   * Sets the value of the 'iotId' field.
+   * iotId of this Observation
+   * @param value the value to set.
+   */
+  public void setIotId(java.lang.CharSequence value) {
+    this.iotId = value;
   }
 
   /**
@@ -298,6 +321,8 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Observation>
     implements org.apache.avro.data.RecordBuilder<Observation> {
 
+    /** iotId of this Observation */
+    private java.lang.CharSequence iotId;
     /** Time (ISO 8601) of the phenomenon */
     private java.lang.CharSequence phenomenonTime;
     /** Time (ISO 8601) of the result */
@@ -326,37 +351,41 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
      */
     private Builder(main.java.pw.oliver.jmkb.avroclasses.Observation.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.phenomenonTime)) {
-        this.phenomenonTime = data().deepCopy(fields()[0].schema(), other.phenomenonTime);
+      if (isValidValue(fields()[0], other.iotId)) {
+        this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.resultTime)) {
-        this.resultTime = data().deepCopy(fields()[1].schema(), other.resultTime);
+      if (isValidValue(fields()[1], other.phenomenonTime)) {
+        this.phenomenonTime = data().deepCopy(fields()[1].schema(), other.phenomenonTime);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.result)) {
-        this.result = data().deepCopy(fields()[2].schema(), other.result);
+      if (isValidValue(fields()[2], other.resultTime)) {
+        this.resultTime = data().deepCopy(fields()[2].schema(), other.resultTime);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.resultQuality)) {
-        this.resultQuality = data().deepCopy(fields()[3].schema(), other.resultQuality);
+      if (isValidValue(fields()[3], other.result)) {
+        this.result = data().deepCopy(fields()[3].schema(), other.result);
         fieldSetFlags()[3] = true;
       }
-      if (isValidValue(fields()[4], other.validTime)) {
-        this.validTime = data().deepCopy(fields()[4].schema(), other.validTime);
+      if (isValidValue(fields()[4], other.resultQuality)) {
+        this.resultQuality = data().deepCopy(fields()[4].schema(), other.resultQuality);
         fieldSetFlags()[4] = true;
       }
-      if (isValidValue(fields()[5], other.parameters)) {
-        this.parameters = data().deepCopy(fields()[5].schema(), other.parameters);
+      if (isValidValue(fields()[5], other.validTime)) {
+        this.validTime = data().deepCopy(fields()[5].schema(), other.validTime);
         fieldSetFlags()[5] = true;
       }
-      if (isValidValue(fields()[6], other.Datastream)) {
-        this.Datastream = data().deepCopy(fields()[6].schema(), other.Datastream);
+      if (isValidValue(fields()[6], other.parameters)) {
+        this.parameters = data().deepCopy(fields()[6].schema(), other.parameters);
         fieldSetFlags()[6] = true;
       }
-      if (isValidValue(fields()[7], other.FeatureOfInterest)) {
-        this.FeatureOfInterest = data().deepCopy(fields()[7].schema(), other.FeatureOfInterest);
+      if (isValidValue(fields()[7], other.Datastream)) {
+        this.Datastream = data().deepCopy(fields()[7].schema(), other.Datastream);
         fieldSetFlags()[7] = true;
+      }
+      if (isValidValue(fields()[8], other.FeatureOfInterest)) {
+        this.FeatureOfInterest = data().deepCopy(fields()[8].schema(), other.FeatureOfInterest);
+        fieldSetFlags()[8] = true;
       }
     }
 
@@ -366,38 +395,85 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
      */
     private Builder(main.java.pw.oliver.jmkb.avroclasses.Observation other) {
             super(SCHEMA$);
-      if (isValidValue(fields()[0], other.phenomenonTime)) {
-        this.phenomenonTime = data().deepCopy(fields()[0].schema(), other.phenomenonTime);
+      if (isValidValue(fields()[0], other.iotId)) {
+        this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.resultTime)) {
-        this.resultTime = data().deepCopy(fields()[1].schema(), other.resultTime);
+      if (isValidValue(fields()[1], other.phenomenonTime)) {
+        this.phenomenonTime = data().deepCopy(fields()[1].schema(), other.phenomenonTime);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.result)) {
-        this.result = data().deepCopy(fields()[2].schema(), other.result);
+      if (isValidValue(fields()[2], other.resultTime)) {
+        this.resultTime = data().deepCopy(fields()[2].schema(), other.resultTime);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.resultQuality)) {
-        this.resultQuality = data().deepCopy(fields()[3].schema(), other.resultQuality);
+      if (isValidValue(fields()[3], other.result)) {
+        this.result = data().deepCopy(fields()[3].schema(), other.result);
         fieldSetFlags()[3] = true;
       }
-      if (isValidValue(fields()[4], other.validTime)) {
-        this.validTime = data().deepCopy(fields()[4].schema(), other.validTime);
+      if (isValidValue(fields()[4], other.resultQuality)) {
+        this.resultQuality = data().deepCopy(fields()[4].schema(), other.resultQuality);
         fieldSetFlags()[4] = true;
       }
-      if (isValidValue(fields()[5], other.parameters)) {
-        this.parameters = data().deepCopy(fields()[5].schema(), other.parameters);
+      if (isValidValue(fields()[5], other.validTime)) {
+        this.validTime = data().deepCopy(fields()[5].schema(), other.validTime);
         fieldSetFlags()[5] = true;
       }
-      if (isValidValue(fields()[6], other.Datastream)) {
-        this.Datastream = data().deepCopy(fields()[6].schema(), other.Datastream);
+      if (isValidValue(fields()[6], other.parameters)) {
+        this.parameters = data().deepCopy(fields()[6].schema(), other.parameters);
         fieldSetFlags()[6] = true;
       }
-      if (isValidValue(fields()[7], other.FeatureOfInterest)) {
-        this.FeatureOfInterest = data().deepCopy(fields()[7].schema(), other.FeatureOfInterest);
+      if (isValidValue(fields()[7], other.Datastream)) {
+        this.Datastream = data().deepCopy(fields()[7].schema(), other.Datastream);
         fieldSetFlags()[7] = true;
       }
+      if (isValidValue(fields()[8], other.FeatureOfInterest)) {
+        this.FeatureOfInterest = data().deepCopy(fields()[8].schema(), other.FeatureOfInterest);
+        fieldSetFlags()[8] = true;
+      }
+    }
+
+    /**
+      * Gets the value of the 'iotId' field.
+      * iotId of this Observation
+      * @return The value.
+      */
+    public java.lang.CharSequence getIotId() {
+      return iotId;
+    }
+
+    /**
+      * Sets the value of the 'iotId' field.
+      * iotId of this Observation
+      * @param value The value of 'iotId'.
+      * @return This builder.
+      */
+    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setIotId(java.lang.CharSequence value) {
+      validate(fields()[0], value);
+      this.iotId = value;
+      fieldSetFlags()[0] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'iotId' field has been set.
+      * iotId of this Observation
+      * @return True if the 'iotId' field has been set, false otherwise.
+      */
+    public boolean hasIotId() {
+      return fieldSetFlags()[0];
+    }
+
+
+    /**
+      * Clears the value of the 'iotId' field.
+      * iotId of this Observation
+      * @return This builder.
+      */
+    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearIotId() {
+      iotId = null;
+      fieldSetFlags()[0] = false;
+      return this;
     }
 
     /**
@@ -416,9 +492,9 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setPhenomenonTime(java.lang.CharSequence value) {
-      validate(fields()[0], value);
+      validate(fields()[1], value);
       this.phenomenonTime = value;
-      fieldSetFlags()[0] = true;
+      fieldSetFlags()[1] = true;
       return this;
     }
 
@@ -428,7 +504,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return True if the 'phenomenonTime' field has been set, false otherwise.
       */
     public boolean hasPhenomenonTime() {
-      return fieldSetFlags()[0];
+      return fieldSetFlags()[1];
     }
 
 
@@ -439,7 +515,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearPhenomenonTime() {
       phenomenonTime = null;
-      fieldSetFlags()[0] = false;
+      fieldSetFlags()[1] = false;
       return this;
     }
 
@@ -459,9 +535,9 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setResultTime(java.lang.CharSequence value) {
-      validate(fields()[1], value);
+      validate(fields()[2], value);
       this.resultTime = value;
-      fieldSetFlags()[1] = true;
+      fieldSetFlags()[2] = true;
       return this;
     }
 
@@ -471,7 +547,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return True if the 'resultTime' field has been set, false otherwise.
       */
     public boolean hasResultTime() {
-      return fieldSetFlags()[1];
+      return fieldSetFlags()[2];
     }
 
 
@@ -482,7 +558,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearResultTime() {
       resultTime = null;
-      fieldSetFlags()[1] = false;
+      fieldSetFlags()[2] = false;
       return this;
     }
 
@@ -502,9 +578,9 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setResult(java.lang.CharSequence value) {
-      validate(fields()[2], value);
+      validate(fields()[3], value);
       this.result = value;
-      fieldSetFlags()[2] = true;
+      fieldSetFlags()[3] = true;
       return this;
     }
 
@@ -514,7 +590,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return True if the 'result' field has been set, false otherwise.
       */
     public boolean hasResult() {
-      return fieldSetFlags()[2];
+      return fieldSetFlags()[3];
     }
 
 
@@ -525,7 +601,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearResult() {
       result = null;
-      fieldSetFlags()[2] = false;
+      fieldSetFlags()[3] = false;
       return this;
     }
 
@@ -545,9 +621,9 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setResultQuality(java.lang.CharSequence value) {
-      validate(fields()[3], value);
+      validate(fields()[4], value);
       this.resultQuality = value;
-      fieldSetFlags()[3] = true;
+      fieldSetFlags()[4] = true;
       return this;
     }
 
@@ -557,7 +633,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return True if the 'resultQuality' field has been set, false otherwise.
       */
     public boolean hasResultQuality() {
-      return fieldSetFlags()[3];
+      return fieldSetFlags()[4];
     }
 
 
@@ -568,7 +644,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearResultQuality() {
       resultQuality = null;
-      fieldSetFlags()[3] = false;
+      fieldSetFlags()[4] = false;
       return this;
     }
 
@@ -588,9 +664,9 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setValidTime(java.lang.CharSequence value) {
-      validate(fields()[4], value);
+      validate(fields()[5], value);
       this.validTime = value;
-      fieldSetFlags()[4] = true;
+      fieldSetFlags()[5] = true;
       return this;
     }
 
@@ -600,7 +676,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return True if the 'validTime' field has been set, false otherwise.
       */
     public boolean hasValidTime() {
-      return fieldSetFlags()[4];
+      return fieldSetFlags()[5];
     }
 
 
@@ -611,7 +687,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearValidTime() {
       validTime = null;
-      fieldSetFlags()[4] = false;
+      fieldSetFlags()[5] = false;
       return this;
     }
 
@@ -631,9 +707,9 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setParameters(java.lang.CharSequence value) {
-      validate(fields()[5], value);
+      validate(fields()[6], value);
       this.parameters = value;
-      fieldSetFlags()[5] = true;
+      fieldSetFlags()[6] = true;
       return this;
     }
 
@@ -643,7 +719,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return True if the 'parameters' field has been set, false otherwise.
       */
     public boolean hasParameters() {
-      return fieldSetFlags()[5];
+      return fieldSetFlags()[6];
     }
 
 
@@ -654,7 +730,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearParameters() {
       parameters = null;
-      fieldSetFlags()[5] = false;
+      fieldSetFlags()[6] = false;
       return this;
     }
 
@@ -674,9 +750,9 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setDatastream(java.lang.CharSequence value) {
-      validate(fields()[6], value);
+      validate(fields()[7], value);
       this.Datastream = value;
-      fieldSetFlags()[6] = true;
+      fieldSetFlags()[7] = true;
       return this;
     }
 
@@ -686,7 +762,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return True if the 'Datastream' field has been set, false otherwise.
       */
     public boolean hasDatastream() {
-      return fieldSetFlags()[6];
+      return fieldSetFlags()[7];
     }
 
 
@@ -697,7 +773,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearDatastream() {
       Datastream = null;
-      fieldSetFlags()[6] = false;
+      fieldSetFlags()[7] = false;
       return this;
     }
 
@@ -717,9 +793,9 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setFeatureOfInterest(java.lang.CharSequence value) {
-      validate(fields()[7], value);
+      validate(fields()[8], value);
       this.FeatureOfInterest = value;
-      fieldSetFlags()[7] = true;
+      fieldSetFlags()[8] = true;
       return this;
     }
 
@@ -729,7 +805,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return True if the 'FeatureOfInterest' field has been set, false otherwise.
       */
     public boolean hasFeatureOfInterest() {
-      return fieldSetFlags()[7];
+      return fieldSetFlags()[8];
     }
 
 
@@ -740,7 +816,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearFeatureOfInterest() {
       FeatureOfInterest = null;
-      fieldSetFlags()[7] = false;
+      fieldSetFlags()[8] = false;
       return this;
     }
 
@@ -749,14 +825,15 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
     public Observation build() {
       try {
         Observation record = new Observation();
-        record.phenomenonTime = fieldSetFlags()[0] ? this.phenomenonTime : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.resultTime = fieldSetFlags()[1] ? this.resultTime : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.result = fieldSetFlags()[2] ? this.result : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.resultQuality = fieldSetFlags()[3] ? this.resultQuality : (java.lang.CharSequence) defaultValue(fields()[3]);
-        record.validTime = fieldSetFlags()[4] ? this.validTime : (java.lang.CharSequence) defaultValue(fields()[4]);
-        record.parameters = fieldSetFlags()[5] ? this.parameters : (java.lang.CharSequence) defaultValue(fields()[5]);
-        record.Datastream = fieldSetFlags()[6] ? this.Datastream : (java.lang.CharSequence) defaultValue(fields()[6]);
-        record.FeatureOfInterest = fieldSetFlags()[7] ? this.FeatureOfInterest : (java.lang.CharSequence) defaultValue(fields()[7]);
+        record.iotId = fieldSetFlags()[0] ? this.iotId : (java.lang.CharSequence) defaultValue(fields()[0]);
+        record.phenomenonTime = fieldSetFlags()[1] ? this.phenomenonTime : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.resultTime = fieldSetFlags()[2] ? this.resultTime : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.result = fieldSetFlags()[3] ? this.result : (java.lang.CharSequence) defaultValue(fields()[3]);
+        record.resultQuality = fieldSetFlags()[4] ? this.resultQuality : (java.lang.CharSequence) defaultValue(fields()[4]);
+        record.validTime = fieldSetFlags()[5] ? this.validTime : (java.lang.CharSequence) defaultValue(fields()[5]);
+        record.parameters = fieldSetFlags()[6] ? this.parameters : (java.lang.CharSequence) defaultValue(fields()[6]);
+        record.Datastream = fieldSetFlags()[7] ? this.Datastream : (java.lang.CharSequence) defaultValue(fields()[7]);
+        record.FeatureOfInterest = fieldSetFlags()[8] ? this.FeatureOfInterest : (java.lang.CharSequence) defaultValue(fields()[8]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

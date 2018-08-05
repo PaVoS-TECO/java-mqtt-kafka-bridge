@@ -37,7 +37,7 @@ public class SchemaRegistryConnector {
 		
 			BufferedReader reader = new BufferedReader((new InputStreamReader(conn.getInputStream())));
 			StringBuilder sb = new StringBuilder();
-			reader.lines().forEachOrdered(line->sb.append(line));
+			reader.lines().forEachOrdered(sb::append);
 		
 			JSONObject jo = (JSONObject) new JSONParser().parse(sb.toString());
 			return jo.get("schema").toString();
