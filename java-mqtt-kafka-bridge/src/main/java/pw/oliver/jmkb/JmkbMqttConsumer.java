@@ -84,9 +84,12 @@ public class JmkbMqttConsumer implements MqttCallback {
 		}
 		// convert message and get key
 		SpecificRecordBase avroMessage = converter.mqttMessageToAvro(topic, message);
-		String key = (String) avroMessage.get("iotId");
-
-		producer.send(topic, key, avroMessage);
+		if (avroMessage == null) {
+			return;
+		} else {
+			String key = (String) avroMessage.get("iotId");
+			producer.send(topic, key, avroMessage);
+		}
 	}
 
 	@Override
