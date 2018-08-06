@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** An Observation represents a single Sensor reading of an ObservedProperty. A Sensor sends Observations to a specified Datastream. */
 @org.apache.avro.specific.AvroGenerated
 public class Observation extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 8674339500485672619L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Observation\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"An Observation represents a single Sensor reading of an ObservedProperty. A Sensor sends Observations to a specified Datastream.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this Observation\"},{\"name\":\"phenomenonTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the phenomenon\"},{\"name\":\"resultTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the result\"},{\"name\":\"result\",\"type\":\"string\",\"doc\":\"Any result value represented as a string\"},{\"name\":\"resultQuality\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional string describing the quality of the result\"},{\"name\":\"validTime\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional time (ISO 8601) of validity\"},{\"name\":\"parameters\",\"type\":\"string\",\"doc\":\"Parameters of the Observation\"},{\"name\":\"Datastream\",\"type\":\"string\",\"doc\":\"Datastream associated with the Observation\"},{\"name\":\"FeatureOfInterest\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional FeatureOfInterest associated with the Observation\"}]}");
+  private static final long serialVersionUID = -8728910559290269715L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Observation\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"An Observation represents a single Sensor reading of an ObservedProperty. A Sensor sends Observations to a specified Datastream.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this Observation\"},{\"name\":\"phenomenonTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the phenomenon\"},{\"name\":\"resultTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the result\"},{\"name\":\"result\",\"type\":\"string\",\"doc\":\"Any result value represented as a string\"},{\"name\":\"resultQuality\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional string describing the quality of the result\"},{\"name\":\"validTime\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional time (ISO 8601) of validity\"},{\"name\":\"Datastream\",\"type\":\"string\",\"doc\":\"Datastream associated with the Observation\"},{\"name\":\"FeatureOfInterest\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional FeatureOfInterest associated with the Observation\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -64,8 +64,6 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
   @Deprecated public java.lang.CharSequence resultQuality;
   /** Optional time (ISO 8601) of validity */
   @Deprecated public java.lang.CharSequence validTime;
-  /** Parameters of the Observation */
-  @Deprecated public java.lang.CharSequence parameters;
   /** Datastream associated with the Observation */
   @Deprecated public java.lang.CharSequence Datastream;
   /** Optional FeatureOfInterest associated with the Observation */
@@ -86,18 +84,16 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
    * @param result Any result value represented as a string
    * @param resultQuality Optional string describing the quality of the result
    * @param validTime Optional time (ISO 8601) of validity
-   * @param parameters Parameters of the Observation
    * @param Datastream Datastream associated with the Observation
    * @param FeatureOfInterest Optional FeatureOfInterest associated with the Observation
    */
-  public Observation(java.lang.CharSequence iotId, java.lang.CharSequence phenomenonTime, java.lang.CharSequence resultTime, java.lang.CharSequence result, java.lang.CharSequence resultQuality, java.lang.CharSequence validTime, java.lang.CharSequence parameters, java.lang.CharSequence Datastream, java.lang.CharSequence FeatureOfInterest) {
+  public Observation(java.lang.CharSequence iotId, java.lang.CharSequence phenomenonTime, java.lang.CharSequence resultTime, java.lang.CharSequence result, java.lang.CharSequence resultQuality, java.lang.CharSequence validTime, java.lang.CharSequence Datastream, java.lang.CharSequence FeatureOfInterest) {
     this.iotId = iotId;
     this.phenomenonTime = phenomenonTime;
     this.resultTime = resultTime;
     this.result = result;
     this.resultQuality = resultQuality;
     this.validTime = validTime;
-    this.parameters = parameters;
     this.Datastream = Datastream;
     this.FeatureOfInterest = FeatureOfInterest;
   }
@@ -112,9 +108,8 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
     case 3: return result;
     case 4: return resultQuality;
     case 5: return validTime;
-    case 6: return parameters;
-    case 7: return Datastream;
-    case 8: return FeatureOfInterest;
+    case 6: return Datastream;
+    case 7: return FeatureOfInterest;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -129,9 +124,8 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
     case 3: result = (java.lang.CharSequence)value$; break;
     case 4: resultQuality = (java.lang.CharSequence)value$; break;
     case 5: validTime = (java.lang.CharSequence)value$; break;
-    case 6: parameters = (java.lang.CharSequence)value$; break;
-    case 7: Datastream = (java.lang.CharSequence)value$; break;
-    case 8: FeatureOfInterest = (java.lang.CharSequence)value$; break;
+    case 6: Datastream = (java.lang.CharSequence)value$; break;
+    case 7: FeatureOfInterest = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -239,23 +233,6 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
   }
 
   /**
-   * Gets the value of the 'parameters' field.
-   * @return Parameters of the Observation
-   */
-  public java.lang.CharSequence getParameters() {
-    return parameters;
-  }
-
-  /**
-   * Sets the value of the 'parameters' field.
-   * Parameters of the Observation
-   * @param value the value to set.
-   */
-  public void setParameters(java.lang.CharSequence value) {
-    this.parameters = value;
-  }
-
-  /**
    * Gets the value of the 'Datastream' field.
    * @return Datastream associated with the Observation
    */
@@ -333,8 +310,6 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
     private java.lang.CharSequence resultQuality;
     /** Optional time (ISO 8601) of validity */
     private java.lang.CharSequence validTime;
-    /** Parameters of the Observation */
-    private java.lang.CharSequence parameters;
     /** Datastream associated with the Observation */
     private java.lang.CharSequence Datastream;
     /** Optional FeatureOfInterest associated with the Observation */
@@ -375,17 +350,13 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
         this.validTime = data().deepCopy(fields()[5].schema(), other.validTime);
         fieldSetFlags()[5] = true;
       }
-      if (isValidValue(fields()[6], other.parameters)) {
-        this.parameters = data().deepCopy(fields()[6].schema(), other.parameters);
+      if (isValidValue(fields()[6], other.Datastream)) {
+        this.Datastream = data().deepCopy(fields()[6].schema(), other.Datastream);
         fieldSetFlags()[6] = true;
       }
-      if (isValidValue(fields()[7], other.Datastream)) {
-        this.Datastream = data().deepCopy(fields()[7].schema(), other.Datastream);
+      if (isValidValue(fields()[7], other.FeatureOfInterest)) {
+        this.FeatureOfInterest = data().deepCopy(fields()[7].schema(), other.FeatureOfInterest);
         fieldSetFlags()[7] = true;
-      }
-      if (isValidValue(fields()[8], other.FeatureOfInterest)) {
-        this.FeatureOfInterest = data().deepCopy(fields()[8].schema(), other.FeatureOfInterest);
-        fieldSetFlags()[8] = true;
       }
     }
 
@@ -419,17 +390,13 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
         this.validTime = data().deepCopy(fields()[5].schema(), other.validTime);
         fieldSetFlags()[5] = true;
       }
-      if (isValidValue(fields()[6], other.parameters)) {
-        this.parameters = data().deepCopy(fields()[6].schema(), other.parameters);
+      if (isValidValue(fields()[6], other.Datastream)) {
+        this.Datastream = data().deepCopy(fields()[6].schema(), other.Datastream);
         fieldSetFlags()[6] = true;
       }
-      if (isValidValue(fields()[7], other.Datastream)) {
-        this.Datastream = data().deepCopy(fields()[7].schema(), other.Datastream);
+      if (isValidValue(fields()[7], other.FeatureOfInterest)) {
+        this.FeatureOfInterest = data().deepCopy(fields()[7].schema(), other.FeatureOfInterest);
         fieldSetFlags()[7] = true;
-      }
-      if (isValidValue(fields()[8], other.FeatureOfInterest)) {
-        this.FeatureOfInterest = data().deepCopy(fields()[8].schema(), other.FeatureOfInterest);
-        fieldSetFlags()[8] = true;
       }
     }
 
@@ -692,49 +659,6 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
     }
 
     /**
-      * Gets the value of the 'parameters' field.
-      * Parameters of the Observation
-      * @return The value.
-      */
-    public java.lang.CharSequence getParameters() {
-      return parameters;
-    }
-
-    /**
-      * Sets the value of the 'parameters' field.
-      * Parameters of the Observation
-      * @param value The value of 'parameters'.
-      * @return This builder.
-      */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setParameters(java.lang.CharSequence value) {
-      validate(fields()[6], value);
-      this.parameters = value;
-      fieldSetFlags()[6] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'parameters' field has been set.
-      * Parameters of the Observation
-      * @return True if the 'parameters' field has been set, false otherwise.
-      */
-    public boolean hasParameters() {
-      return fieldSetFlags()[6];
-    }
-
-
-    /**
-      * Clears the value of the 'parameters' field.
-      * Parameters of the Observation
-      * @return This builder.
-      */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearParameters() {
-      parameters = null;
-      fieldSetFlags()[6] = false;
-      return this;
-    }
-
-    /**
       * Gets the value of the 'Datastream' field.
       * Datastream associated with the Observation
       * @return The value.
@@ -750,9 +674,9 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setDatastream(java.lang.CharSequence value) {
-      validate(fields()[7], value);
+      validate(fields()[6], value);
       this.Datastream = value;
-      fieldSetFlags()[7] = true;
+      fieldSetFlags()[6] = true;
       return this;
     }
 
@@ -762,7 +686,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return True if the 'Datastream' field has been set, false otherwise.
       */
     public boolean hasDatastream() {
-      return fieldSetFlags()[7];
+      return fieldSetFlags()[6];
     }
 
 
@@ -773,7 +697,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearDatastream() {
       Datastream = null;
-      fieldSetFlags()[7] = false;
+      fieldSetFlags()[6] = false;
       return this;
     }
 
@@ -793,9 +717,9 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setFeatureOfInterest(java.lang.CharSequence value) {
-      validate(fields()[8], value);
+      validate(fields()[7], value);
       this.FeatureOfInterest = value;
-      fieldSetFlags()[8] = true;
+      fieldSetFlags()[7] = true;
       return this;
     }
 
@@ -805,7 +729,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @return True if the 'FeatureOfInterest' field has been set, false otherwise.
       */
     public boolean hasFeatureOfInterest() {
-      return fieldSetFlags()[8];
+      return fieldSetFlags()[7];
     }
 
 
@@ -816,7 +740,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       */
     public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearFeatureOfInterest() {
       FeatureOfInterest = null;
-      fieldSetFlags()[8] = false;
+      fieldSetFlags()[7] = false;
       return this;
     }
 
@@ -831,9 +755,8 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
         record.result = fieldSetFlags()[3] ? this.result : (java.lang.CharSequence) defaultValue(fields()[3]);
         record.resultQuality = fieldSetFlags()[4] ? this.resultQuality : (java.lang.CharSequence) defaultValue(fields()[4]);
         record.validTime = fieldSetFlags()[5] ? this.validTime : (java.lang.CharSequence) defaultValue(fields()[5]);
-        record.parameters = fieldSetFlags()[6] ? this.parameters : (java.lang.CharSequence) defaultValue(fields()[6]);
-        record.Datastream = fieldSetFlags()[7] ? this.Datastream : (java.lang.CharSequence) defaultValue(fields()[7]);
-        record.FeatureOfInterest = fieldSetFlags()[8] ? this.FeatureOfInterest : (java.lang.CharSequence) defaultValue(fields()[8]);
+        record.Datastream = fieldSetFlags()[6] ? this.Datastream : (java.lang.CharSequence) defaultValue(fields()[6]);
+        record.FeatureOfInterest = fieldSetFlags()[7] ? this.FeatureOfInterest : (java.lang.CharSequence) defaultValue(fields()[7]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

@@ -91,7 +91,6 @@ public class MqttMessageConverter {
 						.setResultTime(m.get("resultTime").toString())
 						.setResultQuality((m.get("resultQuality") == null) ? null : m.get("resultQuality").toString())
 						.setValidTime((m.get("validTime") == null) ? null : m.get("validTime").toString())
-						.setParameters(m.get("parameters").toString())
 						.setDatastream(conv.getSingleIotId(m.get("Datastream@iot.navigationLink").toString()))
 						.setFeatureOfInterest((m.get("FeatureOfInterest@iot.navigationLink") == null) ? null : conv.getSingleIotId(m.get("FeatureOfInterest@iot.navigationLink").toString()))
 						.build();
