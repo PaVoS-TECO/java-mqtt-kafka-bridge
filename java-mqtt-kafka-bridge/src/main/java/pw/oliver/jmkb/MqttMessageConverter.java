@@ -35,7 +35,7 @@ public class MqttMessageConverter {
 		// https://github.com/allegro/json-avro-converter
 		JSONObject m;
 		try {
-			m = (JSONObject) new JSONParser().parse(message.getPayload().toString());
+			m = (JSONObject) new JSONParser().parse(new String(message.getPayload()));
 		} catch (ParseException e) {
 			logger.log(Level.WARNING, e.toString(), e);
 			return null;
@@ -45,7 +45,7 @@ public class MqttMessageConverter {
 			case "Datastreams":
 				JSONObject uom = (JSONObject) m.get("unitOfMeasurement");
 				sr = Datastream.newBuilder()
-				.setIotId((String) m.get("@iot.id"))
+				.setIotId(m.get("@iot.id").toString())
 				.setName((String) m.get("name"))
 				.setDescription((String) m.get("description"))
 				.setUnitOfMeasurement(UnitOfMeasurement.newBuilder()
@@ -65,7 +65,7 @@ public class MqttMessageConverter {
 				break;
 			case "Sensors":
 				sr = Sensor.newBuilder()
-				.setIotId((String) m.get("@iot.id"))
+				.setIotId(m.get("@iot.id").toString())
 				.setName((String) m.get("name"))
 				.setDescription((String) m.get("description"))
 				.setEncodingType((String) m.get("encodingType"))
@@ -75,7 +75,7 @@ public class MqttMessageConverter {
 				break;
 			case "ObservedProperties":
 				sr = ObservedProperty.newBuilder()
-				.setIotId((String) m.get("@iot.id"))
+				.setIotId(m.get("@iot.id").toString())
 				.setName((String) m.get("name"))
 				.setDescription((String) m.get("description"))
 				.setDefinition((String) m.get("definition"))
@@ -84,7 +84,7 @@ public class MqttMessageConverter {
 				break;
 			case "Observations":
 				sr = Observation.newBuilder()
-				.setIotId((String) m.get("@iot.id"))
+				.setIotId(m.get("@iot.id").toString())
 				.setPhenomenonTime((String) m.get("phenomenonTime"))
 				.setResult((String) m.get("result"))
 				.setResultTime((String) m.get("resultTime"))
@@ -106,7 +106,7 @@ public class MqttMessageConverter {
 				}
 				
 				sr = FeatureOfInterest.newBuilder()
-				.setIotId((String) m.get("@iot.id"))
+				.setIotId(m.get("@iot.id").toString())
 				.setName((String) m.get("name"))
 				.setDescription((String) m.get("description"))
 				.setEncodingType((String) m.get("encodingType"))
@@ -119,7 +119,7 @@ public class MqttMessageConverter {
 				break;
 			case "Things":
 				sr = Thing.newBuilder()
-				.setIotId((String) m.get("@iot.id"))
+				.setIotId(m.get("@iot.id").toString())
 				.setName((String) m.get("name"))
 				.setDescription((String) m.get("description"))
 				.setLocations(conv.getMultipleIotIds((String) m.get("Locations@iot.navigationLink")))
@@ -141,7 +141,7 @@ public class MqttMessageConverter {
 				}
 				
 				sr = Location.newBuilder()
-				.setIotId((String) m.get("@iot.id"))
+				.setIotId(m.get("@iot.id").toString())
 				.setName((String) m.get("name"))
 				.setDescription((String) m.get("description"))
 				.setEncodingType((String) m.get("encodingType"))

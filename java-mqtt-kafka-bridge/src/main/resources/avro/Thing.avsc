@@ -8,7 +8,6 @@
 		{"name": "name", "type": "string", "doc": "Name of the Thing"},
 		{"name": "description", "type": "string", "doc": "Description of the Thing"},
 		{"name": "Locations", "type": ["null", "string"], "doc": "Optional Location(s) of the Thing"},
-		{"name": "HistoricalLocations", "type": ["null", "string"], "doc": "Optional HistoricalLocation(s) of the Thing"},
 		{"name": "Datastreams", "type": ["null", "string"], "doc": "Optional Datastream(s) of the Thing"}
 	]
 }
