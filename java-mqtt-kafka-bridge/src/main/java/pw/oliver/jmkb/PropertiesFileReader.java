@@ -8,10 +8,23 @@ import java.net.URISyntaxException;
 import java.security.InvalidParameterException;
 import java.util.Properties;
 
-public class PropertiesFileReader {
+/**
+ * Helper class to read entries of the jmkb.properties file required for the bridge.
+ * @author Oliver
+ *
+ */
+public final class PropertiesFileReader {
 
 	private static Properties properties;
 	
+	// prevent unwanted instantiation of utility class
+	private PropertiesFileReader() {
+		throw new AssertionError("Instantiating utility class!");
+	}
+	
+	/**
+	 * Read the properties file and check its values for validity.
+	 */
 	public static void init() {
 		properties = new Properties();
 		
@@ -37,7 +50,8 @@ public class PropertiesFileReader {
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.err.println("There was an error reading the configuration file.\n"
-					+ "Please make sure that there is a file named 'jmkb.properties' at the root directory of the program.");
+					+ "Please make sure that there is a file named 'jmkb.properties' at "
+					+ "the root directory of the program.");
 			System.exit(-1);
 		}
 		
@@ -91,11 +105,18 @@ public class PropertiesFileReader {
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.err.println("There was an error updating the configuration file.\n"
-					+ "Please make sure that there is a file named 'jmkb.properties' at the root directory of the program.");
+					+ "Please make sure that there is a file named 'jmkb.properties' at "
+					+ "the root directory of the program.");
 			System.exit(-1);
 		}
 	}
 	
+	/**
+	 * Search for the value to a given key from the jmkb.properties file.
+	 * Returns the value if the key is found, {@code null} if not.
+	 * @param key The key of the property
+	 * @return The value associated with the specified key
+	 */
 	public static String getProperty(String key) {
 		return properties.getProperty(key);
 	}

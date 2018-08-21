@@ -7,12 +7,21 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
+/**
+ * Helper class to connect and interact with the Avro schema registry.
+ * @author Oliver
+ *
+ */
 public class SchemaRegistryConnector {
 	
 	private final String schemaRegistryURI;
 	
+	/**
+	 * Constructor. Tests if a connection to the schema registry can be established.
+	 */
 	public SchemaRegistryConnector() {
 		schemaRegistryURI = PropertiesFileReader.getProperty("schemaRegistryURI");
 		try {
@@ -50,6 +59,11 @@ public class SchemaRegistryConnector {
 		}
 	}
 	
+	/**
+	 * Get the schema with the specified id.
+	 * @param id The id of the schema
+	 * @return The schema
+	 */
 	public String getSchemaById(int id) {
 		try {
 			URL url = new URL(schemaRegistryURI + "/schemas/ids/" + id);
@@ -60,6 +74,11 @@ public class SchemaRegistryConnector {
 		}
 	}
 	
+	/**
+	 * Get the latest version of the schema with the specified subject.
+	 * @param subject The subject of the schema
+	 * @return The schema
+	 */
 	public String getSchemaBySubject(String subject) {
 		try {
 			URL url = new URL(schemaRegistryURI + "/subjects/" + subject + "/versions/latest");
@@ -70,6 +89,12 @@ public class SchemaRegistryConnector {
 		}
 	}
 	
+	/**
+	 * Get the specified version of the schema with the specified subject.
+	 * @param subject The subject of the schema
+	 * @param version The version of the schema
+	 * @return The schema
+	 */
 	public String getSchemaBySubject(String subject, int version) {
 		try {
 			URL url = new URL(schemaRegistryURI + "/subjects/" + subject + "/versions/" + version);

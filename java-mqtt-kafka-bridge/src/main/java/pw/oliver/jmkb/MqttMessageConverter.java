@@ -20,16 +20,32 @@ import main.java.pw.oliver.jmkb.avroclasses.Sensor;
 import main.java.pw.oliver.jmkb.avroclasses.Thing;
 import main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement;
 
+/**
+ * This class handles the conversion of MqttMessages to a different format.
+ * @author Oliver
+ *
+ */
 public class MqttMessageConverter {
 
-	private static final Logger logger = Logger.getLogger(MqttMessageConverter.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(MqttMessageConverter.class.getName());
 
 	private FrostIotIdConverter conv;
 
+	/**
+	 * Default constructor.
+	 */
 	public MqttMessageConverter() {
 		conv = new FrostIotIdConverter();
 	}
 
+	/**
+	 * Converts an MqttMessage to a SpecificRecordBase object based on the type of FROST topic.
+	 * The returned object will actually be an instance of one of the seven classes defined in the
+	 * avroclasses subpackage.
+	 * @param topic The topic of the MqttMessage
+	 * @param message The MqttMessage
+	 * @return a SpecificRecordBase object
+	 */
 	public SpecificRecordBase mqttMessageToAvro(String topic, MqttMessage message) {
 		// This repo might contain a better implementation of this method:
 		// https://github.com/allegro/json-avro-converter
@@ -37,7 +53,7 @@ public class MqttMessageConverter {
 		try {
 			m = (JSONObject) new JSONParser().parse(new String(message.getPayload()));
 		} catch (ParseException e) {
-			logger.log(Level.WARNING, e.toString(), e);
+			LOGGER.log(Level.WARNING, e.toString(), e);
 			return null;
 		}
 		SpecificRecordBase sr = null;
@@ -123,7 +139,6 @@ public class MqttMessageConverter {
 						.setName(m.get("name").toString())
 						.setDescription(m.get("description").toString())
 						.setLocations((m.get("Locations@iot.navigationLink") == null) ? null : conv.getMultipleIotIds(m.get("Locations@iot.navigationLink").toString()))
-						//.setHistoricalLocations(conv.getMultipleIotIds(m.get("HistoricalLocations@iot.navigationLink").toString()))
 						.setDatastreams((m.get("Datastreams@iot.navigationLink") == null) ? null : conv.getMultipleIotIds(m.get("Datastreams@iot.navigationLink").toString()))
 						.build();
 				break;
@@ -157,7 +172,7 @@ public class MqttMessageConverter {
 				break;
 			}
 		} catch (NullPointerException e) {
-			logger.log(Level.SEVERE, e.toString(), e);
+			LOGGER.log(Level.SEVERE, e.toString(), e);
 			return null;
 		}
 		return sr;

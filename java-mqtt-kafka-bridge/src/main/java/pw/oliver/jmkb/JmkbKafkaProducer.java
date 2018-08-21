@@ -10,11 +10,19 @@ import org.apache.kafka.common.serialization.StringSerializer;
 
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 
-
+/**
+ * This class is the Kafka record producer for the bridge.
+ * It contains functionality to send Kafka records to the Kafka broker defined in the properties file.
+ * @author Oliver
+ *
+ */
 public class JmkbKafkaProducer {
 	
 	private KafkaProducer<String, SpecificRecordBase> producer;
 	
+	/**
+	 * Constructor. Initializes the Kafka producer.
+	 */
 	public JmkbKafkaProducer() {
 		String kafkaBrokerURI = PropertiesFileReader.getProperty("kafkaBrokerURI");
 		String schemaRegistryURI = PropertiesFileReader.getProperty("schemaRegistryURI");
@@ -30,6 +38,12 @@ public class JmkbKafkaProducer {
 		producer = new KafkaProducer<>(properties);
 	}
 	
+	/**
+	 * Creates a Kafka record based on the given topic, key and SpecificRecordBase object.
+	 * @param topic The topic of the record
+	 * @param key The key of the record
+	 * @param avroMessage The SpecificRecordBase to send
+	 */
 	public void send(String topic, String key, SpecificRecordBase avroMessage) {
 		producer.send(new ProducerRecord<String, SpecificRecordBase>(topic, key, avroMessage));
 		producer.flush();
@@ -52,6 +66,10 @@ public class JmkbKafkaProducer {
 		}*/
 	}
 	
+	/**
+	 * Disconnects the Kafka producer from the Kafka broker. This effectively destroys the producer.
+	 * Subsequent calls to {@link #send(String, String, SpecificRecordBase)} will not work.
+	 */
 	public void disconnect() {
 		producer.close(2, TimeUnit.SECONDS);
 	}

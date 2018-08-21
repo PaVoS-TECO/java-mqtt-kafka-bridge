@@ -1,16 +1,28 @@
 package main.java.pw.oliver.jmkb;
 
 /**
- * This class is a bridge between a FROST-Server and Apache Kafka.
- * It serves as a MQTT consumer and an Apache Kafka Producer.
+ * This is the main class for the bridge between a FROST-Server and Apache Kafka.
+ * It initializes a Kafka producer and a MQTT consumer.
+ * The bridge can be gracefully stopped via the Ctrl+C combination.
+ * This calls {@link JmkbKafkaProducer#disconnect()} and {@link JmkbMqttConsumer#disconnect()}
+ * and subsequently terminates the program.
  * 
  * @author Oliver
  * 
  * @version 1.0
  */
 
-public class Main {
+public final class Main {
 	
+	// prevent unwanted instantiation of utility class
+	private Main() {
+		throw new AssertionError("Instantiating utility class!");
+	}
+	
+	/**
+	 * The main class. Initializes required classes and then enters an infinite loop waiting for new MQTT messages.
+	 * @param args Parameters given to the main class (unused)
+	 */
 	public static void main(String[] args) {
 		
 		PropertiesFileReader.init();
@@ -33,7 +45,9 @@ public class Main {
 		System.out.println("The bridge is now running, terminate with Ctrl+C.");
 		
 		// infinite loop to keep bridge running, can be interrupted with Ctrl+C.
-		while(true);
+		while (true) {
+			// wait for messages to process
+		}
 	}
 	
 }

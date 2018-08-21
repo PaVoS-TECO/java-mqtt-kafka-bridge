@@ -16,14 +16,56 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+/**
+ * Helper class to extract a single or multiple {@code @iot.id}s from FROST's {@code @iot.navigationLinks}. 
+ * @author Oliver
+ *
+ */
 public class FrostIotIdConverter {
 
-	private static final Logger logger = Logger.getLogger(FrostIotIdConverter.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(FrostIotIdConverter.class.getName());
 	
+	/**
+	 * Default constructor.
+	 */
 	public FrostIotIdConverter() {
 		
 	}
 	
+	/**
+	 * Get a single or multiple {@code @iot.id}s from a given link.
+	 * @param link The address to poll from
+	 * @return A String containing a single {@code @iot.id} or a commaseparated
+	 * enumeration of multiple {@code @iot.id}s.
+	 */
+	public String getIotIds(String link) {
+		if (link == null) {
+			return null;
+		}
+		JSONObject jo = getJSONObjectFromNavigationLink(link);
+		if (jo.containsKey("@iot.id")) {
+			return jo.get("@iot.id").toString();
+		} else if (jo.containsKey("value")) {
+			LinkedList<String> ll = new LinkedList<>();
+			JSONArray ja = (JSONArray) jo.get("value");
+			Iterator<?> it = ja.iterator();
+			while (it.hasNext()) {
+				ll.add(((JSONObject) it.next()).get("@iot.id").toString());
+			}
+			String ids = String.join(",", ll);
+			return ids;
+		} else {
+			return null;
+		}
+	}
+	
+	/**
+	 * @deprecated
+	 * Get a single iot.id from given link.
+	 * DEPRECATED: Please use new method that does not differentiate between single and multiple iot.ids.
+	 * @param link The address to poll from
+	 * @return A String containing a single iot.id
+	 */
 	public String getSingleIotId(String link) {
 		if (link == null) {
 			return null;
@@ -31,6 +73,13 @@ public class FrostIotIdConverter {
 		return getJSONObjectFromNavigationLink(link).get("@iot.id").toString();
 	}
 
+	/**
+	 * @deprecated
+	 * Get a comma separated enumeration of multiple iot.ids from given link.
+	 * DEPRECATED: Please use new method that does not differentiate between single and multiple iot.ids.
+	 * @param link The address to poll from
+	 * @return A String containing a comma separated list of multiple iot.ids
+	 */
 	public String getMultipleIotIds(String link) {
 		if (link == null) {
 			return null;
@@ -62,13 +111,13 @@ public class FrostIotIdConverter {
 			}
 		} catch (MalformedURLException e) {
 			// Invalid parameter
-			logger.log(Level.SEVERE, e.toString(), e);
+			LOGGER.log(Level.SEVERE, e.toString(), e);
 		} catch (ParseException e) {
 			// could not parse connection response as JSON Object
-			logger.log(Level.SEVERE, e.toString(), e);
+			LOGGER.log(Level.SEVERE, e.toString(), e);
 		} catch (IOException e) {
 			// could not establish connection
-			logger.log(Level.SEVERE, e.toString(), e);
+			LOGGER.log(Level.SEVERE, e.toString(), e);
 		}
 		return null;
 	}
