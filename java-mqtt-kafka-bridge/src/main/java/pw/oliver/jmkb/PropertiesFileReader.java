@@ -34,18 +34,14 @@ public final class PropertiesFileReader {
 			properties.load(fis);
 			fis.close();
 			if (!properties.containsKey("frostServerURI")
-					|| !properties.containsKey("kafkaBrokerURI")
-					|| !properties.containsKey("schemaRegistryURI")
-					|| !properties.containsKey("schemaId")) {
+					|| !properties.containsKey("kafkaBrokerURI")) {
 				throw new InvalidParameterException();
 			}
 		} catch (InvalidParameterException e) {
 			e.printStackTrace();
 			System.err.println("The configuration file is missing at least one of the following required arguments:\n"
 					+ "\t- frostServerURI\n"
-					+ "\t- kafkaBrokerURI\n"
-					+ "\t- schemaRegistryURI\n"
-					+ "\t- schemaId\n");
+					+ "\t- kafkaBrokerURI");
 			System.exit(-1);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -63,15 +59,11 @@ public final class PropertiesFileReader {
 		if (!properties.getProperty("kafkaBrokerURI").contains("://")) {
 			properties.setProperty("kafkaBrokerURI", "http://" + properties.getProperty("kafkaBrokerURI"));
 		}
-		if (!properties.getProperty("schemaRegistryURI").contains("://")) {
-			properties.setProperty("schemaRegistryURI", "http://" + properties.getProperty("schemaRegistryURI"));
-		}
 		
 		// check ports of URIs
 		try {
 			URI uriFrost  = new URI(properties.getProperty("frostServerURI"));
 			URI uriKafka  = new URI(properties.getProperty("kafkaBrokerURI"));
-			URI uriSchema = new URI(properties.getProperty("schemaRegistryURI"));
 
 			// check if port for FROST was specified
 			if (uriFrost.getPort() == -1) {
@@ -85,15 +77,8 @@ public final class PropertiesFileReader {
 				uriKafka = new URI(uriKafka.toString() + ":9092");
 			}
 
-			// check if port for Schema Registry was specified
-			if (uriSchema.getPort() == -1) {
-				System.err.println("Bad URI format: No port defined for the Schema Registry. Defaulting to port 8081");
-				uriSchema = new URI(uriSchema.toString() + ":8081");
-			}
-
 			properties.setProperty("frostServerURI", uriFrost.toString());
 			properties.setProperty("kafkaBrokerURI", uriKafka.toString());
-			properties.setProperty("schemaRegistryURI", uriSchema.toString());
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
