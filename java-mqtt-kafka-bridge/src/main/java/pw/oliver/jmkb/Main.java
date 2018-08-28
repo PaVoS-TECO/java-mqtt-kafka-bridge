@@ -1,4 +1,4 @@
-package main.java.pw.oliver.jmkb;
+package pw.oliver.jmkb;
 
 /**
  * This is the main class for the bridge between a FROST-Server and Apache Kafka.

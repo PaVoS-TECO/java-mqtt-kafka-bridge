@@ -1,5 +1,5 @@
 {
-	"namespace": "main.java.pw.oliver.jmkb.avroclasses",
+	"namespace": "pw.oliver.jmkb.avroclasses",
 	"type": "record",
 	"name": "Sensor",
 	"doc": "A Sensor is an instrument that observes a property or phenomenon with the goal of producing an estimate of the value of the property.",

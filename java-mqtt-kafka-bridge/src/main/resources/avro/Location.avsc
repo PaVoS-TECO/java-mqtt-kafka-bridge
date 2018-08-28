@@ -1,5 +1,5 @@
 {
-	"namespace": "main.java.pw.oliver.jmkb.avroclasses",
+	"namespace": "pw.oliver.jmkb.avroclasses",
 	"type": "record",
 	"name": "Location",
 	"doc": "A Things Location entity is defined as the last known location of the Thing. A Thing can have multiple Locations if all Locations are different representations of same Location with different encodingType.",

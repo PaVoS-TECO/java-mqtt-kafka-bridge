@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package main.java.pw.oliver.jmkb.avroclasses;
+package pw.oliver.jmkb.avroclasses;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** A Things Location entity is defined as the last known location of the Thing. A Thing can have multiple Locations if all Locations are different representations of same Location with different encodingType. */
 @org.apache.avro.specific.AvroGenerated
 public class Location extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 2473300235043685611L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Location\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"A Things Location entity is defined as the last known location of the Thing. A Thing can have multiple Locations if all Locations are different representations of same Location with different encodingType.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this Location\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Location\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Location\"},{\"name\":\"encodingType\",\"type\":\"string\",\"doc\":\"Representation/encoding type of the Location\"},{\"name\":\"location\",\"type\":{\"type\":\"record\",\"name\":\"LocationType\",\"doc\":\"The type of the location, for example Point\",\"fields\":[{\"name\":\"type\",\"type\":\"string\",\"doc\":\"Name of the LocationType\"},{\"name\":\"coordinates\",\"type\":\"string\",\"doc\":\"Coordinates for the LocationType\"}]},\"doc\":\"LocationType containing the actual location of the Thing\"},{\"name\":\"Things\",\"type\":[\"null\",\"string\"],\"doc\":\"Things associated with this Location\"}]}");
+  private static final long serialVersionUID = 2414982106693178962L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Location\",\"namespace\":\"pw.oliver.jmkb.avroclasses\",\"doc\":\"A Things Location entity is defined as the last known location of the Thing. A Thing can have multiple Locations if all Locations are different representations of same Location with different encodingType.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this Location\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Location\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Location\"},{\"name\":\"encodingType\",\"type\":\"string\",\"doc\":\"Representation/encoding type of the Location\"},{\"name\":\"location\",\"type\":{\"type\":\"record\",\"name\":\"LocationType\",\"doc\":\"The type of the location, for example Point\",\"fields\":[{\"name\":\"type\",\"type\":\"string\",\"doc\":\"Name of the LocationType\"},{\"name\":\"coordinates\",\"type\":\"string\",\"doc\":\"Coordinates for the LocationType\"}]},\"doc\":\"LocationType containing the actual location of the Thing\"},{\"name\":\"Things\",\"type\":[\"null\",\"string\"],\"doc\":\"Things associated with this Location\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -61,7 +61,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
   /** Representation/encoding type of the Location */
   @Deprecated public java.lang.CharSequence encodingType;
   /** LocationType containing the actual location of the Thing */
-  @Deprecated public main.java.pw.oliver.jmkb.avroclasses.LocationType location;
+  @Deprecated public pw.oliver.jmkb.avroclasses.LocationType location;
   /** Things associated with this Location */
   @Deprecated public java.lang.CharSequence Things;
 
@@ -81,7 +81,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
    * @param location LocationType containing the actual location of the Thing
    * @param Things Things associated with this Location
    */
-  public Location(java.lang.CharSequence iotId, java.lang.CharSequence name, java.lang.CharSequence description, java.lang.CharSequence encodingType, main.java.pw.oliver.jmkb.avroclasses.LocationType location, java.lang.CharSequence Things) {
+  public Location(java.lang.CharSequence iotId, java.lang.CharSequence name, java.lang.CharSequence description, java.lang.CharSequence encodingType, pw.oliver.jmkb.avroclasses.LocationType location, java.lang.CharSequence Things) {
     this.iotId = iotId;
     this.name = name;
     this.description = description;
@@ -112,7 +112,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
     case 1: name = (java.lang.CharSequence)value$; break;
     case 2: description = (java.lang.CharSequence)value$; break;
     case 3: encodingType = (java.lang.CharSequence)value$; break;
-    case 4: location = (main.java.pw.oliver.jmkb.avroclasses.LocationType)value$; break;
+    case 4: location = (pw.oliver.jmkb.avroclasses.LocationType)value$; break;
     case 5: Things = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
@@ -190,7 +190,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
    * Gets the value of the 'location' field.
    * @return LocationType containing the actual location of the Thing
    */
-  public main.java.pw.oliver.jmkb.avroclasses.LocationType getLocation() {
+  public pw.oliver.jmkb.avroclasses.LocationType getLocation() {
     return location;
   }
 
@@ -199,7 +199,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
    * LocationType containing the actual location of the Thing
    * @param value the value to set.
    */
-  public void setLocation(main.java.pw.oliver.jmkb.avroclasses.LocationType value) {
+  public void setLocation(pw.oliver.jmkb.avroclasses.LocationType value) {
     this.location = value;
   }
 
@@ -224,8 +224,8 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
    * Creates a new Location RecordBuilder.
    * @return A new Location RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.Location.Builder newBuilder() {
-    return new main.java.pw.oliver.jmkb.avroclasses.Location.Builder();
+  public static pw.oliver.jmkb.avroclasses.Location.Builder newBuilder() {
+    return new pw.oliver.jmkb.avroclasses.Location.Builder();
   }
 
   /**
@@ -233,8 +233,8 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
    * @param other The existing builder to copy.
    * @return A new Location RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.Location.Builder newBuilder(main.java.pw.oliver.jmkb.avroclasses.Location.Builder other) {
-    return new main.java.pw.oliver.jmkb.avroclasses.Location.Builder(other);
+  public static pw.oliver.jmkb.avroclasses.Location.Builder newBuilder(pw.oliver.jmkb.avroclasses.Location.Builder other) {
+    return new pw.oliver.jmkb.avroclasses.Location.Builder(other);
   }
 
   /**
@@ -242,8 +242,8 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
    * @param other The existing instance to copy.
    * @return A new Location RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.Location.Builder newBuilder(main.java.pw.oliver.jmkb.avroclasses.Location other) {
-    return new main.java.pw.oliver.jmkb.avroclasses.Location.Builder(other);
+  public static pw.oliver.jmkb.avroclasses.Location.Builder newBuilder(pw.oliver.jmkb.avroclasses.Location other) {
+    return new pw.oliver.jmkb.avroclasses.Location.Builder(other);
   }
 
   /**
@@ -261,8 +261,8 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
     /** Representation/encoding type of the Location */
     private java.lang.CharSequence encodingType;
     /** LocationType containing the actual location of the Thing */
-    private main.java.pw.oliver.jmkb.avroclasses.LocationType location;
-    private main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder locationBuilder;
+    private pw.oliver.jmkb.avroclasses.LocationType location;
+    private pw.oliver.jmkb.avroclasses.LocationType.Builder locationBuilder;
     /** Things associated with this Location */
     private java.lang.CharSequence Things;
 
@@ -275,7 +275,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(main.java.pw.oliver.jmkb.avroclasses.Location.Builder other) {
+    private Builder(pw.oliver.jmkb.avroclasses.Location.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.iotId)) {
         this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
@@ -298,7 +298,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
         fieldSetFlags()[4] = true;
       }
       if (other.hasLocationBuilder()) {
-        this.locationBuilder = main.java.pw.oliver.jmkb.avroclasses.LocationType.newBuilder(other.getLocationBuilder());
+        this.locationBuilder = pw.oliver.jmkb.avroclasses.LocationType.newBuilder(other.getLocationBuilder());
       }
       if (isValidValue(fields()[5], other.Things)) {
         this.Things = data().deepCopy(fields()[5].schema(), other.Things);
@@ -310,7 +310,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing Location instance
      * @param other The existing instance to copy.
      */
-    private Builder(main.java.pw.oliver.jmkb.avroclasses.Location other) {
+    private Builder(pw.oliver.jmkb.avroclasses.Location other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.iotId)) {
         this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
@@ -354,7 +354,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'iotId'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Location.Builder setIotId(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Location.Builder setIotId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.iotId = value;
       fieldSetFlags()[0] = true;
@@ -376,7 +376,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
       * iotId of this Location
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Location.Builder clearIotId() {
+    public pw.oliver.jmkb.avroclasses.Location.Builder clearIotId() {
       iotId = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -397,7 +397,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'name'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Location.Builder setName(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Location.Builder setName(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.name = value;
       fieldSetFlags()[1] = true;
@@ -419,7 +419,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
       * Name of the Location
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Location.Builder clearName() {
+    public pw.oliver.jmkb.avroclasses.Location.Builder clearName() {
       name = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -440,7 +440,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'description'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Location.Builder setDescription(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Location.Builder setDescription(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.description = value;
       fieldSetFlags()[2] = true;
@@ -462,7 +462,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
       * Description of the Location
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Location.Builder clearDescription() {
+    public pw.oliver.jmkb.avroclasses.Location.Builder clearDescription() {
       description = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -483,7 +483,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'encodingType'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Location.Builder setEncodingType(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Location.Builder setEncodingType(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.encodingType = value;
       fieldSetFlags()[3] = true;
@@ -505,7 +505,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
       * Representation/encoding type of the Location
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Location.Builder clearEncodingType() {
+    public pw.oliver.jmkb.avroclasses.Location.Builder clearEncodingType() {
       encodingType = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -516,7 +516,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
       * LocationType containing the actual location of the Thing
       * @return The value.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.LocationType getLocation() {
+    public pw.oliver.jmkb.avroclasses.LocationType getLocation() {
       return location;
     }
 
@@ -526,7 +526,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'location'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Location.Builder setLocation(main.java.pw.oliver.jmkb.avroclasses.LocationType value) {
+    public pw.oliver.jmkb.avroclasses.Location.Builder setLocation(pw.oliver.jmkb.avroclasses.LocationType value) {
       validate(fields()[4], value);
       this.locationBuilder = null;
       this.location = value;
@@ -548,12 +548,12 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
      * LocationType containing the actual location of the Thing
      * @return This builder.
      */
-    public main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder getLocationBuilder() {
+    public pw.oliver.jmkb.avroclasses.LocationType.Builder getLocationBuilder() {
       if (locationBuilder == null) {
         if (hasLocation()) {
-          setLocationBuilder(main.java.pw.oliver.jmkb.avroclasses.LocationType.newBuilder(location));
+          setLocationBuilder(pw.oliver.jmkb.avroclasses.LocationType.newBuilder(location));
         } else {
-          setLocationBuilder(main.java.pw.oliver.jmkb.avroclasses.LocationType.newBuilder());
+          setLocationBuilder(pw.oliver.jmkb.avroclasses.LocationType.newBuilder());
         }
       }
       return locationBuilder;
@@ -565,7 +565,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
      * @param value The builder instance that must be set.
      * @return This builder.
      */
-    public main.java.pw.oliver.jmkb.avroclasses.Location.Builder setLocationBuilder(main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder value) {
+    public pw.oliver.jmkb.avroclasses.Location.Builder setLocationBuilder(pw.oliver.jmkb.avroclasses.LocationType.Builder value) {
       clearLocation();
       locationBuilder = value;
       return this;
@@ -585,7 +585,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
       * LocationType containing the actual location of the Thing
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Location.Builder clearLocation() {
+    public pw.oliver.jmkb.avroclasses.Location.Builder clearLocation() {
       location = null;
       locationBuilder = null;
       fieldSetFlags()[4] = false;
@@ -607,7 +607,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'Things'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Location.Builder setThings(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Location.Builder setThings(java.lang.CharSequence value) {
       validate(fields()[5], value);
       this.Things = value;
       fieldSetFlags()[5] = true;
@@ -629,7 +629,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
       * Things associated with this Location
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Location.Builder clearThings() {
+    public pw.oliver.jmkb.avroclasses.Location.Builder clearThings() {
       Things = null;
       fieldSetFlags()[5] = false;
       return this;
@@ -647,7 +647,7 @@ public class Location extends org.apache.avro.specific.SpecificRecordBase implem
         if (locationBuilder != null) {
           record.location = this.locationBuilder.build();
         } else {
-          record.location = fieldSetFlags()[4] ? this.location : (main.java.pw.oliver.jmkb.avroclasses.LocationType) defaultValue(fields()[4]);
+          record.location = fieldSetFlags()[4] ? this.location : (pw.oliver.jmkb.avroclasses.LocationType) defaultValue(fields()[4]);
         }
         record.Things = fieldSetFlags()[5] ? this.Things : (java.lang.CharSequence) defaultValue(fields()[5]);
         return record;

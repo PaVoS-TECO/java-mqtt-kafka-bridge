@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package main.java.pw.oliver.jmkb.avroclasses;
+package pw.oliver.jmkb.avroclasses;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** The type of the location, for example Point */
 @org.apache.avro.specific.AvroGenerated
 public class LocationType extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -6717718243024509634L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"LocationType\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"The type of the location, for example Point\",\"fields\":[{\"name\":\"type\",\"type\":\"string\",\"doc\":\"Name of the LocationType\"},{\"name\":\"coordinates\",\"type\":\"string\",\"doc\":\"Coordinates for the LocationType\"}]}");
+  private static final long serialVersionUID = 4074392992138055766L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"LocationType\",\"namespace\":\"pw.oliver.jmkb.avroclasses\",\"doc\":\"The type of the location, for example Point\",\"fields\":[{\"name\":\"type\",\"type\":\"string\",\"doc\":\"Name of the LocationType\"},{\"name\":\"coordinates\",\"type\":\"string\",\"doc\":\"Coordinates for the LocationType\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -132,8 +132,8 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
    * Creates a new LocationType RecordBuilder.
    * @return A new LocationType RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder newBuilder() {
-    return new main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder();
+  public static pw.oliver.jmkb.avroclasses.LocationType.Builder newBuilder() {
+    return new pw.oliver.jmkb.avroclasses.LocationType.Builder();
   }
 
   /**
@@ -141,8 +141,8 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
    * @param other The existing builder to copy.
    * @return A new LocationType RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder newBuilder(main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder other) {
-    return new main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder(other);
+  public static pw.oliver.jmkb.avroclasses.LocationType.Builder newBuilder(pw.oliver.jmkb.avroclasses.LocationType.Builder other) {
+    return new pw.oliver.jmkb.avroclasses.LocationType.Builder(other);
   }
 
   /**
@@ -150,8 +150,8 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
    * @param other The existing instance to copy.
    * @return A new LocationType RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder newBuilder(main.java.pw.oliver.jmkb.avroclasses.LocationType other) {
-    return new main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder(other);
+  public static pw.oliver.jmkb.avroclasses.LocationType.Builder newBuilder(pw.oliver.jmkb.avroclasses.LocationType other) {
+    return new pw.oliver.jmkb.avroclasses.LocationType.Builder(other);
   }
 
   /**
@@ -174,7 +174,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder other) {
+    private Builder(pw.oliver.jmkb.avroclasses.LocationType.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.type)) {
         this.type = data().deepCopy(fields()[0].schema(), other.type);
@@ -190,7 +190,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
      * Creates a Builder by copying an existing LocationType instance
      * @param other The existing instance to copy.
      */
-    private Builder(main.java.pw.oliver.jmkb.avroclasses.LocationType other) {
+    private Builder(pw.oliver.jmkb.avroclasses.LocationType other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.type)) {
         this.type = data().deepCopy(fields()[0].schema(), other.type);
@@ -217,7 +217,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'type'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder setType(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.LocationType.Builder setType(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.type = value;
       fieldSetFlags()[0] = true;
@@ -239,7 +239,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
       * Name of the LocationType
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder clearType() {
+    public pw.oliver.jmkb.avroclasses.LocationType.Builder clearType() {
       type = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -260,7 +260,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'coordinates'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder setCoordinates(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.LocationType.Builder setCoordinates(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.coordinates = value;
       fieldSetFlags()[1] = true;
@@ -282,7 +282,7 @@ public class LocationType extends org.apache.avro.specific.SpecificRecordBase im
       * Coordinates for the LocationType
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.LocationType.Builder clearCoordinates() {
+    public pw.oliver.jmkb.avroclasses.LocationType.Builder clearCoordinates() {
       coordinates = null;
       fieldSetFlags()[1] = false;
       return this;

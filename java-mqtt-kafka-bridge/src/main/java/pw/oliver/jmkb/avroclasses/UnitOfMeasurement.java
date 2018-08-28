@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package main.java.pw.oliver.jmkb.avroclasses;
+package pw.oliver.jmkb.avroclasses;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** The Unit of Measurement of an Observation */
 @org.apache.avro.specific.AvroGenerated
 public class UnitOfMeasurement extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 2676135402333654124L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UnitOfMeasurement\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"The Unit of Measurement of an Observation\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"String representation of the Unit of Measurement\"},{\"name\":\"symbol\",\"type\":\"string\",\"doc\":\"Symbol of the Unit of Measurement\"},{\"name\":\"definition\",\"type\":\"string\",\"doc\":\"Definition of the Unit of Measurement\"}]}");
+  private static final long serialVersionUID = -7778233652719082149L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UnitOfMeasurement\",\"namespace\":\"pw.oliver.jmkb.avroclasses\",\"doc\":\"The Unit of Measurement of an Observation\",\"fields\":[{\"name\":\"name\",\"type\":\"string\",\"doc\":\"String representation of the Unit of Measurement\"},{\"name\":\"symbol\",\"type\":\"string\",\"doc\":\"Symbol of the Unit of Measurement\"},{\"name\":\"definition\",\"type\":\"string\",\"doc\":\"Definition of the Unit of Measurement\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -155,8 +155,8 @@ public class UnitOfMeasurement extends org.apache.avro.specific.SpecificRecordBa
    * Creates a new UnitOfMeasurement RecordBuilder.
    * @return A new UnitOfMeasurement RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder newBuilder() {
-    return new main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder();
+  public static pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder newBuilder() {
+    return new pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder();
   }
 
   /**
@@ -164,8 +164,8 @@ public class UnitOfMeasurement extends org.apache.avro.specific.SpecificRecordBa
    * @param other The existing builder to copy.
    * @return A new UnitOfMeasurement RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder newBuilder(main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder other) {
-    return new main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder(other);
+  public static pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder newBuilder(pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder other) {
+    return new pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder(other);
   }
 
   /**
@@ -173,8 +173,8 @@ public class UnitOfMeasurement extends org.apache.avro.specific.SpecificRecordBa
    * @param other The existing instance to copy.
    * @return A new UnitOfMeasurement RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder newBuilder(main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement other) {
-    return new main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder(other);
+  public static pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder newBuilder(pw.oliver.jmkb.avroclasses.UnitOfMeasurement other) {
+    return new pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder(other);
   }
 
   /**
@@ -199,7 +199,7 @@ public class UnitOfMeasurement extends org.apache.avro.specific.SpecificRecordBa
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder other) {
+    private Builder(pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.name)) {
         this.name = data().deepCopy(fields()[0].schema(), other.name);
@@ -219,7 +219,7 @@ public class UnitOfMeasurement extends org.apache.avro.specific.SpecificRecordBa
      * Creates a Builder by copying an existing UnitOfMeasurement instance
      * @param other The existing instance to copy.
      */
-    private Builder(main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement other) {
+    private Builder(pw.oliver.jmkb.avroclasses.UnitOfMeasurement other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.name)) {
         this.name = data().deepCopy(fields()[0].schema(), other.name);
@@ -250,7 +250,7 @@ public class UnitOfMeasurement extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'name'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder setName(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder setName(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.name = value;
       fieldSetFlags()[0] = true;
@@ -272,7 +272,7 @@ public class UnitOfMeasurement extends org.apache.avro.specific.SpecificRecordBa
       * String representation of the Unit of Measurement
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder clearName() {
+    public pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder clearName() {
       name = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -293,7 +293,7 @@ public class UnitOfMeasurement extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'symbol'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder setSymbol(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder setSymbol(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.symbol = value;
       fieldSetFlags()[1] = true;
@@ -315,7 +315,7 @@ public class UnitOfMeasurement extends org.apache.avro.specific.SpecificRecordBa
       * Symbol of the Unit of Measurement
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder clearSymbol() {
+    public pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder clearSymbol() {
       symbol = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -336,7 +336,7 @@ public class UnitOfMeasurement extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'definition'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder setDefinition(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder setDefinition(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.definition = value;
       fieldSetFlags()[2] = true;
@@ -358,7 +358,7 @@ public class UnitOfMeasurement extends org.apache.avro.specific.SpecificRecordBa
       * Definition of the Unit of Measurement
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder clearDefinition() {
+    public pw.oliver.jmkb.avroclasses.UnitOfMeasurement.Builder clearDefinition() {
       definition = null;
       fieldSetFlags()[2] = false;
       return this;

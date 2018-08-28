@@ -56,7 +56,6 @@
   </dependencies>
   
   <build>
-    <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -76,7 +75,7 @@
           <archive>
             <index>true</index>
             <manifest>
-              <mainClass>main.java.pw.oliver.jmkb.Main</mainClass>
+              <mainClass>pw.oliver.jmkb.Main</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -94,7 +93,7 @@
       	    </goals>
       	    <configuration>
       	      <sourceDirectory>${project.basedir}/src/main/resources/avro/</sourceDirectory>
-      	      <outputDirectory>${project.basedir}/src/</outputDirectory>
+      	      <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
       	      <includes>
          		<include>${project.basedir}/src/main/resources/avro/*.avsc</include>
      		  </includes>

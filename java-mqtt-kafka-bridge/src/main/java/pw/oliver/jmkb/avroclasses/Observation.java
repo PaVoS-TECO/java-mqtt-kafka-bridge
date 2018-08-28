@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package main.java.pw.oliver.jmkb.avroclasses;
+package pw.oliver.jmkb.avroclasses;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** An Observation represents a single Sensor reading of an ObservedProperty. A Sensor sends Observations to a specified Datastream. */
 @org.apache.avro.specific.AvroGenerated
 public class Observation extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8728910559290269715L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Observation\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"An Observation represents a single Sensor reading of an ObservedProperty. A Sensor sends Observations to a specified Datastream.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this Observation\"},{\"name\":\"phenomenonTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the phenomenon\"},{\"name\":\"resultTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the result\"},{\"name\":\"result\",\"type\":\"string\",\"doc\":\"Any result value represented as a string\"},{\"name\":\"resultQuality\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional string describing the quality of the result\"},{\"name\":\"validTime\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional time (ISO 8601) of validity\"},{\"name\":\"Datastream\",\"type\":\"string\",\"doc\":\"Datastream associated with the Observation\"},{\"name\":\"FeatureOfInterest\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional FeatureOfInterest associated with the Observation\"}]}");
+  private static final long serialVersionUID = -4204279558273784615L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Observation\",\"namespace\":\"pw.oliver.jmkb.avroclasses\",\"doc\":\"An Observation represents a single Sensor reading of an ObservedProperty. A Sensor sends Observations to a specified Datastream.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this Observation\"},{\"name\":\"phenomenonTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the phenomenon\"},{\"name\":\"resultTime\",\"type\":\"string\",\"doc\":\"Time (ISO 8601) of the result\"},{\"name\":\"result\",\"type\":\"string\",\"doc\":\"Any result value represented as a string\"},{\"name\":\"resultQuality\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional string describing the quality of the result\"},{\"name\":\"validTime\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional time (ISO 8601) of validity\"},{\"name\":\"Datastream\",\"type\":\"string\",\"doc\":\"Datastream associated with the Observation\"},{\"name\":\"FeatureOfInterest\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional FeatureOfInterest associated with the Observation\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -270,8 +270,8 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
    * Creates a new Observation RecordBuilder.
    * @return A new Observation RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.Observation.Builder newBuilder() {
-    return new main.java.pw.oliver.jmkb.avroclasses.Observation.Builder();
+  public static pw.oliver.jmkb.avroclasses.Observation.Builder newBuilder() {
+    return new pw.oliver.jmkb.avroclasses.Observation.Builder();
   }
 
   /**
@@ -279,8 +279,8 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
    * @param other The existing builder to copy.
    * @return A new Observation RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.Observation.Builder newBuilder(main.java.pw.oliver.jmkb.avroclasses.Observation.Builder other) {
-    return new main.java.pw.oliver.jmkb.avroclasses.Observation.Builder(other);
+  public static pw.oliver.jmkb.avroclasses.Observation.Builder newBuilder(pw.oliver.jmkb.avroclasses.Observation.Builder other) {
+    return new pw.oliver.jmkb.avroclasses.Observation.Builder(other);
   }
 
   /**
@@ -288,8 +288,8 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
    * @param other The existing instance to copy.
    * @return A new Observation RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.Observation.Builder newBuilder(main.java.pw.oliver.jmkb.avroclasses.Observation other) {
-    return new main.java.pw.oliver.jmkb.avroclasses.Observation.Builder(other);
+  public static pw.oliver.jmkb.avroclasses.Observation.Builder newBuilder(pw.oliver.jmkb.avroclasses.Observation other) {
+    return new pw.oliver.jmkb.avroclasses.Observation.Builder(other);
   }
 
   /**
@@ -324,7 +324,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(main.java.pw.oliver.jmkb.avroclasses.Observation.Builder other) {
+    private Builder(pw.oliver.jmkb.avroclasses.Observation.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.iotId)) {
         this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
@@ -364,7 +364,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
      * Creates a Builder by copying an existing Observation instance
      * @param other The existing instance to copy.
      */
-    private Builder(main.java.pw.oliver.jmkb.avroclasses.Observation other) {
+    private Builder(pw.oliver.jmkb.avroclasses.Observation other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.iotId)) {
         this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
@@ -415,7 +415,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'iotId'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setIotId(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder setIotId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.iotId = value;
       fieldSetFlags()[0] = true;
@@ -437,7 +437,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * iotId of this Observation
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearIotId() {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder clearIotId() {
       iotId = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -458,7 +458,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'phenomenonTime'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setPhenomenonTime(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder setPhenomenonTime(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.phenomenonTime = value;
       fieldSetFlags()[1] = true;
@@ -480,7 +480,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * Time (ISO 8601) of the phenomenon
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearPhenomenonTime() {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder clearPhenomenonTime() {
       phenomenonTime = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -501,7 +501,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'resultTime'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setResultTime(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder setResultTime(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.resultTime = value;
       fieldSetFlags()[2] = true;
@@ -523,7 +523,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * Time (ISO 8601) of the result
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearResultTime() {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder clearResultTime() {
       resultTime = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -544,7 +544,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'result'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setResult(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder setResult(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.result = value;
       fieldSetFlags()[3] = true;
@@ -566,7 +566,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * Any result value represented as a string
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearResult() {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder clearResult() {
       result = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -587,7 +587,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'resultQuality'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setResultQuality(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder setResultQuality(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.resultQuality = value;
       fieldSetFlags()[4] = true;
@@ -609,7 +609,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * Optional string describing the quality of the result
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearResultQuality() {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder clearResultQuality() {
       resultQuality = null;
       fieldSetFlags()[4] = false;
       return this;
@@ -630,7 +630,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'validTime'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setValidTime(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder setValidTime(java.lang.CharSequence value) {
       validate(fields()[5], value);
       this.validTime = value;
       fieldSetFlags()[5] = true;
@@ -652,7 +652,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * Optional time (ISO 8601) of validity
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearValidTime() {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder clearValidTime() {
       validTime = null;
       fieldSetFlags()[5] = false;
       return this;
@@ -673,7 +673,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'Datastream'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setDatastream(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder setDatastream(java.lang.CharSequence value) {
       validate(fields()[6], value);
       this.Datastream = value;
       fieldSetFlags()[6] = true;
@@ -695,7 +695,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * Datastream associated with the Observation
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearDatastream() {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder clearDatastream() {
       Datastream = null;
       fieldSetFlags()[6] = false;
       return this;
@@ -716,7 +716,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'FeatureOfInterest'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder setFeatureOfInterest(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder setFeatureOfInterest(java.lang.CharSequence value) {
       validate(fields()[7], value);
       this.FeatureOfInterest = value;
       fieldSetFlags()[7] = true;
@@ -738,7 +738,7 @@ public class Observation extends org.apache.avro.specific.SpecificRecordBase imp
       * Optional FeatureOfInterest associated with the Observation
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Observation.Builder clearFeatureOfInterest() {
+    public pw.oliver.jmkb.avroclasses.Observation.Builder clearFeatureOfInterest() {
       FeatureOfInterest = null;
       fieldSetFlags()[7] = false;
       return this;

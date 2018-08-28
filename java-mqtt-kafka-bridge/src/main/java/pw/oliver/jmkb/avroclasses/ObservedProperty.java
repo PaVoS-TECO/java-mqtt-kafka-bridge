@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package main.java.pw.oliver.jmkb.avroclasses;
+package pw.oliver.jmkb.avroclasses;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** An ObservedProperty specifies the phenomenon of an Observation. */
 @org.apache.avro.specific.AvroGenerated
 public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 3637974084524559410L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ObservedProperty\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"An ObservedProperty specifies the phenomenon of an Observation.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this ObservedProperty\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the ObservedProperty\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the ObservedProperty\"},{\"name\":\"definition\",\"type\":\"string\",\"doc\":\"URI of the definition of the ObservedProperty\"},{\"name\":\"Datastreams\",\"type\":[\"null\",\"string\"],\"doc\":\"Datastreams associated with this ObservedProperty\"}]}");
+  private static final long serialVersionUID = -3419499377113761679L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ObservedProperty\",\"namespace\":\"pw.oliver.jmkb.avroclasses\",\"doc\":\"An ObservedProperty specifies the phenomenon of an Observation.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this ObservedProperty\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the ObservedProperty\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the ObservedProperty\"},{\"name\":\"definition\",\"type\":\"string\",\"doc\":\"URI of the definition of the ObservedProperty\"},{\"name\":\"Datastreams\",\"type\":[\"null\",\"string\"],\"doc\":\"Datastreams associated with this ObservedProperty\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -201,8 +201,8 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
    * Creates a new ObservedProperty RecordBuilder.
    * @return A new ObservedProperty RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder newBuilder() {
-    return new main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder();
+  public static pw.oliver.jmkb.avroclasses.ObservedProperty.Builder newBuilder() {
+    return new pw.oliver.jmkb.avroclasses.ObservedProperty.Builder();
   }
 
   /**
@@ -210,8 +210,8 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
    * @param other The existing builder to copy.
    * @return A new ObservedProperty RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder newBuilder(main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder other) {
-    return new main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder(other);
+  public static pw.oliver.jmkb.avroclasses.ObservedProperty.Builder newBuilder(pw.oliver.jmkb.avroclasses.ObservedProperty.Builder other) {
+    return new pw.oliver.jmkb.avroclasses.ObservedProperty.Builder(other);
   }
 
   /**
@@ -219,8 +219,8 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
    * @param other The existing instance to copy.
    * @return A new ObservedProperty RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder newBuilder(main.java.pw.oliver.jmkb.avroclasses.ObservedProperty other) {
-    return new main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder(other);
+  public static pw.oliver.jmkb.avroclasses.ObservedProperty.Builder newBuilder(pw.oliver.jmkb.avroclasses.ObservedProperty other) {
+    return new pw.oliver.jmkb.avroclasses.ObservedProperty.Builder(other);
   }
 
   /**
@@ -249,7 +249,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder other) {
+    private Builder(pw.oliver.jmkb.avroclasses.ObservedProperty.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.iotId)) {
         this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
@@ -277,7 +277,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
      * Creates a Builder by copying an existing ObservedProperty instance
      * @param other The existing instance to copy.
      */
-    private Builder(main.java.pw.oliver.jmkb.avroclasses.ObservedProperty other) {
+    private Builder(pw.oliver.jmkb.avroclasses.ObservedProperty other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.iotId)) {
         this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
@@ -316,7 +316,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'iotId'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setIotId(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setIotId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.iotId = value;
       fieldSetFlags()[0] = true;
@@ -338,7 +338,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * iotId of this ObservedProperty
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearIotId() {
+    public pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearIotId() {
       iotId = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -359,7 +359,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'name'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setName(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setName(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.name = value;
       fieldSetFlags()[1] = true;
@@ -381,7 +381,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * Name of the ObservedProperty
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearName() {
+    public pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearName() {
       name = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -402,7 +402,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'description'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setDescription(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setDescription(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.description = value;
       fieldSetFlags()[2] = true;
@@ -424,7 +424,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * Description of the ObservedProperty
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearDescription() {
+    public pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearDescription() {
       description = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -445,7 +445,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'definition'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setDefinition(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setDefinition(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.definition = value;
       fieldSetFlags()[3] = true;
@@ -467,7 +467,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * URI of the definition of the ObservedProperty
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearDefinition() {
+    public pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearDefinition() {
       definition = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -488,7 +488,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'Datastreams'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setDatastreams(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.ObservedProperty.Builder setDatastreams(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.Datastreams = value;
       fieldSetFlags()[4] = true;
@@ -510,7 +510,7 @@ public class ObservedProperty extends org.apache.avro.specific.SpecificRecordBas
       * Datastreams associated with this ObservedProperty
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearDatastreams() {
+    public pw.oliver.jmkb.avroclasses.ObservedProperty.Builder clearDatastreams() {
       Datastreams = null;
       fieldSetFlags()[4] = false;
       return this;

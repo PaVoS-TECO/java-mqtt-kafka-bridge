@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package main.java.pw.oliver.jmkb.avroclasses;
+package pw.oliver.jmkb.avroclasses;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** A Sensor is an instrument that observes a property or phenomenon with the goal of producing an estimate of the value of the property. */
 @org.apache.avro.specific.AvroGenerated
 public class Sensor extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -4061974396092712745L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Sensor\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"A Sensor is an instrument that observes a property or phenomenon with the goal of producing an estimate of the value of the property.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this Sensor\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Sensor\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Sensor\"},{\"name\":\"encodingType\",\"type\":\"string\",\"doc\":\"Encoding type of the Sensor\"},{\"name\":\"metadata\",\"type\":\"string\",\"doc\":\"Metadata of the Sensor\"},{\"name\":\"Datastreams\",\"type\":[\"null\",\"string\"],\"doc\":\"Datastreams associated with this Sensor\"}]}");
+  private static final long serialVersionUID = 8690380604646401756L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Sensor\",\"namespace\":\"pw.oliver.jmkb.avroclasses\",\"doc\":\"A Sensor is an instrument that observes a property or phenomenon with the goal of producing an estimate of the value of the property.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this Sensor\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Sensor\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Sensor\"},{\"name\":\"encodingType\",\"type\":\"string\",\"doc\":\"Encoding type of the Sensor\"},{\"name\":\"metadata\",\"type\":\"string\",\"doc\":\"Metadata of the Sensor\"},{\"name\":\"Datastreams\",\"type\":[\"null\",\"string\"],\"doc\":\"Datastreams associated with this Sensor\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -224,8 +224,8 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
    * Creates a new Sensor RecordBuilder.
    * @return A new Sensor RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder newBuilder() {
-    return new main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder();
+  public static pw.oliver.jmkb.avroclasses.Sensor.Builder newBuilder() {
+    return new pw.oliver.jmkb.avroclasses.Sensor.Builder();
   }
 
   /**
@@ -233,8 +233,8 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
    * @param other The existing builder to copy.
    * @return A new Sensor RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder newBuilder(main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder other) {
-    return new main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder(other);
+  public static pw.oliver.jmkb.avroclasses.Sensor.Builder newBuilder(pw.oliver.jmkb.avroclasses.Sensor.Builder other) {
+    return new pw.oliver.jmkb.avroclasses.Sensor.Builder(other);
   }
 
   /**
@@ -242,8 +242,8 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
    * @param other The existing instance to copy.
    * @return A new Sensor RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder newBuilder(main.java.pw.oliver.jmkb.avroclasses.Sensor other) {
-    return new main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder(other);
+  public static pw.oliver.jmkb.avroclasses.Sensor.Builder newBuilder(pw.oliver.jmkb.avroclasses.Sensor other) {
+    return new pw.oliver.jmkb.avroclasses.Sensor.Builder(other);
   }
 
   /**
@@ -274,7 +274,7 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder other) {
+    private Builder(pw.oliver.jmkb.avroclasses.Sensor.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.iotId)) {
         this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
@@ -306,7 +306,7 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
      * Creates a Builder by copying an existing Sensor instance
      * @param other The existing instance to copy.
      */
-    private Builder(main.java.pw.oliver.jmkb.avroclasses.Sensor other) {
+    private Builder(pw.oliver.jmkb.avroclasses.Sensor other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.iotId)) {
         this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
@@ -349,7 +349,7 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
       * @param value The value of 'iotId'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder setIotId(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Sensor.Builder setIotId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.iotId = value;
       fieldSetFlags()[0] = true;
@@ -371,7 +371,7 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
       * iotId of this Sensor
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder clearIotId() {
+    public pw.oliver.jmkb.avroclasses.Sensor.Builder clearIotId() {
       iotId = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -392,7 +392,7 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
       * @param value The value of 'name'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder setName(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Sensor.Builder setName(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.name = value;
       fieldSetFlags()[1] = true;
@@ -414,7 +414,7 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
       * Name of the Sensor
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder clearName() {
+    public pw.oliver.jmkb.avroclasses.Sensor.Builder clearName() {
       name = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -435,7 +435,7 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
       * @param value The value of 'description'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder setDescription(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Sensor.Builder setDescription(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.description = value;
       fieldSetFlags()[2] = true;
@@ -457,7 +457,7 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
       * Description of the Sensor
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder clearDescription() {
+    public pw.oliver.jmkb.avroclasses.Sensor.Builder clearDescription() {
       description = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -478,7 +478,7 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
       * @param value The value of 'encodingType'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder setEncodingType(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Sensor.Builder setEncodingType(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.encodingType = value;
       fieldSetFlags()[3] = true;
@@ -500,7 +500,7 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
       * Encoding type of the Sensor
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder clearEncodingType() {
+    public pw.oliver.jmkb.avroclasses.Sensor.Builder clearEncodingType() {
       encodingType = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -521,7 +521,7 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
       * @param value The value of 'metadata'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder setMetadata(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Sensor.Builder setMetadata(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.metadata = value;
       fieldSetFlags()[4] = true;
@@ -543,7 +543,7 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
       * Metadata of the Sensor
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder clearMetadata() {
+    public pw.oliver.jmkb.avroclasses.Sensor.Builder clearMetadata() {
       metadata = null;
       fieldSetFlags()[4] = false;
       return this;
@@ -564,7 +564,7 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
       * @param value The value of 'Datastreams'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder setDatastreams(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Sensor.Builder setDatastreams(java.lang.CharSequence value) {
       validate(fields()[5], value);
       this.Datastreams = value;
       fieldSetFlags()[5] = true;
@@ -586,7 +586,7 @@ public class Sensor extends org.apache.avro.specific.SpecificRecordBase implemen
       * Datastreams associated with this Sensor
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Sensor.Builder clearDatastreams() {
+    public pw.oliver.jmkb.avroclasses.Sensor.Builder clearDatastreams() {
       Datastreams = null;
       fieldSetFlags()[5] = false;
       return this;

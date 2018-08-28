@@ -1,4 +1,4 @@
-package main.java.pw.oliver.jmkb;
+package pw.oliver.jmkb;
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;

@@ -1,5 +1,5 @@
 {
-	"namespace": "main.java.pw.oliver.jmkb.avroclasses",
+	"namespace": "pw.oliver.jmkb.avroclasses",
 	"type": "record",
 	"name": "Datastream",
 	"doc": "A Datastream groups a collection of Observations measuring the same ObservedProperty and produced by the same Sensor.",

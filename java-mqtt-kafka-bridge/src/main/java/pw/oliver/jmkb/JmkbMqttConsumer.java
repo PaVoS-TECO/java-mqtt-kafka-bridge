@@ -1,4 +1,4 @@
-package main.java.pw.oliver.jmkb;
+package pw.oliver.jmkb;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

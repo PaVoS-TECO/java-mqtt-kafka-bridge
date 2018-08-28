@@ -1,4 +1,4 @@
-package main.java.pw.oliver.jmkb;
+package pw.oliver.jmkb;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,15 +10,15 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import main.java.pw.oliver.jmkb.avroclasses.Datastream;
-import main.java.pw.oliver.jmkb.avroclasses.FeatureOfInterest;
-import main.java.pw.oliver.jmkb.avroclasses.Location;
-import main.java.pw.oliver.jmkb.avroclasses.LocationType;
-import main.java.pw.oliver.jmkb.avroclasses.Observation;
-import main.java.pw.oliver.jmkb.avroclasses.ObservedProperty;
-import main.java.pw.oliver.jmkb.avroclasses.Sensor;
-import main.java.pw.oliver.jmkb.avroclasses.Thing;
-import main.java.pw.oliver.jmkb.avroclasses.UnitOfMeasurement;
+import pw.oliver.jmkb.avroclasses.Datastream;
+import pw.oliver.jmkb.avroclasses.FeatureOfInterest;
+import pw.oliver.jmkb.avroclasses.Location;
+import pw.oliver.jmkb.avroclasses.LocationType;
+import pw.oliver.jmkb.avroclasses.Observation;
+import pw.oliver.jmkb.avroclasses.ObservedProperty;
+import pw.oliver.jmkb.avroclasses.Sensor;
+import pw.oliver.jmkb.avroclasses.Thing;
+import pw.oliver.jmkb.avroclasses.UnitOfMeasurement;
 
 /**
  * This class handles the conversion of MqttMessages to a different format.

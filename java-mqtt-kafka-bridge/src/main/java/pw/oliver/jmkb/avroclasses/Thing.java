@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package main.java.pw.oliver.jmkb.avroclasses;
+package pw.oliver.jmkb.avroclasses;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 /** A Thing has Locations and one or more Datastreams to collect Observations. */
 @org.apache.avro.specific.AvroGenerated
 public class Thing extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 6443871949231646600L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Thing\",\"namespace\":\"main.java.pw.oliver.jmkb.avroclasses\",\"doc\":\"A Thing has Locations and one or more Datastreams to collect Observations.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this Thing\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Thing\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Thing\"},{\"name\":\"Locations\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional Location(s) of the Thing\"},{\"name\":\"Datastreams\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional Datastream(s) of the Thing\"}]}");
+  private static final long serialVersionUID = 5135029247324007909L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Thing\",\"namespace\":\"pw.oliver.jmkb.avroclasses\",\"doc\":\"A Thing has Locations and one or more Datastreams to collect Observations.\",\"fields\":[{\"name\":\"iotId\",\"type\":\"string\",\"doc\":\"iotId of this Thing\"},{\"name\":\"name\",\"type\":\"string\",\"doc\":\"Name of the Thing\"},{\"name\":\"description\",\"type\":\"string\",\"doc\":\"Description of the Thing\"},{\"name\":\"Locations\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional Location(s) of the Thing\"},{\"name\":\"Datastreams\",\"type\":[\"null\",\"string\"],\"doc\":\"Optional Datastream(s) of the Thing\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -201,8 +201,8 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
    * Creates a new Thing RecordBuilder.
    * @return A new Thing RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.Thing.Builder newBuilder() {
-    return new main.java.pw.oliver.jmkb.avroclasses.Thing.Builder();
+  public static pw.oliver.jmkb.avroclasses.Thing.Builder newBuilder() {
+    return new pw.oliver.jmkb.avroclasses.Thing.Builder();
   }
 
   /**
@@ -210,8 +210,8 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
    * @param other The existing builder to copy.
    * @return A new Thing RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.Thing.Builder newBuilder(main.java.pw.oliver.jmkb.avroclasses.Thing.Builder other) {
-    return new main.java.pw.oliver.jmkb.avroclasses.Thing.Builder(other);
+  public static pw.oliver.jmkb.avroclasses.Thing.Builder newBuilder(pw.oliver.jmkb.avroclasses.Thing.Builder other) {
+    return new pw.oliver.jmkb.avroclasses.Thing.Builder(other);
   }
 
   /**
@@ -219,8 +219,8 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
    * @param other The existing instance to copy.
    * @return A new Thing RecordBuilder
    */
-  public static main.java.pw.oliver.jmkb.avroclasses.Thing.Builder newBuilder(main.java.pw.oliver.jmkb.avroclasses.Thing other) {
-    return new main.java.pw.oliver.jmkb.avroclasses.Thing.Builder(other);
+  public static pw.oliver.jmkb.avroclasses.Thing.Builder newBuilder(pw.oliver.jmkb.avroclasses.Thing other) {
+    return new pw.oliver.jmkb.avroclasses.Thing.Builder(other);
   }
 
   /**
@@ -249,7 +249,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(main.java.pw.oliver.jmkb.avroclasses.Thing.Builder other) {
+    private Builder(pw.oliver.jmkb.avroclasses.Thing.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.iotId)) {
         this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
@@ -277,7 +277,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
      * Creates a Builder by copying an existing Thing instance
      * @param other The existing instance to copy.
      */
-    private Builder(main.java.pw.oliver.jmkb.avroclasses.Thing other) {
+    private Builder(pw.oliver.jmkb.avroclasses.Thing other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.iotId)) {
         this.iotId = data().deepCopy(fields()[0].schema(), other.iotId);
@@ -316,7 +316,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'iotId'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setIotId(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Thing.Builder setIotId(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.iotId = value;
       fieldSetFlags()[0] = true;
@@ -338,7 +338,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * iotId of this Thing
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder clearIotId() {
+    public pw.oliver.jmkb.avroclasses.Thing.Builder clearIotId() {
       iotId = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -359,7 +359,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'name'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setName(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Thing.Builder setName(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.name = value;
       fieldSetFlags()[1] = true;
@@ -381,7 +381,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * Name of the Thing
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder clearName() {
+    public pw.oliver.jmkb.avroclasses.Thing.Builder clearName() {
       name = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -402,7 +402,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'description'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setDescription(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Thing.Builder setDescription(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.description = value;
       fieldSetFlags()[2] = true;
@@ -424,7 +424,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * Description of the Thing
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder clearDescription() {
+    public pw.oliver.jmkb.avroclasses.Thing.Builder clearDescription() {
       description = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -445,7 +445,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'Locations'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setLocations(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Thing.Builder setLocations(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.Locations = value;
       fieldSetFlags()[3] = true;
@@ -467,7 +467,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * Optional Location(s) of the Thing
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder clearLocations() {
+    public pw.oliver.jmkb.avroclasses.Thing.Builder clearLocations() {
       Locations = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -488,7 +488,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'Datastreams'.
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder setDatastreams(java.lang.CharSequence value) {
+    public pw.oliver.jmkb.avroclasses.Thing.Builder setDatastreams(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.Datastreams = value;
       fieldSetFlags()[4] = true;
@@ -510,7 +510,7 @@ public class Thing extends org.apache.avro.specific.SpecificRecordBase implement
       * Optional Datastream(s) of the Thing
       * @return This builder.
       */
-    public main.java.pw.oliver.jmkb.avroclasses.Thing.Builder clearDatastreams() {
+    public pw.oliver.jmkb.avroclasses.Thing.Builder clearDatastreams() {
       Datastreams = null;
       fieldSetFlags()[4] = false;
       return this;

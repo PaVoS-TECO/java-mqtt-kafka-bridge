@@ -1,5 +1,5 @@
 {
-	"namespace": "main.java.pw.oliver.jmkb.avroclasses",
+	"namespace": "pw.oliver.jmkb.avroclasses",
 	"type": "record",
 	"name": "FeatureOfInterest",
 	"doc": "In the case of remote sensing, the FeatureOfInterest can be the geographical area or volume that is being sensed.",
