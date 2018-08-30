@@ -35,7 +35,7 @@ public class FrostIotIdConverter {
 	/**
 	 * Get a single or multiple {@code @iot.id}s from a given link.
 	 * @param link The address to poll from
-	 * @return A String containing a single {@code @iot.id} or a commaseparated
+	 * @return A String containing a single {@code @iot.id} or a comma separated
 	 * enumeration of multiple {@code @iot.id}s.
 	 */
 	public String getIotIds(String link) {
@@ -43,9 +43,14 @@ public class FrostIotIdConverter {
 			return null;
 		}
 		JSONObject jo = getJSONObjectFromNavigationLink(link);
+		if (jo == null) {
+			return null;
+		}
 		if (jo.containsKey("@iot.id")) {
+			// only a single @iot.id available
 			return jo.get("@iot.id").toString();
 		} else if (jo.containsKey("value")) {
+			// multiple @iot.ids available
 			LinkedList<String> ll = new LinkedList<>();
 			JSONArray ja = (JSONArray) jo.get("value");
 			Iterator<?> it = ja.iterator();
