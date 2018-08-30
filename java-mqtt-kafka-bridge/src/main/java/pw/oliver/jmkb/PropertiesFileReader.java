@@ -8,6 +8,9 @@ import java.net.URISyntaxException;
 import java.security.InvalidParameterException;
 import java.util.Properties;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Helper class to read entries of the jmkb.properties file required for the bridge.
  * @author Oliver
@@ -15,6 +18,7 @@ import java.util.Properties;
  */
 public final class PropertiesFileReader {
 
+	private static Logger logger = LoggerFactory.getLogger(PropertiesFileReader.class);
 	private static Properties properties;
 	
 	// prevent unwanted instantiation of utility class
@@ -25,7 +29,7 @@ public final class PropertiesFileReader {
 	/**
 	 * Read the properties file and check its values for validity.
 	 */
-	public static void init() {
+	public static boolean init() {
 		properties = new Properties();
 		
 		// check if properties file is missing keys
@@ -39,18 +43,16 @@ public final class PropertiesFileReader {
 				throw new InvalidParameterException();
 			}
 		} catch (InvalidParameterException e) {
-			e.printStackTrace();
-			System.err.println("The configuration file is missing at least one of the following required arguments:\n"
+			logger.error("The configuration file is missing at least one of the following required arguments:\n"
 					+ "\t- frostServerURI\n"
 					+ "\t- kafkaBrokerURI\n"
 					+ "\t- schemaRegistryURI");
-			System.exit(-1);
+			return false;
 		} catch (IOException e) {
-			e.printStackTrace();
-			System.err.println("There was an error reading the configuration file.\n"
+			logger.error("There was an error reading the configuration file.\n"
 					+ "Please make sure that there is a file named 'jmkb.properties' at "
 					+ "the root directory of the program.");
-			System.exit(-1);
+			return false;
 		}
 		
 		// check protocols of URIs
@@ -73,19 +75,19 @@ public final class PropertiesFileReader {
 
 			// check if port for FROST was specified
 			if (uriFrost.getPort() == -1) {
-				System.err.println("Bad URI format: No port defined for FROST-Server. Defaulting to port 1883");
+				logger.info("Bad URI format: No port defined for FROST-Server. Defaulting to port 1883");
 				uriFrost = new URI(uriFrost.toString() + ":1883");
 			}
 
 			// check if port for Kafka was specified
 			if (uriKafka.getPort() == -1) {
-				System.err.println("Bad URI format: No port defined for Kafka Broker. Defaulting to port 9092");
+				logger.info("Bad URI format: No port defined for Kafka Broker. Defaulting to port 9092");
 				uriKafka = new URI(uriKafka.toString() + ":9092");
 			}
 
 			// check if port for Schema Registry was specified
 			if (uriSchema.getPort() == -1) {
-				System.err.println("Bad URI format: No port defined for the Schema Registry. Defaulting to port 8081");
+				logger.info("Bad URI format: No port defined for the Schema Registry. Defaulting to port 8081");
 				uriSchema = new URI(uriSchema.toString() + ":8081");
 			}
 
@@ -93,7 +95,7 @@ public final class PropertiesFileReader {
 			properties.setProperty("kafkaBrokerURI", uriKafka.toString());
 			properties.setProperty("schemaRegistryURI", uriSchema.toString());
 		} catch (URISyntaxException e) {
-			e.printStackTrace();
+			logger.warn("Invalid URI specified.", e);
 		}
 		
 		try {
@@ -102,11 +104,12 @@ public final class PropertiesFileReader {
 			fos.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.err.println("There was an error updating the configuration file.\n"
+			logger.warn("There was an error updating the configuration file.\n"
 					+ "Please make sure that there is a file named 'jmkb.properties' at "
 					+ "the root directory of the program.");
-			System.exit(-1);
+			return false;
 		}
+		return true;
 	}
 	
 	/**

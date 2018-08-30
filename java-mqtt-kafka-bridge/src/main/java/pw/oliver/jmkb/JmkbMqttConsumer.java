@@ -1,8 +1,5 @@
 package pw.oliver.jmkb;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.apache.avro.specific.SpecificRecordBase;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
@@ -10,6 +7,8 @@ import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class is the MQTT message consumer for the bridge.
@@ -19,8 +18,9 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
  */
 public class JmkbMqttConsumer implements MqttCallback {
 
-	private static final Logger LOGGER = Logger.getLogger(JmkbMqttConsumer.class.getName());
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	private String clientId;
 	private MqttClient client;
 	private JmkbKafkaProducer producer;
 	private MqttMessageConverter converter;
@@ -36,12 +36,14 @@ public class JmkbMqttConsumer implements MqttCallback {
 	 */
 	public JmkbMqttConsumer(String clientId, JmkbKafkaProducer producer) {
 		
-		// Initialize new message converter
-		converter = new MqttMessageConverter();
-		
-		// Initialize new MQTT Client
+		this.clientId = clientId;
+		this.producer = producer;
+		this.converter = new MqttMessageConverter();
+		connect();
+	}
+	
+	private void connect() {
 		try {
-			this.producer = producer;
 			String frostServerURI = PropertiesFileReader.getProperty("frostServerURI");
 			
 			MqttConnectOptions options = new MqttConnectOptions();
@@ -49,7 +51,7 @@ public class JmkbMqttConsumer implements MqttCallback {
 			this.client = new MqttClient(frostServerURI, clientId);
 			client.setCallback(this);
 			client.connect(options);
-			System.out.println("Successfully connected to MQTT");
+			logger.info(clientId + " successfully connected to MQTT");
 			client.subscribe("v1.0/Things");
 			client.subscribe("v1.0/Datastreams");
 			client.subscribe("v1.0/Locations");
@@ -58,33 +60,22 @@ public class JmkbMqttConsumer implements MqttCallback {
 			client.subscribe("v1.0/ObservedProperties");
 			client.subscribe("v1.0/FeaturesOfInterest");
 			client.subscribe("v1.0/Observations");
-			System.out.println("Successfully subscribed to topics");
+			logger.info(clientId + " successfully subscribed to topics");
 		} catch (MqttException e) {
-			LOGGER.log(Level.SEVERE, e.toString(), e);
+			logger.warn("Could not initialize MQTT client " + clientId, e);
 		}
 	}
-	
-	/* Uncomment this method for testing
-	public void testPublish(String topic, String message) {
-		try {
-			MqttTopic mqttTopic = client.getTopic(topic);
-			MqttDeliveryToken token = mqttTopic.publish(new MqttMessage(message.getBytes()));
-			token.waitForCompletion(1000);
-		} catch (MqttException e) {
-			e.printStackTrace();
-		}
-	}*/
 
 	@Override
 	public void connectionLost(Throwable cause) {
-		LOGGER.log(Level.WARNING, "Connection to MQTT lost!");
+		logger.warn(clientId + "lost connection to MQTT");
 		try {
-			// close client and quit bridge on connection loss
-			client.close();
-		} catch (MqttException e) {
-			LOGGER.log(Level.SEVERE, e.toString(), e);
+			// prevent spamming connect() on connection loss
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-		System.exit(-1);
+		connect();
 	}
 
 	@Override
@@ -94,16 +85,15 @@ public class JmkbMqttConsumer implements MqttCallback {
 		if (messageTopic.contains("/")) {
 			messageTopic = messageTopic.split("/")[1];
 		} else {
-			LOGGER.log(Level.WARNING, "JmkbMqttConsumer: Received message topic does not contain a slash!");
-			LOGGER.log(Level.INFO, "JmkbMqttConsumer: " + messageTopic + " - " + message.toString());
-			messageTopic = "ErrorTopicNoSlashFound";
+			logger.warn("Received message topic " + messageTopic + " does not contain a slash! Message: " + message.toString());
+			return;
 		}
 		// convert message and get key
 		SpecificRecordBase avroMessage = converter.mqttMessageToAvro(messageTopic, message);
 		if (avroMessage == null) {
 			return;
 		} else {
-			String key = (String) avroMessage.get("iotId");
+			String key = String.valueOf(avroMessage.get("iotId"));
 			producer.send(messageTopic, key, avroMessage);
 		}
 	}
@@ -121,8 +111,9 @@ public class JmkbMqttConsumer implements MqttCallback {
 		try {
 			client.disconnect();
 			client.close();
+			logger.info("MQTT consumer " + clientId + " has been closed");
 		} catch (MqttException e) {
-			LOGGER.log(Level.SEVERE, e.toString(), e);
+			logger.warn("Failed to close MQTT consumer " + clientId, e);
 		}
 	}
 }

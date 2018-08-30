@@ -8,13 +8,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Helper class to extract a single or multiple {@code @iot.id}s from FROST's {@code @iot.navigationLinks}. 
@@ -23,7 +23,7 @@ import org.json.simple.parser.ParseException;
  */
 public class FrostIotIdConverter {
 
-	private static final Logger LOGGER = Logger.getLogger(FrostIotIdConverter.class.getName());
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	/**
 	 * Default constructor.
@@ -116,13 +116,13 @@ public class FrostIotIdConverter {
 			}
 		} catch (MalformedURLException e) {
 			// Invalid parameter
-			LOGGER.log(Level.SEVERE, e.toString(), e);
+			logger.warn("Invalid @iot.navigationLink {}", link, e);
 		} catch (ParseException e) {
 			// could not parse connection response as JSON Object
-			LOGGER.log(Level.SEVERE, e.toString(), e);
+			logger.warn("Could not parse response of {} as JSONObject", link, e);
 		} catch (IOException e) {
 			// could not establish connection
-			LOGGER.log(Level.SEVERE, e.toString(), e);
+			logger.warn("Could not establish connection to {}", link, e);
 		}
 		return null;
 	}

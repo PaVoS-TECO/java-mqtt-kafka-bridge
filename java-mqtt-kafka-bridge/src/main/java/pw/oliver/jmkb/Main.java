@@ -1,5 +1,8 @@
 package pw.oliver.jmkb;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * This is the main class for the bridge between a FROST-Server and Apache Kafka.
  * It initializes a Kafka producer and a MQTT consumer.
@@ -14,6 +17,8 @@ package pw.oliver.jmkb;
 
 public final class Main {
 	
+	private static Logger logger = LoggerFactory.getLogger(Main.class);
+	
 	// prevent unwanted instantiation of utility class
 	private Main() {
 		throw new AssertionError("Instantiating utility class!");
@@ -25,7 +30,10 @@ public final class Main {
 	 */
 	public static void main(String[] args) {
 		
-		PropertiesFileReader.init();
+		boolean initStatus = PropertiesFileReader.init();
+		if (initStatus == false) {
+			System.exit(-1);
+		}
 		JmkbKafkaProducer producer = new JmkbKafkaProducer();
 		JmkbMqttConsumer consumer = new JmkbMqttConsumer("mqttconsumer1", producer);
 		
@@ -33,16 +41,14 @@ public final class Main {
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			@Override
 			public void run() {
-				System.out.println("Performing shutdown.");
+				Logger logger = LoggerFactory.getLogger(this.getClass());
+				logger.info("Performing shutdown.");
 				consumer.disconnect();
-				System.out.println("MQTT consumer shutdown.");
 				producer.disconnect();
-				System.out.println("Kafka producer shutdown.");
-				System.out.println("Shutdown complete.");
 			}
 		});
 		
-		System.out.println("The bridge is now running, terminate with Ctrl+C.");
+		logger.info("The bridge is now running, terminate with Ctrl+C.");
 		
 		// infinite loop to keep bridge running, can be interrupted with Ctrl+C.
 		while (true) {

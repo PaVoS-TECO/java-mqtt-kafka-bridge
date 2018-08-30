@@ -7,6 +7,8 @@ import org.apache.avro.specific.SpecificRecordBase;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 
@@ -18,6 +20,7 @@ import io.confluent.kafka.serializers.KafkaAvroSerializer;
  */
 public class JmkbKafkaProducer {
 	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private KafkaProducer<String, SpecificRecordBase> producer;
 	
 	/**
@@ -36,6 +39,7 @@ public class JmkbKafkaProducer {
 		properties.put("schema.registry.url", schemaRegistryURI);
 		properties.put("max.block.ms", 10000);
 		producer = new KafkaProducer<>(properties);
+		logger.debug("Finished initializing Kafka producer");
 	}
 	
 	/**
@@ -47,23 +51,6 @@ public class JmkbKafkaProducer {
 	public void send(String topic, String key, SpecificRecordBase avroMessage) {
 		producer.send(new ProducerRecord<String, SpecificRecordBase>(topic, key, avroMessage));
 		producer.flush();
-		
-		/* Comment above line and uncomment below lines for debug
-		 * 
-		Future<RecordMetadata> status = producer.send(new ProducerRecord<String, byte[]>(topic, key, avroMessage));
-		try {
-			RecordMetadata statusMetadata = status.get();
-			System.out.println("----------------------------------");
-			System.out.println("[SEND]\tKey: " + key);
-			System.out.println("[SEND]\tTopic: " + statusMetadata.topic());
-			System.out.println("[SEND]\tPartition: " + statusMetadata.partition());
-			System.out.println("[SEND]\tTimestamp: " + statusMetadata.timestamp());
-			System.out.println("[SEND]\tSerializedKeySize: " + statusMetadata.serializedKeySize());
-			System.out.println("[SEND]\tSerializedValueSize: " + statusMetadata.serializedValueSize());
-			System.out.println("----------------------------------");
-		} catch (InterruptedException | ExecutionException e) {
-			e.printStackTrace();
-		}*/
 	}
 	
 	/**
@@ -72,5 +59,6 @@ public class JmkbKafkaProducer {
 	 */
 	public void disconnect() {
 		producer.close(2, TimeUnit.SECONDS);
+		logger.info("Kafka producer has been closed");
 	}
 }
