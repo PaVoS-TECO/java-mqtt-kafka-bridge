@@ -31,7 +31,7 @@ public final class Main {
 	public static void main(String[] args) {
 		
 		boolean initStatus = PropertiesFileReader.init();
-		if (initStatus == false) {
+		if (!initStatus) {
 			System.exit(-1);
 		}
 		JmkbKafkaProducer producer = new JmkbKafkaProducer();
@@ -41,8 +41,8 @@ public final class Main {
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			@Override
 			public void run() {
-				Logger logger = LoggerFactory.getLogger(this.getClass());
-				logger.info("Performing shutdown.");
+				Logger shlogger = LoggerFactory.getLogger(this.getClass());
+				shlogger.info("Performing shutdown.");
 				consumer.disconnect();
 				producer.disconnect();
 			}

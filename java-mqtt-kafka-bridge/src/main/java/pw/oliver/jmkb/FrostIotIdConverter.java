@@ -26,13 +26,6 @@ public class FrostIotIdConverter {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	/**
-	 * Default constructor.
-	 */
-	public FrostIotIdConverter() {
-		
-	}
-	
-	/**
 	 * Get a single or multiple {@code @iot.id}s from a given link.
 	 * @param link The address to poll from
 	 * @return A String containing a single {@code @iot.id} or a comma separated
@@ -57,47 +50,10 @@ public class FrostIotIdConverter {
 			while (it.hasNext()) {
 				ll.add(((JSONObject) it.next()).get("@iot.id").toString());
 			}
-			String ids = String.join(",", ll);
-			return ids;
+			return String.join(",", ll);
 		} else {
 			return null;
 		}
-	}
-	
-	/**
-	 * @deprecated
-	 * Get a single iot.id from given link.
-	 * DEPRECATED: Please use new method that does not differentiate between single and multiple iot.ids.
-	 * @param link The address to poll from
-	 * @return A String containing a single iot.id
-	 */
-	public String getSingleIotId(String link) {
-		if (link == null) {
-			return null;
-		}
-		return getJSONObjectFromNavigationLink(link).get("@iot.id").toString();
-	}
-
-	/**
-	 * @deprecated
-	 * Get a comma separated enumeration of multiple iot.ids from given link.
-	 * DEPRECATED: Please use new method that does not differentiate between single and multiple iot.ids.
-	 * @param link The address to poll from
-	 * @return A String containing a comma separated list of multiple iot.ids
-	 */
-	public String getMultipleIotIds(String link) {
-		if (link == null) {
-			return null;
-		}
-		LinkedList<String> ll = new LinkedList<>();
-		JSONObject jo = getJSONObjectFromNavigationLink(link);
-		JSONArray ja = (JSONArray) jo.get("value");
-		Iterator<?> it = ja.iterator();
-		while (it.hasNext()) {
-			ll.add(((JSONObject) it.next()).get("@iot.id").toString());
-		}
-		String ids = String.join(",", ll);
-		return ids;
 	}
 
 	private JSONObject getJSONObjectFromNavigationLink(String link) {

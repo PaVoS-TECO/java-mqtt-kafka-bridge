@@ -103,7 +103,6 @@ public final class PropertiesFileReader {
 			properties.store(fos, null);
 			fos.close();
 		} catch (IOException e) {
-			e.printStackTrace();
 			logger.warn("There was an error updating the configuration file.\n"
 					+ "Please make sure that there is a file named 'jmkb.properties' at "
 					+ "the root directory of the program.");
