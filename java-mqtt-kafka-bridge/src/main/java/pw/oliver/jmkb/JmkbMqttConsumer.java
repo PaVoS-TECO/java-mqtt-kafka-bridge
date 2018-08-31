@@ -81,6 +81,9 @@ public class JmkbMqttConsumer implements MqttCallback {
 
 	@Override
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
+		if (topic == null || message == null) {
+			return;
+		}
 		String messageTopic = topic;
 		// remove "v1.0/" from topic
 		if (messageTopic.contains("/")) {

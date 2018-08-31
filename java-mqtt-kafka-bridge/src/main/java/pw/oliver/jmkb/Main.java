@@ -26,7 +26,7 @@ public final class Main {
 	
 	/**
 	 * The main class. Initializes required classes and then enters an infinite loop waiting for new MQTT messages.
-	 * @param args Parameters given to the main class (unused)
+	 * @param args Parameters given to the main class. Set args[0] to "test" for testing (no while loop)
 	 */
 	public static void main(String[] args) {
 		
@@ -50,8 +50,12 @@ public final class Main {
 		
 		logger.info("The bridge is now running, terminate with Ctrl+C.");
 		
+		if ((args.length > 0) && (args[0].equals("test"))) {
+			return;
+		}
+		
 		// infinite loop to keep bridge running, can be interrupted with Ctrl+C.
-		while (true) {
+		while (initStatus) {
 			// wait for messages to process
 		}
 	}
