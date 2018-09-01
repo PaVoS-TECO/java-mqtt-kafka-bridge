@@ -20,7 +20,7 @@ public final class PropertiesFileReader {
 
 	private static Logger logger = LoggerFactory.getLogger(PropertiesFileReader.class);
 	private static Properties properties;
-	private static boolean initialized = false;
+	//private static boolean initialized = false;
 	
 	// prevent unwanted instantiation of utility class
 	private PropertiesFileReader() {
@@ -31,9 +31,10 @@ public final class PropertiesFileReader {
 	 * Read the properties file and check its values for validity.
 	 */
 	public static boolean init() {
+		/*
 		if (initialized) {
 			return true;
-		}
+		}*/
 		
 		properties = new Properties();
 		
@@ -101,6 +102,7 @@ public final class PropertiesFileReader {
 			properties.setProperty("schemaRegistryURI", uriSchema.toString());
 		} catch (URISyntaxException e) {
 			logger.warn("Invalid URI specified.", e);
+			return false;
 		}
 		
 		try {
@@ -113,7 +115,7 @@ public final class PropertiesFileReader {
 					+ "the root directory of the program.");
 			return false;
 		}
-		initialized = true;
+		//initialized = true;
 		return true;
 	}
 	
