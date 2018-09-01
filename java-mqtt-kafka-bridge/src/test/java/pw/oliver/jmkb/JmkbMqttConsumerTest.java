@@ -50,6 +50,13 @@ public class JmkbMqttConsumerTest {
 		cons.messageArrived("v1.0/null", null);
 		cons.messageArrived("null", mm);
 		cons.messageArrived(null, mm);
+		MqttMessage validThing = new MqttMessage();
+		validThing.setPayload(("{\r\n" + 
+				"  \"@iot.id\": \"T1\",\r\n" + 
+				"  \"name\": \"A\",\r\n" + 
+				"  \"description\": \"B\"\r\n" + 
+				"}").getBytes());
+		cons.messageArrived("v1.0/Things", validThing);
 		prod.disconnect();
 		cons.disconnect();
 	}
