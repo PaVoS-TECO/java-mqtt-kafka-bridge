@@ -32,6 +32,7 @@ public final class Main {
 		
 		boolean initStatus = PropertiesFileReader.init();
 		if (!initStatus) {
+			logger.warn("There was an error reading the properties file. The bridge was not started.");
 			System.exit(-1);
 		}
 		JmkbKafkaProducer producer = new JmkbKafkaProducer();
