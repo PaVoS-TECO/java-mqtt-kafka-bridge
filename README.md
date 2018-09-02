@@ -10,8 +10,8 @@ Requirements:
 On Debian/Ubuntu systems, just run `sudo apt install default-jdk maven git`.
 1. Clone this repository via `git clone https://github.com/olivermliu/java-mqtt-kafka-bridge.git`.
 2. `cd java-mqtt-kafka-bridge/java-mqtt-kafka-bridge`
-3. `mvn clean install`
-4. Currently, the generated .jar has a bug. To run the program, please use `mvn exec:java -D exec.mainClass=main.java.pw.oliver.jmkb.Main`.
+3. `mvn clean install` (to skip tests, run `mvn clean install -DskipTests`)
+4. Currently, the generated .jar has a bug. To run the program, please use `mvn exec:java -D exec.mainClass=pw.oliver.jmkb.Main`.
 
 ## Configuration
 Set configurables in the jmkb.properties file. Please note: URIs require a `<protocol>://<address>:<port>` format.
@@ -24,6 +24,7 @@ Currently, configurables are:
 
 ## Further information
 - Use `Ctrl+C` to terminate the program. This ensures that the MQTT Client and Kafka Producer disconnect properly.
+- Use a program like `screen` to open a virtual terminal and run the bridge there.
 
 ## Test data
 Test data are provided in the password-protected archive TestData.7z. With this, the functionality of the program can be tested. Please make sure the bridge is running before you start step 4. You will need Python 3 to run the scripts and p7zip-full to extract the test data.
