@@ -11,7 +11,8 @@ On Debian/Ubuntu systems, just run `sudo apt install default-jdk maven git`.
 1. Clone this repository via `git clone https://github.com/olivermliu/java-mqtt-kafka-bridge.git`.
 2. `cd java-mqtt-kafka-bridge/java-mqtt-kafka-bridge`
 3. `mvn clean install` (to skip tests, run `mvn clean install -DskipTests`)
-4. Currently, the generated .jar has a bug. To run the program, please use `mvn exec:java -D exec.mainClass=pw.oliver.jmkb.Main`.
+4. If necessary, adjust the parameters in the jmkb.properties file (see below for more information).
+5. Currently, the generated .jar has a bug. To run the program, please use `mvn exec:java -D exec.mainClass=pw.oliver.jmkb.Main`.
 
 ## Configuration
 Set configurables in the jmkb.properties file. Please note: URIs require a `<protocol>://<address>:<port>` format.
