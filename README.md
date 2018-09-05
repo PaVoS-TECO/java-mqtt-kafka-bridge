@@ -20,7 +20,6 @@ Currently, configurables are:
 - `frostServerURI`: the URI from which to get the MQTT messages of the FROST-Server. Requires `tcp://` as protocol. Usually port 1883.
 - `kafkaBrokerURI`: the URI to which to send Kafka records. With Kafka Landoop, use the port defined under "Kafka Broker". Usually port 9092 and `http://` as protocol.
 - `schemaRegistryURI`: the URI from which to get Avro schemas. With Kafka Landoop, use the port defined under "Schema Registry". Usually port 8081 and `http://` as protocol.
-- `schemaId`: the ID of the schema to use.
 
 ## Further information
 - Use `Ctrl+C` to terminate the program. This ensures that the MQTT Client and Kafka Producer disconnect properly.
