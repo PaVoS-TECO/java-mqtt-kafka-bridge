@@ -20,7 +20,7 @@ public final class PropertiesFileReader {
 
 	private static Logger logger = LoggerFactory.getLogger(PropertiesFileReader.class);
 	private static Properties properties;
-	//private static boolean initialized = false;
+	private static boolean initialized = false;
 	
 	// prevent unwanted instantiation of utility class
 	private PropertiesFileReader() {
@@ -29,6 +29,7 @@ public final class PropertiesFileReader {
 	
 	/**
 	 * Read the properties file and check its values for validity.
+	 * @return {@code true} if initialization was successful, {@code false} if not.
 	 */
 	public static boolean init() {
 		/*
@@ -115,7 +116,7 @@ public final class PropertiesFileReader {
 					+ "the root directory of the program.");
 			return false;
 		}
-		//initialized = true;
+		initialized = true;
 		return true;
 	}
 	
@@ -126,6 +127,9 @@ public final class PropertiesFileReader {
 	 * @return The value associated with the specified key
 	 */
 	public static String getProperty(String key) {
-		return properties.getProperty(key);
+		if (initialized) {
+			return properties.getProperty(key);
+		}
+		return null;
 	}
 }

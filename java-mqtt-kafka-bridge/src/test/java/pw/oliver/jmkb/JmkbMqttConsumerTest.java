@@ -2,7 +2,6 @@ package pw.oliver.jmkb;
 
 import static org.junit.Assert.*;
 
-import org.apache.http.ConnectionClosedException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
