@@ -30,9 +30,10 @@ public final class Main {
 	 */
 	public static void main(String[] args) {
 		
+		logger.info("Checking properties...");
 		boolean initStatus = PropertiesFileReader.init();
 		if (!initStatus) {
-			logger.warn("There was an error reading the properties file. The bridge was not started.");
+			logger.warn("There was an error with the properties (see above for details). The bridge was not started.");
 			System.exit(-1);
 		}
 		JmkbKafkaProducer producer = new JmkbKafkaProducer();
@@ -55,10 +56,6 @@ public final class Main {
 			return;
 		}
 		
-		// infinite loop to keep bridge running, can be interrupted with Ctrl+C.
-		while (initStatus) {
-			// wait for messages to process
-		}
 	}
 	
 }

@@ -1,16 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>java-mqtt-kafka-bridge</groupId>
   <artifactId>java-mqtt-kafka-bridge</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
+
   <properties>
-  	<avro.version>1.8.2</avro.version>
-  	<kafka.version>1.1.0</kafka.version>
-  	<confluent.version>4.1.1</confluent.version>
-  	<mqtt.version>1.0.2</mqtt.version>
+    <avro.version>1.8.2</avro.version>
+    <kafka.version>1.1.0</kafka.version>
+    <confluent.version>4.1.1</confluent.version>
+    <mqtt.version>1.0.2</mqtt.version>
   </properties>
-  
+
   <repositories>
     <repository>
       <id>Eclipse Paho Repo</id>
@@ -21,8 +23,18 @@
       <url>https://packages.confluent.io/maven/</url>
     </repository>
   </repositories>
-  
+
   <dependencies>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.25</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.25</version>
+    </dependency>
     <dependency>
       <groupId>org.eclipse.paho</groupId>
       <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
@@ -31,13 +43,13 @@
     <dependency>
       <groupId>org.apache.avro</groupId>
       <artifactId>avro</artifactId>
-  	  <version>${avro.version}</version>
-	</dependency>
-	<dependency>
+      <version>${avro.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.apache.avro</groupId>
       <artifactId>avro-tools</artifactId>
-  	  <version>${avro.version}</version>
-	</dependency>
+      <version>${avro.version}</version>
+    </dependency>
     <dependency>
       <groupId>org.apache.kafka</groupId>
       <artifactId>kafka_2.12</artifactId>
@@ -53,16 +65,27 @@
       <artifactId>kafka-avro-serializer</artifactId>
       <version>${confluent.version}</version>
     </dependency>
-    <!-- Fix main class error -->
-     <dependency>
-     	<groupId>org.slf4j</groupId>
-     	<artifactId>slf4j-log4j12</artifactId>
-     	<version>1.7.25</version>
-     </dependency>
   </dependencies>
-  
+
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/lib</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -72,53 +95,55 @@
           <target>1.8</target>
         </configuration>
       </plugin>
-      
+
       <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>2.4</version>
         <configuration>
           <archive>
             <index>true</index>
             <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
               <mainClass>pw.oliver.jmkb.Main</mainClass>
             </manifest>
           </archive>
         </configuration>
       </plugin>
-      
+
       <plugin>
-      	<groupId>org.apache.avro</groupId>
-      	<artifactId>avro-maven-plugin</artifactId>
-      	<version>${avro.version}</version>
-      	<executions>
-      	  <execution>
-      	    <phase>generate-sources</phase>
-      	    <goals>
-      	      <goal>schema</goal>
-      	    </goals>
-      	    <configuration>
-      	      <sourceDirectory>${project.basedir}/src/main/resources/avro/</sourceDirectory>
-      	      <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
-      	      <includes>
-         		<include>${project.basedir}/src/main/resources/avro/*.avsc</include>
-     		  </includes>
-     		  <imports>
-     		  	<import>${project.basedir}/src/main/resources/avro/UnitOfMeasurement.avsc</import>
-     		  	<import>${project.basedir}/src/main/resources/avro/LocationType.avsc</import>
-     		  	<import>${project.basedir}/src/main/resources/avro/ObservedProperty.avsc</import>
-     		  	<import>${project.basedir}/src/main/resources/avro/Sensor.avsc</import>
-     		  	<import>${project.basedir}/src/main/resources/avro/Location.avsc</import>
-     		  	<import>${project.basedir}/src/main/resources/avro/FeatureOfInterest.avsc</import>
-     		  	<import>${project.basedir}/src/main/resources/avro/Thing.avsc</import>
-     		  	<import>${project.basedir}/src/main/resources/avro/Datastream.avsc</import>
-     		  	<import>${project.basedir}/src/main/resources/avro/Observation.avsc</import>
-     		  </imports>
-      	    </configuration>
-      	  </execution>
-      	</executions>
+        <groupId>org.apache.avro</groupId>
+        <artifactId>avro-maven-plugin</artifactId>
+        <version>${avro.version}</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>schema</goal>
+            </goals>
+            <configuration>
+              <sourceDirectory>${project.basedir}/src/main/resources/avro/</sourceDirectory>
+              <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+              <includes>
+                <include>${project.basedir}/src/main/resources/avro/*.avsc</include>
+              </includes>
+              <imports>
+                <import>${project.basedir}/src/main/resources/avro/UnitOfMeasurement.avsc</import>
+                <import>${project.basedir}/src/main/resources/avro/LocationType.avsc</import>
+                <import>${project.basedir}/src/main/resources/avro/ObservedProperty.avsc</import>
+                <import>${project.basedir}/src/main/resources/avro/Sensor.avsc</import>
+                <import>${project.basedir}/src/main/resources/avro/Location.avsc</import>
+                <import>${project.basedir}/src/main/resources/avro/FeatureOfInterest.avsc</import>
+                <import>${project.basedir}/src/main/resources/avro/Thing.avsc</import>
+                <import>${project.basedir}/src/main/resources/avro/Datastream.avsc</import>
+                <import>${project.basedir}/src/main/resources/avro/Observation.avsc</import>
+              </imports>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
-      
+
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -139,39 +164,40 @@
         </executions>
       </plugin>
     </plugins>
-    
-	<pluginManagement>
-	  <plugins>
-	    <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-	    <plugin>
-	    	<groupId>org.eclipse.m2e</groupId>
-	    	<artifactId>lifecycle-mapping</artifactId>
-	    	<version>1.0.0</version>
-	    	<configuration>
-	    		<lifecycleMappingMetadata>
-	    			<pluginExecutions>
-	    				<pluginExecution>
-	    					<pluginExecutionFilter>
-	    						<groupId>org.apache.avro</groupId>
-	    						<artifactId>
-	    							avro-maven-plugin
-	    						</artifactId>
-	    						<versionRange>[1.8.2,)</versionRange>
-	    						<goals>
-	    							<goal>schema</goal>
-	    						</goals>
-	    					</pluginExecutionFilter>
-	    					<action>
-	    						<execute>
-	    						  <runOnIncremental>true</runOnIncremental>
-	    						</execute>
-	    					</action>
-	    				</pluginExecution>
-	    			</pluginExecutions>
-	    		</lifecycleMappingMetadata>
-	    	</configuration>
-	    </plugin>
-	  </plugins>
-	</pluginManagement>
+
+    <pluginManagement>
+      <plugins>
+        <!--This plugin's configuration is used to store Eclipse m2e settings 
+          only. It has no influence on the Maven build itself. -->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.avro</groupId>
+                    <artifactId>
+                      avro-maven-plugin
+                    </artifactId>
+                    <versionRange>[1.8.2,)</versionRange>
+                    <goals>
+                      <goal>schema</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <execute>
+                      <runOnIncremental>true</runOnIncremental>
+                    </execute>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
 </project>
