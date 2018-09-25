@@ -36,8 +36,24 @@ public final class Main {
 			logger.warn("There was an error with the properties (see above for details). The bridge was not started.");
 			System.exit(-1);
 		}
-		JmkbKafkaProducer producer = new JmkbKafkaProducer();
-		JmkbMqttConsumer consumer = new JmkbMqttConsumer("mqttconsumer1", producer);
+		
+		final JmkbKafkaProducer<?> producer;
+		
+		switch (PropertiesFileReader.getProperty("format")) {
+		case "avro":
+			producer = new JmkbKafkaAvroProducer();
+			break;
+		case "json":
+			producer = new JmkbKafkaJsonProducer();
+			break;
+		default:
+			producer = null;
+			logger.warn("Error parsing format: Unexpected format '{}'", PropertiesFileReader.getProperty("format"));
+			System.exit(-1);
+			break;
+		}
+		
+		JmkbMqttConsumer consumer = new JmkbMqttConsumer("pavos-mqtt-" + System.currentTimeMillis(), producer);
 		
 		// set shutdown hook so that program can terminate gracefully when user presses Ctrl+C
 		Runtime.getRuntime().addShutdownHook(new Thread() {

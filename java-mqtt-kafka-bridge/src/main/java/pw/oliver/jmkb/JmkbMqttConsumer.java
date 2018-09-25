@@ -10,32 +10,34 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+//TODO: correctly implement different producers
+
 /**
- * This class is the MQTT message consumer for the bridge.
- * It contains functionality to receive and process MQTT messages from a server defined in the properties file.
+ * This class is the MQTT consumer for the bridge.
+ * It contains functionality to receive MQTT messages from the FROST server defined
+ * in the properties file.<br>
+ * Note that multiple instances of this class with the same clientId will behave the
+ * same, possibly leading to duplicated Kafka records being sent.
+ * 
  * @author Oliver
- *
  */
 public class JmkbMqttConsumer implements MqttCallback {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	private String clientId;
+	private final String format;
+	private final String clientId;
+	private final JmkbKafkaProducer<?> producer;
 	private MqttClient client;
-	private JmkbKafkaProducer producer;
 	private MqttMessageConverter converter;
 	
 	/**
-	 * This class is the MQTT consumer for the bridge.
-	 * It contains functionality to receive MQTT messages from the FROST server defined
-	 * in the properties file.<br>
-	 * Note that multiple instances of this class with the same clientId will behave the
-	 * same, possibly leading to duplicated Kafka records being sent.
-	 * @param clientId The unique String identifier of this clientId.
-	 * @param producer The JmkbKafkaProducer at which the received message should be sent
+	 * The constructor for an AvroProducer
+     * @param clientId The unique String identifier of this clientId.
+     * @param producer The JmkbKafkaProducer at which the received message should be sent
 	 */
-	public JmkbMqttConsumer(String clientId, JmkbKafkaProducer producer) {
-		
+	public <T> JmkbMqttConsumer(String clientId, JmkbKafkaProducer<T> producer) {
+		this.format = PropertiesFileReader.getProperty("format");
 		this.clientId = clientId;
 		this.producer = producer;
 		this.converter = new MqttMessageConverter();
@@ -93,11 +95,24 @@ public class JmkbMqttConsumer implements MqttCallback {
 			return;
 		}
 		// convert message and get key
-		SpecificRecordBase avroMessage = converter.mqttMessageToAvro(messageTopic, message);
-		if (avroMessage != null) {
-			String key = String.valueOf(avroMessage.get("iotId"));
-			producer.send(messageTopic, key, avroMessage);
+		switch (format) {
+		case "avro":
+			SpecificRecordBase avroMessage = converter.mqttMessageToAvro(messageTopic, message);
+			if (avroMessage != null) {
+				String key = String.valueOf(avroMessage.get("iotId"));
+				producer.send(messageTopic, key, avroMessage);
+			}
+			break;
+		case "json":
+			String jsonMessage = converter.mqttMessageToJson(messageTopic, message);
+			String key = converter.getKeyFromMessage(message);
+			producer.send(messageTopic, key, jsonMessage);
+			break;
+		default:
+			logger.warn("Conversion format not defined");
+			break;
 		}
+		
 	}
 
 	@Override

@@ -11,13 +11,13 @@ import pw.oliver.jmkb.avroclasses.ObservedProperty;
 
 public class JmkbKafkaProducerTest {
 
-	private static JmkbKafkaProducer producer;
+	private static JmkbKafkaAvroProducer producer;
 	private static SpecificRecordBase sr;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		PropertiesFileReader.init();
-		JmkbKafkaProducer producer = new JmkbKafkaProducer();
+		JmkbKafkaAvroProducer producer = new JmkbKafkaAvroProducer();
 		assertNotNull(producer);
 		sr = ObservedProperty.newBuilder()
 		.setIotId("testID")
@@ -35,13 +35,13 @@ public class JmkbKafkaProducerTest {
 	
 	@Test
 	public void testConstructor() {
-		producer = new JmkbKafkaProducer();
+		producer = new JmkbKafkaAvroProducer();
 		assertNotNull(producer);
 	}
 
 	@Test
 	public void testSend() {
-		producer = new JmkbKafkaProducer();
+		producer = new JmkbKafkaAvroProducer();
 		producer.send("testTopic", "testKey", sr);
 	}
 	

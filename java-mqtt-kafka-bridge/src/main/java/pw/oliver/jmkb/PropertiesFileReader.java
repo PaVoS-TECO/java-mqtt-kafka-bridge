@@ -46,14 +46,16 @@ public final class PropertiesFileReader {
 			fis.close();
 			if (!properties.containsKey("frostServerURI")
 					|| !properties.containsKey("kafkaBrokerURI")
-					|| !properties.containsKey("schemaRegistryURI")) {
+					|| !properties.containsKey("schemaRegistryURI")
+					|| !properties.containsKey("format")) {
 				throw new InvalidParameterException();
 			}
 		} catch (InvalidParameterException e) {
 			logger.error("The configuration file is missing at least one of the following required arguments:\n"
 					+ "\t- frostServerURI\n"
 					+ "\t- kafkaBrokerURI\n"
-					+ "\t- schemaRegistryURI");
+					+ "\t- schemaRegistryURI\n"
+					+ "\t- format");
 			return false;
 		} catch (IOException e) {
 			logger.error("There was an error reading the configuration file.\n"

@@ -176,4 +176,17 @@ public class MqttMessageConverter {
 		}
 		return sr;
 	}
+
+	public String mqttMessageToJson(String messageTopic, MqttMessage message) {
+		return String.valueOf(message.getPayload());
+	}
+	
+	public String getKeyFromMessage(MqttMessage message) {
+		try {
+			return String.valueOf(((JSONObject) new JSONParser().parse(new String(message.getPayload()))).get("@iot.id"));
+		} catch (ParseException e) {
+			logger.warn("Error parsing given message", e);
+		}
+		return null;
+	}
 }
