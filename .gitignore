@@ -25,4 +25,7 @@ hs_err_pid*
 # Eclipse stuff
 .metadata/
 .recommenders/
-java-mqtt-kafka-bridge/jmkb.properties
+/bin/
+/target/
+mqttconsumer1*
+jmkb.properties
