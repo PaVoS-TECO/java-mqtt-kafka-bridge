@@ -178,7 +178,7 @@ public class MqttMessageConverter {
 	}
 
 	public String mqttMessageToJson(String messageTopic, MqttMessage message) {
-		return String.valueOf(message.getPayload());
+		return String.valueOf(((JSONObject) new JSONParser().parse(new String(message.getPayload()))).toString());
 	}
 	
 	public String getKeyFromMessage(MqttMessage message) {
