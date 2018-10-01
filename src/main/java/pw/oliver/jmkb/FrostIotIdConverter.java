@@ -9,12 +9,13 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
 
 /**
  * Helper class to extract a single or multiple {@code @iot.id}s from FROST's {@code @iot.navigationLinks}. 
@@ -35,20 +36,20 @@ public class FrostIotIdConverter {
 		if (link == null) {
 			return null;
 		}
-		JSONObject jo = getJSONObjectFromNavigationLink(link);
+		JsonObject jo = getJsonObjectFromNavigationLink(link);
 		if (jo == null) {
 			return null;
 		}
-		if (jo.containsKey("@iot.id")) {
+		if (jo.has("@iot.id")) {
 			// only a single @iot.id available
 			return jo.get("@iot.id").toString();
-		} else if (jo.containsKey("value")) {
+		} else if (jo.has("value")) {
 			// multiple @iot.ids available
 			LinkedList<String> ll = new LinkedList<>();
-			JSONArray ja = (JSONArray) jo.get("value");
+			JsonArray ja = (JsonArray) jo.get("value");
 			Iterator<?> it = ja.iterator();
 			while (it.hasNext()) {
-				ll.add(((JSONObject) it.next()).get("@iot.id").toString());
+				ll.add(((JsonObject) it.next()).get("@iot.id").toString());
 			}
 			return String.join(",", ll);
 		} else {
@@ -56,7 +57,7 @@ public class FrostIotIdConverter {
 		}
 	}
 
-	private JSONObject getJSONObjectFromNavigationLink(String link) {
+	private JsonObject getJsonObjectFromNavigationLink(String link) {
 		try {
 			URL url = new URL(link);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -68,14 +69,14 @@ public class FrostIotIdConverter {
 				StringBuilder sb = new StringBuilder();
 				reader.lines().forEachOrdered(sb::append);
 			
-				return (JSONObject) new JSONParser().parse(sb.toString());
+				return (JsonObject) new JsonParser().parse(sb.toString());
 			}
 		} catch (MalformedURLException e) {
 			// Invalid parameter
 			logger.warn("Invalid @iot.navigationLink {}", link, e);
-		} catch (ParseException e) {
+		} catch (JsonParseException e) {
 			// could not parse connection response as JSON Object
-			logger.warn("Could not parse response of {} as JSONObject", link, e);
+			logger.warn("Could not parse response of {} as JsonObject", link, e);
 		} catch (IOException e) {
 			// could not establish connection
 			logger.warn("Could not establish connection to {}", link, e);

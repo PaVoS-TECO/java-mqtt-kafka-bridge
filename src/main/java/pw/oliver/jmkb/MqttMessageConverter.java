@@ -2,12 +2,13 @@ package pw.oliver.jmkb;
 
 import org.apache.avro.specific.SpecificRecordBase;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
 
 import pw.oliver.jmkb.avroclasses.Datastream;
 import pw.oliver.jmkb.avroclasses.FeatureOfInterest;
@@ -48,18 +49,18 @@ public class MqttMessageConverter {
 	public SpecificRecordBase mqttMessageToAvro(String topic, MqttMessage message) {
 		// This repo might contain a better implementation of this method:
 		// https://github.com/allegro/json-avro-converter
-		JSONObject m;
+		JsonObject m;
 		try {
-			m = (JSONObject) new JSONParser().parse(new String(message.getPayload()));
-		} catch (ParseException e) {
-			logger.warn("Error parsing MQTT message payload as JSONObject", e);
+			m = (JsonObject) new JsonParser().parse(new String(message.getPayload()));
+		} catch (JsonParseException e) {
+			logger.warn("Error parsing MQTT message payload as JsonObject", e);
 			return null;
 		}
 		SpecificRecordBase sr = null;
 		try {
 			switch (topic) {
 			case "Datastreams":
-				JSONObject uom = (JSONObject) m.get("unitOfMeasurement");
+				JsonObject uom = (JsonObject) m.get("unitOfMeasurement");
 				sr = Datastream.newBuilder()
 						.setIotId(m.get("@iot.id").toString())
 						.setName(m.get("name").toString())
@@ -111,8 +112,8 @@ public class MqttMessageConverter {
 						.build();
 				break;
 			case "FeaturesOfInterest":
-				JSONObject feat = (JSONObject) m.get("feature");
-				String featCoordinates = ((JSONArray) feat.get("coordinates")).toString();
+				JsonObject feat = (JsonObject) m.get("feature");
+				String featCoordinates = ((JsonArray) feat.get("coordinates")).toString();
 				// format the same way as iot.id lists
 				if (featCoordinates != null && featCoordinates.length() >= 2) {
 					featCoordinates = featCoordinates.substring(1, featCoordinates.length() - 1);
@@ -145,8 +146,8 @@ public class MqttMessageConverter {
 				sr = null;
 				break;
 			case "Locations":
-				JSONObject loc = (JSONObject) m.get("feature");
-				String locCoordinates = ((JSONArray) loc.get("coordinates")).toString();
+				JsonObject loc = (JsonObject) m.get("feature");
+				String locCoordinates = ((JsonArray) loc.get("coordinates")).toString();
 				// format the same way as iot.id lists
 				if (locCoordinates != null && locCoordinates.length() >= 2) {
 					locCoordinates = locCoordinates.substring(1, locCoordinates.length() - 1);
@@ -179,8 +180,8 @@ public class MqttMessageConverter {
 
 	public String mqttMessageToJson(String messageTopic, MqttMessage message) {
 		try {
-			return String.valueOf(((JSONObject) new JSONParser().parse(new String(message.getPayload()))).toString());
-		} catch (ParseException e) {
+			return String.valueOf(((JsonObject) new JsonParser().parse(new String(message.getPayload()))).toString());
+		} catch (JsonParseException e) {
 			logger.warn("Error parsing given message", e);
 		}
 		return null;
@@ -188,8 +189,8 @@ public class MqttMessageConverter {
 	
 	public String getKeyFromMessage(MqttMessage message) {
 		try {
-			return String.valueOf(((JSONObject) new JSONParser().parse(new String(message.getPayload()))).get("@iot.id"));
-		} catch (ParseException e) {
+			return String.valueOf(((JsonObject) new JsonParser().parse(new String(message.getPayload()))).get("@iot.id"));
+		} catch (JsonParseException e) {
 			logger.warn("Error parsing given message", e);
 		}
 		return null;
