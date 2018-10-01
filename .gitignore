@@ -28,4 +28,3 @@ hs_err_pid*
 /bin/
 /target/
 mqttconsumer1*
-jmkb.properties
