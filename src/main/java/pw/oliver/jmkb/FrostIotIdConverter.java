@@ -42,14 +42,14 @@ public class FrostIotIdConverter {
 		}
 		if (jo.has("@iot.id")) {
 			// only a single @iot.id available
-			return jo.get("@iot.id").toString();
+			return jo.get("@iot.id").getAsString();
 		} else if (jo.has("value")) {
 			// multiple @iot.ids available
 			LinkedList<String> ll = new LinkedList<>();
 			JsonArray ja = (JsonArray) jo.get("value");
 			Iterator<?> it = ja.iterator();
 			while (it.hasNext()) {
-				ll.add(((JsonObject) it.next()).get("@iot.id").toString());
+				ll.add(((JsonObject) it.next()).get("@iot.id").getAsString());
 			}
 			return String.join(",", ll);
 		} else {

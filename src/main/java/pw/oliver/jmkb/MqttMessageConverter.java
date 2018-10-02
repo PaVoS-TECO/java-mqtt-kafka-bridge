@@ -69,58 +69,58 @@ public class MqttMessageConverter {
 			case "Datastreams":
 				JsonObject uom = (JsonObject) m.get("unitOfMeasurement");
 				sr = Datastream.newBuilder()
-						.setIotId(m.get("@iot.id").toString())
-						.setName(m.get("name").toString())
-						.setDescription(m.get("description").toString())
+						.setIotId(m.get("@iot.id").getAsString())
+						.setName(m.get("name").getAsString())
+						.setDescription(m.get("description").getAsString())
 						.setUnitOfMeasurement(UnitOfMeasurement.newBuilder()
-								.setName(uom.get("name").toString())
-								.setDefinition(uom.get("definition").toString())
-								.setSymbol(uom.get("symbol").toString())
+								.setName(uom.get("name").getAsString())
+								.setDefinition(uom.get("definition").getAsString())
+								.setSymbol(uom.get("symbol").getAsString())
 								.build())
-						.setObservationType(m.get("observationType").toString())
-						.setObservedArea((m.get("observedArea") == null) ? null : m.get("observedArea").toString())
-						.setPhenomenonTime((m.get("phenomenonTime") == null) ? null : m.get("phenomenonTime").toString())
-						.setResultTime((m.get("resultTime") == null) ? null : m.get("resultTime").toString())
-						.setThing(conv.getIotIds(m.get("Thing@iot.navigationLink").toString()))
-						.setObservedProperty(conv.getIotIds(m.get("ObservedProperty@iot.navigationLink").toString()))
-						.setSensor(conv.getIotIds(m.get("Sensor@iot.navigationLink").toString()))
-						.setObservations((m.get("Observations@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("Observations@iot.navigationLink").toString()))
+						.setObservationType(m.get("observationType").getAsString())
+						.setObservedArea((m.get("observedArea") == null) ? null : m.get("observedArea").getAsString())
+						.setPhenomenonTime((m.get("phenomenonTime") == null) ? null : m.get("phenomenonTime").getAsString())
+						.setResultTime((m.get("resultTime") == null) ? null : m.get("resultTime").getAsString())
+						.setThing(conv.getIotIds(m.get("Thing@iot.navigationLink").getAsString()))
+						.setObservedProperty(conv.getIotIds(m.get("ObservedProperty@iot.navigationLink").getAsString()))
+						.setSensor(conv.getIotIds(m.get("Sensor@iot.navigationLink").getAsString()))
+						.setObservations((m.get("Observations@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("Observations@iot.navigationLink").getAsString()))
 						.build();
 				break;
 			case "Sensors":
 				sr = Sensor.newBuilder()
-						.setIotId(m.get("@iot.id").toString())
-						.setName(m.get("name").toString())
-						.setDescription(m.get("description").toString())
-						.setEncodingType(m.get("encodingType").toString())
-						.setMetadata(m.get("metadata").toString())
-						.setDatastreams((m.get("Datastreams@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("Datastreams@iot.navigationLink").toString()))
+						.setIotId(m.get("@iot.id").getAsString())
+						.setName(m.get("name").getAsString())
+						.setDescription(m.get("description").getAsString())
+						.setEncodingType(m.get("encodingType").getAsString())
+						.setMetadata(m.get("metadata").getAsString())
+						.setDatastreams((m.get("Datastreams@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("Datastreams@iot.navigationLink").getAsString()))
 						.build();
 				break;
 			case "ObservedProperties":
 				sr = ObservedProperty.newBuilder()
-						.setIotId(m.get("@iot.id").toString())
-						.setName(m.get("name").toString())
-						.setDescription(m.get("description").toString())
-						.setDefinition(m.get("definition").toString())
-						.setDatastreams((m.get("Datastreams@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("Datastreams@iot.navigationLink").toString()))
+						.setIotId(m.get("@iot.id").getAsString())
+						.setName(m.get("name").getAsString())
+						.setDescription(m.get("description").getAsString())
+						.setDefinition(m.get("definition").getAsString())
+						.setDatastreams((m.get("Datastreams@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("Datastreams@iot.navigationLink").getAsString()))
 						.build();
 				break;
 			case "Observations":
 				sr = Observation.newBuilder()
-						.setIotId(m.get("@iot.id").toString())
-						.setPhenomenonTime(m.get("phenomenonTime").toString())
-						.setResult(m.get("result").toString())
-						.setResultTime(m.get("resultTime").toString())
-						.setResultQuality((m.get("resultQuality") == null) ? null : m.get("resultQuality").toString())
-						.setValidTime((m.get("validTime") == null) ? null : m.get("validTime").toString())
-						.setDatastream(conv.getIotIds(m.get("Datastream@iot.navigationLink").toString()))
-						.setFeatureOfInterest((m.get("FeatureOfInterest@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("FeatureOfInterest@iot.navigationLink").toString()))
+						.setIotId(m.get("@iot.id").getAsString())
+						.setPhenomenonTime(m.get("phenomenonTime").getAsString())
+						.setResult(m.get("result").getAsString())
+						.setResultTime(m.get("resultTime").getAsString())
+						.setResultQuality((m.get("resultQuality") == null) ? null : m.get("resultQuality").getAsString())
+						.setValidTime((m.get("validTime") == null) ? null : m.get("validTime").getAsString())
+						.setDatastream(conv.getIotIds(m.get("Datastream@iot.navigationLink").getAsString()))
+						.setFeatureOfInterest((m.get("FeatureOfInterest@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("FeatureOfInterest@iot.navigationLink").getAsString()))
 						.build();
 				break;
 			case "FeaturesOfInterest":
 				JsonObject feat = (JsonObject) m.get("feature");
-				String featCoordinates = ((JsonArray) feat.get("coordinates")).toString();
+				String featCoordinates = ((JsonArray) feat.get("coordinates")).getAsString();
 				// format the same way as iot.id lists
 				if (featCoordinates != null && featCoordinates.length() >= 2) {
 					featCoordinates = featCoordinates.substring(1, featCoordinates.length() - 1);
@@ -129,24 +129,24 @@ public class MqttMessageConverter {
 				}
 
 				sr = FeatureOfInterest.newBuilder()
-						.setIotId(m.get("@iot.id").toString())
-						.setName(m.get("name").toString())
-						.setDescription(m.get("description").toString())
-						.setEncodingType(m.get("encodingType").toString())
+						.setIotId(m.get("@iot.id").getAsString())
+						.setName(m.get("name").getAsString())
+						.setDescription(m.get("description").getAsString())
+						.setEncodingType(m.get("encodingType").getAsString())
 						.setFeature(LocationType.newBuilder()
-								.setType(feat.get("type").toString())
+								.setType(feat.get("type").getAsString())
 								.setCoordinates(featCoordinates)
 								.build())
-						.setObservations((m.get("Observations@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("Observations@iot.navigationLink").toString()))
+						.setObservations((m.get("Observations@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("Observations@iot.navigationLink").getAsString()))
 						.build();
 				break;
 			case "Things":
 				sr = Thing.newBuilder()
-						.setIotId(m.get("@iot.id").toString())
-						.setName(m.get("name").toString())
-						.setDescription(m.get("description").toString())
-						.setLocations((m.get("Locations@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("Locations@iot.navigationLink").toString()))
-						.setDatastreams((m.get("Datastreams@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("Datastreams@iot.navigationLink").toString()))
+						.setIotId(m.get("@iot.id").getAsString())
+						.setName(m.get("name").getAsString())
+						.setDescription(m.get("description").getAsString())
+						.setLocations((m.get("Locations@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("Locations@iot.navigationLink").getAsString()))
+						.setDatastreams((m.get("Datastreams@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("Datastreams@iot.navigationLink").getAsString()))
 						.build();
 				break;
 			case "HistoricalLocations":
@@ -154,7 +154,7 @@ public class MqttMessageConverter {
 				break;
 			case "Locations":
 				JsonObject loc = (JsonObject) m.get("feature");
-				String locCoordinates = ((JsonArray) loc.get("coordinates")).toString();
+				String locCoordinates = ((JsonArray) loc.get("coordinates")).getAsString();
 				// format the same way as iot.id lists
 				if (locCoordinates != null && locCoordinates.length() >= 2) {
 					locCoordinates = locCoordinates.substring(1, locCoordinates.length() - 1);
@@ -163,15 +163,15 @@ public class MqttMessageConverter {
 				}
 
 				sr = Location.newBuilder()
-						.setIotId(m.get("@iot.id").toString())
-						.setName(m.get("name").toString())
-						.setDescription(m.get("description").toString())
-						.setEncodingType(m.get("encodingType").toString())
+						.setIotId(m.get("@iot.id").getAsString())
+						.setName(m.get("name").getAsString())
+						.setDescription(m.get("description").getAsString())
+						.setEncodingType(m.get("encodingType").getAsString())
 						.setLocation(LocationType.newBuilder()
-								.setType(loc.get("type").toString())
+								.setType(loc.get("type").getAsString())
 								.setCoordinates(locCoordinates)
 								.build())
-						.setThings((m.get("Things@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("Things@iot.navigationLink").toString()))
+						.setThings((m.get("Things@iot.navigationLink") == null) ? null : conv.getIotIds(m.get("Things@iot.navigationLink").getAsString()))
 						.build();
 				break;
 			default:
