@@ -113,7 +113,7 @@ public class MqttMessageConverterTest {
 				"  \"@iot.id\": \"OP1\",\r\n" + 
 				"  \"name\": \"A\",\r\n" + 
 				"  \"description\": \"B\",\r\n" + 
-				"  \"definition\": \"C\"\r\n" + 
+				"  \"definition\": \"C\",\r\n" + 
 				"  \"Datastreams@iot.navigationLink\": \"https://oliver.pw/multiID.json\"," + 
 				"}").getBytes();
 		conv.mqttMessageToAvro("ObservedProperties", new MqttMessage(payload));
@@ -198,7 +198,7 @@ public class MqttMessageConverterTest {
 		byte[] payload = ("{\r\n" + 
 				"  \"@iot.id\": \"T1\",\r\n" + 
 				"  \"name\": \"A\",\r\n" + 
-				"  \"description\": \"B\"\r\n" + 
+				"  \"description\": \"B\",\r\n" + 
 				"  \"Locations@iot.navigationLink\": \"https://oliver.pw/multiID.json\"," + 
 				"  \"Datastreams@iot.navigationLink\": \"https://oliver.pw/multiID.json\"" + 
 				"}").getBytes();
