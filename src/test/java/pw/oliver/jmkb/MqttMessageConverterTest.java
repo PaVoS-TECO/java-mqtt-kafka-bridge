@@ -114,7 +114,7 @@ public class MqttMessageConverterTest {
 				"  \"name\": \"A\",\r\n" + 
 				"  \"description\": \"B\",\r\n" + 
 				"  \"definition\": \"C\",\r\n" + 
-				"  \"Datastreams@iot.navigationLink\": \"https://oliver.pw/multiID.json\"," + 
+				"  \"Datastreams@iot.navigationLink\": \"https://oliver.pw/multiID.json\"\r\n" + 
 				"}").getBytes();
 		conv.mqttMessageToAvro("ObservedProperties", new MqttMessage(payload));
 	}
