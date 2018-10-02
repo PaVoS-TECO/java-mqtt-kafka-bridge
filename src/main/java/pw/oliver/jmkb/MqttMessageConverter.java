@@ -120,7 +120,7 @@ public class MqttMessageConverter {
 				break;
 			case "FeaturesOfInterest":
 				JsonObject feat = (JsonObject) m.get("feature");
-				String featCoordinates = ((JsonArray) feat.get("coordinates")).getAsString();
+				String featCoordinates = ((JsonArray) feat.get("coordinates")).toString();
 				// format the same way as iot.id lists
 				if (featCoordinates != null && featCoordinates.length() >= 2) {
 					featCoordinates = featCoordinates.substring(1, featCoordinates.length() - 1);
@@ -154,7 +154,7 @@ public class MqttMessageConverter {
 				break;
 			case "Locations":
 				JsonObject loc = (JsonObject) m.get("feature");
-				String locCoordinates = ((JsonArray) loc.get("coordinates")).getAsString();
+				String locCoordinates = ((JsonArray) loc.get("coordinates")).toString();
 				// format the same way as iot.id lists
 				if (locCoordinates != null && locCoordinates.length() >= 2) {
 					locCoordinates = locCoordinates.substring(1, locCoordinates.length() - 1);
