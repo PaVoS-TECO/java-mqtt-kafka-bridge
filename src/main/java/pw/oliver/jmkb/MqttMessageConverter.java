@@ -202,9 +202,10 @@ public class MqttMessageConverter {
 				} else {
 					JsonElement je = entry.getValue();
 					if (je.isJsonArray()) {
-						getStringRepresentationOfJsonArray(je.getAsJsonArray());
+						entryMap.put(entry.getKey(), getStringRepresentationOfJsonArray(je.getAsJsonArray()));
+					} else {
+						entryMap.put(entry.getKey(), je.getAsString());
 					}
-					entryMap.put(entry.getKey(), entry.getValue().getAsString());
 				}
 			}
 			return new Gson().toJson(entryMap);
