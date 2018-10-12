@@ -1,9 +1,11 @@
 package pw.oliver.jmkb;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.avro.specific.SpecificRecordBase;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
@@ -189,23 +191,41 @@ public class MqttMessageConverter {
 		try {
 			JsonObject jo = new JsonParser().parse(new String(message.getPayload())).getAsJsonObject();
 			Iterator<Entry<String, JsonElement>> it = jo.entrySet().iterator();
-			Map<String, String> newMap = new HashMap<>();
-			while(it.hasNext()) {
+			Map<String, String> entryMap = new HashMap<>();
+			while (it.hasNext()) {
 				Entry<String, JsonElement> entry = it.next();
 				if (entry.getKey().endsWith("@iot.navigationLink")) {
 					// remove @iot.navigationLink from key
 					String newKey = entry.getKey().split("@")[0];
 					String newValue = conv.getIotIds(entry.getValue().getAsString());
-					newMap.put(newKey, newValue);
+					entryMap.put(newKey, newValue);
 				} else {
-					newMap.put(entry.getKey(), entry.getValue().getAsString());
+					JsonElement je = entry.getValue();
+					if (je.isJsonArray()) {
+						getStringRepresentationOfJsonArray(je.getAsJsonArray());
+					}
+					entryMap.put(entry.getKey(), entry.getValue().getAsString());
 				}
 			}
-			return new Gson().toJson(newMap);
+			return new Gson().toJson(entryMap);
 		} catch (JsonParseException | IllegalStateException e) {
 			logger.warn("Error parsing given message", e);
 		}
 		return null;
+	}
+	
+	private String getStringRepresentationOfJsonArray(JsonArray ja) {
+		Iterator<JsonElement> it = ja.iterator();
+		Set<String> entrySet = new HashSet<>();
+		while (it.hasNext()) {
+			JsonElement je = it.next();
+			if (je.isJsonArray()) {
+				entrySet.add(getStringRepresentationOfJsonArray(ja));
+			} else {
+				entrySet.add(je.getAsString());
+			}
+		}
+		return new Gson().toJson(entrySet);
 	}
 	
 	public String getKeyFromMessage(MqttMessage message) {
