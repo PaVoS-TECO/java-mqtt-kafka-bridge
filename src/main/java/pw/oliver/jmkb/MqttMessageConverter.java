@@ -191,7 +191,9 @@ public class MqttMessageConverter {
 					// remove @iot.navigationLink from key
 					String newKey = entry.getKey().split("@")[0];
 					String newValue = conv.getIotIds(entry.getValue().getAsString());
-					joNew.addProperty(newKey, newValue);
+					if (newValue != null) {
+						joNew.addProperty(newKey, newValue);
+					}
 				}
 			}
 

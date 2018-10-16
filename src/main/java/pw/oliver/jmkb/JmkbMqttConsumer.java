@@ -83,37 +83,44 @@ public class JmkbMqttConsumer implements MqttCallback {
 
 	@Override
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
-		logger.info("Message arrived, topic \"{}\" message \"{}\"", topic, message);
-		if (topic == null || message == null) {
-			return;
-		}
-		String messageTopic = topic;
-		// remove "v1.0/" from topic
-		if (messageTopic.contains("/")) {
-			messageTopic = messageTopic.split("/")[1];
-		} else {
-			logger.warn("Received message topic {} does not contain a slash! Message: {}", messageTopic, message);
-			return;
-		}
-		// convert message and get key
-		switch (format) {
-		case "avro":
-			SpecificRecordBase avroMessage = converter.mqttMessageToAvro(messageTopic, message);
-			if (avroMessage != null) {
-				String key = String.valueOf(avroMessage.get("iotId"));
-				producer.send(messageTopic, key, avroMessage);
+		new Thread() {
+			
+			@Override
+			public void run() {
+				logger.info("Message arrived, topic \"{}\" message \"{}\"", topic, message);
+				if (topic == null || message == null) {
+					return;
+				}
+				String messageTopic = topic;
+				// remove "v1.0/" from topic
+				if (messageTopic.contains("/")) {
+					messageTopic = messageTopic.split("/")[1];
+				} else {
+					logger.warn("Received message topic {} does not contain a slash! Message: {}", messageTopic, message);
+					return;
+				}
+				// convert message and get key
+				switch (format) {
+				case "avro":
+					SpecificRecordBase avroMessage = converter.mqttMessageToAvro(messageTopic, message);
+					if (avroMessage != null) {
+						String key = String.valueOf(avroMessage.get("iotId"));
+						producer.send(messageTopic, key, avroMessage);
+					}
+					break;
+				case "json":
+					String jsonMessage = converter.mqttMessageToJson(messageTopic, message);
+					String key = converter.getKeyFromMessage(message);
+					producer.send(messageTopic, key, jsonMessage);
+					logger.info("Sent json message with topic \"{}\", key \"{}\" and message \"{}\"", messageTopic, key, jsonMessage);
+					break;
+				default:
+					logger.warn("Conversion format not defined");
+					break;
+				}
 			}
-			break;
-		case "json":
-			String jsonMessage = converter.mqttMessageToJson(messageTopic, message);
-			String key = converter.getKeyFromMessage(message);
-			producer.send(messageTopic, key, jsonMessage);
-			logger.info("Sent json message with topic \"{}\", key \"{}\" and message \"{}\"", messageTopic, key, jsonMessage);
-			break;
-		default:
-			logger.warn("Conversion format not defined");
-			break;
-		}
+			
+		}.start();
 		
 	}
 
