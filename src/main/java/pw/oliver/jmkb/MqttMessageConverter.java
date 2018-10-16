@@ -6,6 +6,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -197,7 +198,7 @@ public class MqttMessageConverter {
 				}
 			}
 
-			return joNew.getAsString();
+			return new Gson().toJson(joNew);
 		} catch (JsonParseException | IllegalStateException e) {
 			logger.warn("Error parsing given message", e);
 		}
