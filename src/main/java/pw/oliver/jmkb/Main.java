@@ -66,6 +66,10 @@ public final class Main {
 			}
 		});
 		
+		logger.debug("FROST at {}", PropertiesFileReader.getProperty("frostServerURI"));
+		logger.debug("Kafka at {}", PropertiesFileReader.getProperty("kafkaBrokerURI"));
+		logger.debug("Schema registry at {}", PropertiesFileReader.getProperty("schemaRegistryURI"));
+		logger.debug("Sending messages in {} format", PropertiesFileReader.getProperty("format"));
 		logger.info("The bridge is now running, terminate with Ctrl+C.");
 		
 		if ((args.length > 0) && (args[0].equals("test"))) {

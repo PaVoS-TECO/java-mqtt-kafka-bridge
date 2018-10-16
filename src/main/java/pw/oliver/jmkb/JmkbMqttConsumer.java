@@ -87,7 +87,7 @@ public class JmkbMqttConsumer implements MqttCallback {
 			
 			@Override
 			public void run() {
-				logger.info("Message arrived, topic \"{}\" message \"{}\"", topic, message);
+				logger.debug("Message arrived, topic \"{}\" message \"{}\"", topic, message);
 				if (topic == null || message == null) {
 					return;
 				}
@@ -112,7 +112,7 @@ public class JmkbMqttConsumer implements MqttCallback {
 					String jsonMessage = converter.mqttMessageToJson(messageTopic, message);
 					String key = converter.getKeyFromMessage(message);
 					producer.send(messageTopic, key, jsonMessage);
-					logger.info("Sent json message with topic \"{}\", key \"{}\" and message \"{}\"", messageTopic, key, jsonMessage);
+					logger.debug("Sent json message with topic \"{}\", key \"{}\" and message \"{}\"", messageTopic, key, jsonMessage);
 					break;
 				default:
 					logger.warn("Conversion format not defined");
