@@ -1,18 +1,11 @@
 package pw.oliver.jmkb;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
-
 import org.apache.avro.specific.SpecificRecordBase;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -190,43 +183,23 @@ public class MqttMessageConverter {
 	public String mqttMessageToJson(String messageTopic, MqttMessage message) {
 		try {
 			JsonObject jo = new JsonParser().parse(new String(message.getPayload())).getAsJsonObject();
-			Iterator<Entry<String, JsonElement>> it = jo.entrySet().iterator();
-			Map<String, String> entryMap = new HashMap<>();
-			while (it.hasNext()) {
-				Entry<String, JsonElement> entry = it.next();
+			JsonObject joNew = jo.deepCopy();
+			
+			for (Entry<String, JsonElement> entry : jo.entrySet()) {
 				if (entry.getKey().endsWith("@iot.navigationLink")) {
+					joNew.remove(entry.getKey());
 					// remove @iot.navigationLink from key
 					String newKey = entry.getKey().split("@")[0];
 					String newValue = conv.getIotIds(entry.getValue().getAsString());
-					entryMap.put(newKey, newValue);
-				} else {
-					JsonElement je = entry.getValue();
-					if (je.isJsonArray()) {
-						entryMap.put(entry.getKey(), getStringRepresentationOfJsonArray(je.getAsJsonArray()));
-					} else {
-						entryMap.put(entry.getKey(), je.getAsString());
-					}
+					joNew.addProperty(newKey, newValue);
 				}
 			}
-			return new Gson().toJson(entryMap);
+
+			return joNew.getAsString();
 		} catch (JsonParseException | IllegalStateException e) {
 			logger.warn("Error parsing given message", e);
 		}
 		return null;
-	}
-	
-	private String getStringRepresentationOfJsonArray(JsonArray ja) {
-		Iterator<JsonElement> it = ja.iterator();
-		Set<String> entrySet = new HashSet<>();
-		while (it.hasNext()) {
-			JsonElement je = it.next();
-			if (je.isJsonArray()) {
-				entrySet.add(getStringRepresentationOfJsonArray(ja));
-			} else {
-				entrySet.add(je.getAsString());
-			}
-		}
-		return new Gson().toJson(entrySet);
 	}
 	
 	public String getKeyFromMessage(MqttMessage message) {
